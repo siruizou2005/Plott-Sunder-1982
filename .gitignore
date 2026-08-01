@@ -1,0 +1,5 @@
+__pycache__/
+.DS_Store
+
+# The manuscript is not distributed with the replication package.
+paper/

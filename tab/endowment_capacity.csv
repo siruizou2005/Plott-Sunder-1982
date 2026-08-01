@@ -1,0 +1,8 @@
+market,state,informed_side,vbar,re_price,total_supply,units_one_insider_buys_at_re,units_one_insider_buys_at_vbar,units_all_insiders_can_sell,cash_binds_before_supply,short_sales_permitted
+3,X,buyer,220.0,400,24,25.0,45.45454545454545,12,False,False
+3,Y,seller,220.0,175,24,57.142857142857146,45.45454545454545,12,False,False
+4,X,buyer,210.0,375,24,26.666666666666668,47.61904761904762,12,False,False
+4,Y,seller,210.0,175,24,57.142857142857146,47.61904761904762,12,False,False
+5,X,seller,212.5,180,24,55.55555555555556,47.05882352941177,12,False,False
+5,Y,buyer,212.5,245,24,40.816326530612244,47.05882352941177,12,False,False
+5,Z,buyer,212.5,320,24,31.25,47.05882352941177,12,False,False

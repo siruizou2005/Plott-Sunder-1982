@@ -1,0 +1,6 @@
+prediction,evidence,verdict
+A within-period upward drift exists absent information,"+7.7 f, 12 of 13 periods positive, sign p=0.003",confirmed
+"Opening trades fall at one common level, whatever that level is","seller -39.5 f and buyer +36.2 f relative to vbar, 75.7 f apart on opposite sides, p=0.0003",rejected
+The opening level is independent of the state,"the seller side's first trade is indistinguishable from its own RE price (-1.2 f, p=0.82), while the buyer side's is -81.8 f below its own (p=0.0007)",rejected
+The same francs are moved within a period on both sides,"buyer +70.9 f vs seller -2.2 f, p=0.0012",rejected
+The drift accounts for the buying side's climb,+7.7 f of +70.9 f = 11 per cent; the climb is 9.2 times the drift,rejected
