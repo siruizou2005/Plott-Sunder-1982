@@ -1,8 +1,10 @@
 """Overlay the detected dots on the original scan crops, so the detection is auditable.
 
-Twelve representative periods: one per figure showing a clean detection, plus every
-period the digitization flags, plus the two periods whose panels contradict the
-printed averages.
+Eight representative periods: one per figure showing a clean detection, plus the
+periods whose panels contradict the printed averages.
+
+`reconstruction.py` is the complementary check -- the whole series redrawn from the
+recovered trades, rather than a few periods overlaid back onto the scan.
 """
 from __future__ import annotations
 
@@ -122,5 +124,6 @@ def render(out_path: Path):
 
 if __name__ == "__main__":
     (STUDY / "fig").mkdir(parents=True, exist_ok=True)
-    render(STUDY / "fig" / "digitization_audit.png")
-    print("wrote", STUDY / "fig" / "D0_digitization_check.png")
+    out = STUDY / "fig" / "digitization_audit.png"
+    render(out)
+    print("wrote", out)

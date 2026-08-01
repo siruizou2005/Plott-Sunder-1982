@@ -138,9 +138,32 @@ recomputation will disagree with that list, and the disagreement is the original
 typo, not a bug here.
 
 `code/published_tables.py` holds the numbers transcribed from the printed rows of the
-figures. `python3 code/montage.py` overlays the detected dots on the scan crops and
-writes `fig/digitization_audit.png`, so the detection can be checked by eye rather
-than taken on trust; it is not part of `run_all.py`.
+figures.
+
+## Checking the digitization by eye
+
+Two scripts exist for this, neither part of `run_all.py`.
+
+`python3 code/reconstruction.py` redraws all five of the original's price figures from
+the recovered trades, in the original's own layout — transacted price against the trade
+sequence, periods divided by vertical rules, RE solid and PI dashed where the two
+differ, the information-condition arrows, and the rows beneath the axis. It writes
+`fig/reconstruction_m1.png` … `m5.png`, one per market, each comparable with the
+original's Figure 2–6 in that order. Hold one beside the corresponding page scan and
+the whole series can be checked period by period.
+
+The AVERAGE PRICE row on those panels is the recovered trades' own mean, not the
+original's printed row — that row *is* the comparison, and it lands within a franc or
+two nearly everywhere. The efficiency rows are printed in grey because they are
+transcribed: they are allocation measures, and prices alone cannot recompute them. An
+asterisk marks the four periods whose panel cannot produce the average printed under
+it (market 4 periods 1, 7, 8; market 1 period 2), recorded rather than adjusted.
+
+`python3 code/montage.py` is the complementary check at the other end of the
+magnification: it overlays the detected dot cores back onto the scan itself, zoomed,
+for eight representative periods, and writes `fig/digitization_audit.png`. Use it to
+confirm that individual dots were found correctly; use the reconstruction to confirm
+that the series as a whole is right.
 
 ## License
 
