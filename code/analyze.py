@@ -1010,9 +1010,8 @@ def selection_tables() -> None:
               r"\caption*{\footnotesize Notes: Valuations and price intervals are in francs per "
               r"certificate. $v_{(2)}$ is the second-highest informed type valuation; $P_{\RE}$ is "
               r"the highest and the upper price endpoint. $\mathcal D^{CE}$ maps the price interval "
-              r"through $D=(p-\bar v)/(P_{\RE}-\bar v)$. Source: the author-supplied note on the "
-              r"normalized axis and competitive-price benchmarks, Section 3.3, which records the "
-              r"market-parameter code convention. These intervals do not replace the paper's "
+              r"through $D=(p-\bar v)/(P_{\RE}-\bar v)$. Source: dividend schedules in Table "
+              r"\ref{tab:app-dividends}; author's calculations. These intervals do not replace the paper's "
               r"point-based outcome or classify observed transactions.}",
               r"\end{table}"]
     (TABLES / "appendix_competitive_intervals.tex").write_text("\n".join(lines) + "\n")
