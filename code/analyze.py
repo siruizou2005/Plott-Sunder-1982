@@ -839,12 +839,12 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
 
     rob_rows = []
     shown = a["robustness"].copy()
+    fmt_p = lambda p: "--" if pd.isna(p) else (r"$<$0.001" if p < 0.001 else f"{p:.3f}")
     for _, r in shown.iterrows():
-        p_perm = "--" if pd.isna(r.p_perm_within_market) else f"{r.p_perm_within_market:.4f}"
-        p_fe = "--" if pd.isna(r.p_fe_cluster) else f"{r.p_fe_cluster:.4f}"
         rob_rows.append(
             f"{latex_escape(r.panel)} & {latex_escape(r['sample'])} & {r.measure} & "
-            f"{r['diff']:+.3f} & {r.p_welch:.4f} & {r.p_mwu:.4f} & {p_perm} & {p_fe}" + " \\\\")
+            f"{r['diff']:+.3f} & {fmt_p(r.p_welch)} & {fmt_p(r.p_mwu)} & "
+            f"{fmt_p(r.p_perm_within_market)} & {fmt_p(r.p_fe_cluster)}" + " \\\\")
     write_longtable("appendix_human_robustness.tex",
                     r"p{2.1cm}p{3.6cm}p{3.0cm}rrrrr",
                     r"Human-data inference and sample robustness",
