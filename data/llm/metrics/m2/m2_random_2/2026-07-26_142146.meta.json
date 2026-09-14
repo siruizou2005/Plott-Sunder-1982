@@ -1,0 +1,205 @@
+{
+  "scenario": "scenarios/m2_random.yaml",
+  "run_name": "m2_random_2",
+  "stamp": "2026-07-26_142146",
+  "status": "done",
+  "config": {
+    "run_name": "m2_random_2",
+    "seed": 20250739,
+    "market": 2,
+    "sequence_preset": "random_prior",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": null,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 8192,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "sequence": {
+    "name": "random_prior_m2",
+    "states": [
+      "Y",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y"
+    ],
+    "info": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "all",
+      "all",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider"
+    ],
+    "note": "states redrawn from the prior (seed 20250739); information design unchanged"
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 7278,
+          "usd": 14.556,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 6760,
+          "usd": 13.52,
+          "type": "I",
+          "insider": true
+        },
+        "S03": {
+          "francs": 4602,
+          "usd": 9.204,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 4749,
+          "usd": 9.498,
+          "type": "I",
+          "insider": false
+        },
+        "S05": {
+          "francs": 5884,
+          "usd": 11.768,
+          "type": "II",
+          "insider": true
+        },
+        "S06": {
+          "francs": 6718,
+          "usd": 13.436,
+          "type": "II",
+          "insider": true
+        },
+        "S07": {
+          "francs": 5744,
+          "usd": 11.488,
+          "type": "II",
+          "insider": false
+        },
+        "S08": {
+          "francs": 6165,
+          "usd": 12.33,
+          "type": "II",
+          "insider": false
+        },
+        "S09": {
+          "francs": 6306,
+          "usd": 12.612,
+          "type": "III",
+          "insider": true
+        },
+        "S10": {
+          "francs": 6087,
+          "usd": 12.174,
+          "type": "III",
+          "insider": true
+        },
+        "S11": {
+          "francs": 5929,
+          "usd": 11.858,
+          "type": "III",
+          "insider": false
+        },
+        "S12": {
+          "francs": 6138,
+          "usd": 12.276,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 3121,
+      "usage": {
+        "prompt_tokens": 7546962,
+        "completion_tokens": 3476846,
+        "cache_hit_tokens": 2739456,
+        "cache_miss_tokens": 4807506,
+        "reasoning_tokens": 3343278
+      },
+      "cost_usd": 1.7336,
+      "wall_clock_s": 20170.0
+    }
+  ],
+  "totals": {
+    "calls": 3121,
+    "cost_usd": 1.7336,
+    "wall_clock_s": 20170.0
+  },
+  "market": {
+    "number": 2,
+    "paper": true,
+    "states": [
+      "X",
+      "Y"
+    ],
+    "n_agents": 12,
+    "dividends": {
+      "I": {
+        "X": 100,
+        "Y": 350
+      },
+      "II": {
+        "X": 200,
+        "Y": 300
+      },
+      "III": {
+        "X": 240,
+        "Y": 175
+      }
+    },
+    "prior_ev": {
+      "I": 266.67,
+      "II": 266.67,
+      "III": 196.67
+    },
+    "bingo_total": 30,
+    "note": "Everyone informed BEFORE the insider periods, the reverse of market 3. Table 1 prints a 'Y' card for period 4, but the body text counts the first four periods as no-information; the text is taken as authoritative."
+  }
+}

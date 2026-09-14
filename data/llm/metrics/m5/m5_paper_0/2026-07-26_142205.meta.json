@@ -1,0 +1,213 @@
+{
+  "scenario": "scenarios/m5_paper.yaml",
+  "run_name": "m5_paper_0",
+  "stamp": "2026-07-26_142205",
+  "status": "done",
+  "config": {
+    "run_name": "m5_paper_0",
+    "seed": 20250765,
+    "market": 5,
+    "sequence_preset": "paper_exact",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": null,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 8192,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "sequence": {
+    "name": "paper_exact_m5",
+    "states": [
+      "Z",
+      "X",
+      "Z",
+      "X",
+      "X",
+      "Y",
+      "Z",
+      "Z",
+      "Y",
+      "Y",
+      "X",
+      "Y",
+      "Z"
+    ],
+    "info": [
+      "none",
+      "none",
+      "none",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider"
+    ],
+    "note": "Three states. Every X/Y assumption elsewhere in the codebase breaks here."
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 8405,
+          "usd": 25.215,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 10285,
+          "usd": 30.855,
+          "type": "I",
+          "insider": true
+        },
+        "S03": {
+          "francs": 5224,
+          "usd": 15.672,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 4711,
+          "usd": 14.133,
+          "type": "I",
+          "insider": false
+        },
+        "S05": {
+          "francs": 6529,
+          "usd": 19.587,
+          "type": "II",
+          "insider": true
+        },
+        "S06": {
+          "francs": 6050,
+          "usd": 18.15,
+          "type": "II",
+          "insider": true
+        },
+        "S07": {
+          "francs": 4349,
+          "usd": 13.047,
+          "type": "II",
+          "insider": false
+        },
+        "S08": {
+          "francs": 4862,
+          "usd": 14.586,
+          "type": "II",
+          "insider": false
+        },
+        "S09": {
+          "francs": 5326,
+          "usd": 15.978,
+          "type": "III",
+          "insider": true
+        },
+        "S10": {
+          "francs": 5303,
+          "usd": 15.909,
+          "type": "III",
+          "insider": true
+        },
+        "S11": {
+          "francs": 4980,
+          "usd": 14.94,
+          "type": "III",
+          "insider": false
+        },
+        "S12": {
+          "francs": 4896,
+          "usd": 14.688,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 3867,
+      "usage": {
+        "prompt_tokens": 9812819,
+        "completion_tokens": 4463737,
+        "cache_hit_tokens": 3325696,
+        "cache_miss_tokens": 6487123,
+        "reasoning_tokens": 4293854
+      },
+      "cost_usd": 2.2646,
+      "wall_clock_s": 26910.0
+    }
+  ],
+  "totals": {
+    "calls": 3867,
+    "cost_usd": 2.2646,
+    "wall_clock_s": 26910.0
+  },
+  "market": {
+    "number": 5,
+    "paper": true,
+    "states": [
+      "X",
+      "Y",
+      "Z"
+    ],
+    "n_agents": 12,
+    "dividends": {
+      "I": {
+        "X": 120,
+        "Y": 170,
+        "Z": 320
+      },
+      "II": {
+        "X": 155,
+        "Y": 245,
+        "Z": 135
+      },
+      "III": {
+        "X": 180,
+        "Y": 100,
+        "Z": 160
+      }
+    },
+    "prior_ev": {
+      "I": 212.5,
+      "II": 169.5,
+      "III": 152.0
+    },
+    "bingo_total": 20,
+    "note": "Three states. Every X/Y assumption elsewhere in the codebase breaks here."
+  }
+}

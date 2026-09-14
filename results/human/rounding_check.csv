@@ -1,0 +1,2 @@
+n_periods,rounds_exactly,mean_abs,median_abs,max_abs,expected_mean_abs_under_rounding,ks_D,ks_p
+60,58,0.246816666666669,0.25849999999999795,0.5240000000000009,0.25,0.11633333333332607,0.36304323676715067

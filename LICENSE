@@ -1,25 +1,46 @@
-Attribution 4.0 International (CC BY 4.0)
-
 Copyright (c) 2026 Sirui Zou
 
-This work is licensed under the Creative Commons Attribution 4.0 International
-License. You are free to share and adapt the material for any purpose, including
-commercially, provided you give appropriate credit, provide a link to the license,
-and indicate if changes were made.
+This repository is released under two licenses.
 
-Full legal text: https://creativecommons.org/licenses/by/4.0/legalcode
-Summary:        https://creativecommons.org/licenses/by/4.0/
+1. Code (everything under code/, and the Makefile) is released under the
+   3-Clause BSD License, reproduced below.
 
---------------------------------------------------------------------------------
-Note on data/scan_p17-21.png
+2. Data, generated results, and documentation (everything under data/,
+   results/, and docs/, and the README) are released under the Creative
+   Commons Attribution 4.0 International License (CC BY 4.0),
+   https://creativecommons.org/licenses/by/4.0/.
 
-Those five files are page scans of Figures 2-6 of
+Exclusions. These licenses do not cover the original works by Plott and Sunder
+that the data are transcribed from: Plott and Sunder (1980), Caltech Social
+Science Working Paper 331, and Plott and Sunder (1982), Journal of Political
+Economy 90(4). The right-hand panel of results/figures/market4_periods78.pdf
+reproduces part of Figure 10 of the 1980 working paper for comparison; that
+panel remains the property of its rights holder.
 
-  Charles R. Plott and Shyam Sunder, "Efficiency of Experimental Security Markets
-  with Insider Information: An Application of Rational-Expectations Models",
-  Journal of Political Economy 90(4), 1982, 663-698.
+-------------------------------------------------------------------------------
+BSD 3-Clause License
 
-They are the copyright of the original publisher and are included here only as the
-source input the digitization is run on, so that the recovered trades can be checked
-against what was printed. The CC BY 4.0 grant above covers this package's own code,
-tables and figures; it does not extend to those scans.
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+
+1. Redistributions of source code must retain the above copyright notice, this
+   list of conditions and the following disclaimer.
+
+2. Redistributions in binary form must reproduce the above copyright notice,
+   this list of conditions and the following disclaimer in the documentation
+   and/or other materials provided with the distribution.
+
+3. Neither the name of the copyright holder nor the names of its
+   contributors may be used to endorse or promote products derived from
+   this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS"
+AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE
+IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE
+FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL
+DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR
+SERVICES; LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER
+CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY,
+OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.

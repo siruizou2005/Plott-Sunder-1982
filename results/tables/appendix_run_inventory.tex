@@ -1,0 +1,69 @@
+\tiny
+\begin{longtable}{p{2.6cm}rrrp{.8cm}p{1.6cm}p{3.0cm}p{1.0cm}p{1.0cm}p{2.0cm}}
+\caption{LLM run inventory and sample selection}\label{tab:app-run-list}\\
+\toprule
+Run & Mkt. & Rung & Seed & Turns & Preset & Realized states & Traded & No-trade & Model \\
+\midrule
+\endfirsthead
+\multicolumn{10}{l}{\textit{Continued}}\\
+\toprule
+Run & Mkt. & Rung & Seed & Turns & Preset & Realized states & Traded & No-trade & Model \\
+\midrule
+\endhead
+\midrule
+\multicolumn{10}{r}{\textit{Continued on next page}}\\
+\endfoot
+\bottomrule
+\endlastfoot
+m7\_ctrl\_42 & A & 0 / symmetric & 42 & 3 & prior redraw & XXXXYXYXYYXXXX & 8/9 & 10 & DS-V4-Flash \\
+m7\_ctrl\_43 & A & 0 / symmetric & 43 & 3 & prior redraw & YXXYXXXXXYYXYY & 9/9 & -- & DS-V4-Flash \\
+m7\_ctrl\_44 & A & 0 / symmetric & 44 & 3 & prior redraw & XYXYXXXXXXYXYX & 9/9 & -- & DS-V4-Flash \\
+m7\_ctrl\_45 & A & 0 & 45 & 3 & prior redraw & XYYXXXYXYYYYXY & 9/9 & -- & DS-V4-Flash \\
+m8\_ctrl\_42 & B & 0 / symmetric & 42 & 3 & prior redraw & XXXXYYXXXXXXYY & 9/9 & -- & DS-V4-Flash \\
+m8\_ctrl\_43 & B & 0 / symmetric & 43 & 3 & prior redraw & XXXXYYXXXXXXYX & 9/9 & -- & DS-V4-Flash \\
+m8\_ctrl\_44 & B & 0 / symmetric & 44 & 3 & prior redraw & XYYXXYYYXYXYYX & 9/9 & -- & DS-V4-Flash \\
+m7\_disc\_42 & A & 1 & 42 & 3 & prior redraw & XXXXYXYXYYXXXX & 9/9 & -- & DS-V4-Flash \\
+m8\_disc\_42 & B & 1 & 42 & 3 & prior redraw & XXXXYYXXXXXXYY & 9/9 & -- & DS-V4-Flash \\
+m7\_lad1b\_42 & A & 1b & 42 & 3 & prior redraw & XXXXYXYXYYXXXX & 9/9 & -- & DS-V4-Flash \\
+m8\_lad1b\_42 & B & 1b & 42 & 3 & prior redraw & XXXXYYXXXXXXYY & 9/9 & -- & DS-V4-Flash \\
+m7\_lad2\_42 & A & 2 & 42 & 3 & prior redraw & XXXXYXYXYYXXXX & 9/9 & -- & DS-V4-Flash \\
+m7\_lad2\_45 & A & 2 & 45 & 3 & prior redraw & XYYXXXYXYYYYXY & 9/9 & -- & DS-V4-Flash \\
+m8\_lad2\_42 & B & 2 & 42 & 3 & prior redraw & XXXXYYXXXXXXYY & 8/9 & 5 & DS-V4-Flash \\
+m8\_lad2\_44 & B & 2 & 44 & 3 & prior redraw & XYYXXYYYXYXYYX & 9/9 & -- & DS-V4-Flash \\
+m7\_lad3\_42 & A & 3 & 42 & 3 & prior redraw & XXXXYXYXYYXXXX & 9/9 & -- & DS-V4-Flash \\
+m7\_lad3\_45 & A & 3 & 45 & 3 & prior redraw & XYYXXXYXYYYYXY & 8/9 & 10 & DS-V4-Flash \\
+m8\_lad3\_42 & B & 3 & 42 & 3 & prior redraw & XXXXYYXXXXXXYY & 9/9 & -- & DS-V4-Flash \\
+m8\_lad3\_44 & B & 3 & 44 & 3 & prior redraw & XYYXXYYYXYXYYX & 9/9 & -- & DS-V4-Flash \\
+m1\_paper\_0 & 1 & original & 20250725 & 3 & published & YYXYYXYYYXY & 4/4 & -- & DS-V4-Flash \\
+m1\_paper\_1 & 1 & original & 20250726 & 3 & published & YYXYYXYYYXY & 4/4 & -- & DS-V4-Flash \\
+m1\_random\_0 & 1 & original & 20250727 & 3 & prior redraw & YYYXXYYYYYY & 4/4 & -- & DS-V4-Flash \\
+m1\_random\_1 & 1 & original & 20250728 & 3 & prior redraw & XYYYXYYXYYY & 4/4 & -- & DS-V4-Flash \\
+m1\_random\_2 & 1 & original & 20250729 & 3 & prior redraw & YYYYYYYYYXX & 4/4 & -- & DS-V4-Flash \\
+m2\_paper\_0 & 2 & original & 20250735 & 3 & published & XXYYYYXYXYY & 5/5 & -- & DS-V4-Flash \\
+m2\_paper\_1 & 2 & original & 20250736 & 3 & published & XXYYYYXYXYY & 5/5 & -- & DS-V4-Flash \\
+m2\_random\_0 & 2 & original & 20250737 & 3 & prior redraw & XXYYXYYXYYY & 5/5 & -- & DS-V4-Flash \\
+m2\_random\_1 & 2 & original & 20250738 & 3 & prior redraw & YXYYYYXYYYY & 5/5 & -- & DS-V4-Flash \\
+m2\_random\_2 & 2 & original & 20250739 & 3 & prior redraw & YXXYYYXXYYY & 5/5 & -- & DS-V4-Flash \\
+m3\_gem\_paper & 3 & original & 20250745 & 3 & published & YYYXYYXYXYYX & 8/8 & -- & gemini-3.5-flash \\
+m3\_paper\_0 & 3 & original & 20250745 & 3 & published & YYYXYYXYXYYX & 8/8 & -- & DS-V4-Flash \\
+m3\_paper\_1 & 3 & original & 20250746 & 3 & published & YYYXYYXYXYYX & 8/8 & -- & DS-V4-Flash \\
+m3\_random\_0 & 3 & original & 20250747 & 3 & prior redraw & XYXXXYYYXYYY & 8/8 & -- & DS-V4-Flash \\
+m3\_random\_1 & 3 & original & 20250748 & 3 & prior redraw & XYXYXYYYXXYX & 8/8 & -- & DS-V4-Flash \\
+m3\_random\_2 & 3 & original & 20250749 & 3 & prior redraw & XYYYYXYYYYYY & 8/8 & -- & DS-V4-Flash \\
+m4\_paper\_0 & 4 & original & 20250755 & 3 & published & XYYXYXYYXYXYXY & 9/9 & -- & DS-V4-Flash \\
+m4\_paper\_1 & 4 & original & 20250756 & 3 & published & XYYXYXYYXYXYXY & 9/9 & -- & DS-V4-Flash \\
+m4\_random\_0 & 4 & original & 20250757 & 3 & prior redraw & YXXXXXYYYXYYYY & 9/9 & -- & DS-V4-Flash \\
+m4\_random\_1 & 4 & original & 20250758 & 3 & prior redraw & YYXXXXYYYYYXYX & 9/9 & -- & DS-V4-Flash \\
+m4\_random\_2 & 4 & original & 20250759 & 3 & prior redraw & YYYYXYYXXYXXYY & 9/9 & -- & DS-V4-Flash \\
+m5\_paper\_0 & 5 & original & 20250765 & 3 & published & ZXZXXYZZYYXYZ & 10/10 & -- & DS-V4-Flash \\
+m5\_paper\_1 & 5 & original & 20250766 & 3 & published & ZXZXXYZZYYXYZ & 10/10 & -- & DS-V4-Flash \\
+m5\_random\_0 & 5 & original & 20250767 & 3 & prior redraw & XZYZZXXZZXXXX & 10/10 & -- & DS-V4-Flash \\
+m5\_random\_1 & 5 & original & 20250768 & 3 & prior redraw & ZYYZZYZXYXZZY & 10/10 & -- & DS-V4-Flash \\
+m5\_random\_2 & 5 & original & 20250769 & 3 & prior redraw & YXZXZZXYZZYZX & 10/10 & -- & DS-V4-Flash \\
+m4\_r4\_paper & 4 & round check & 20250755 & 4 & published & XYYXYXYYXYXYXY & 9/9 & -- & DS-V4-Flash \\
+m4\_r5\_paper & 4 & round check & 20250755 & 5 & published & XYYXYXYYXYXYXY & 9/9 & -- & DS-V4-Flash \\
+m4\_r6\_paper & 4 & round check & 20250755 & 6 & published & XYYXYXYYXYXYXY & 9/9 & -- & DS-V4-Flash \\
+m4\_r4\_random & 4 & round check & 20250757 & 4 & prior redraw & YXXXXXYYYXYYYY & 9/9 & -- & DS-V4-Flash \\
+m4\_r5\_random & 4 & round check & 20250757 & 5 & prior redraw & YXXXXXYYYXYYYY & 9/9 & -- & DS-V4-Flash \\
+m4\_r6\_random & 4 & round check & 20250757 & 6 & prior redraw & YXXXXXYYYXYYYY & 9/9 & -- & DS-V4-Flash \\
+\end{longtable}

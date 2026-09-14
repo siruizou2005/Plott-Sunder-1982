@@ -1,0 +1,6 @@
+market,buy_distance,sell_distance,buy_net_informed_demand,sell_net_informed_demand,buy_free_riders,sell_free_riders
+3,+180,-45,+2,-6,0,2
+4,+165,-35,+2,-6,0,2
+5,+32.5 or +107.5,-32.5,-2,-6,0,4
+A,+100,-100,+6,-6,0,0
+B,+100,-100,+6,-6,0,0

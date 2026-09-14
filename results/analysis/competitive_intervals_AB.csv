@@ -1,0 +1,5 @@
+market,state,side,vbar,v2,re,price_low,price_high,D_low,D_high
+A,X,buying,260.0,330,360,330,360,0.7,1.0
+A,Y,selling,260.0,130,160,130,160,1.0,1.3
+B,X,buying,300.0,380,400,380,400,0.8,1.0
+B,Y,selling,300.0,180,200,180,200,1.0,1.2

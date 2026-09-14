@@ -1,0 +1,71 @@
+{
+  "human": {
+    "all_human_trades_transcribed": 987,
+    "main_human_trades": 474,
+    "main_human_periods": 27,
+    "selection_crosstab": {
+      "false": {
+        "buyer": 19,
+        "seller": 0
+      },
+      "true": {
+        "buyer": 0,
+        "seller": 17
+      }
+    },
+    "summary": {
+      "buyer": {
+        "periods": 14,
+        "trades": 274,
+        "first_D_mean": 0.3047217640240896,
+        "last_D_mean": 0.8942414820321797,
+        "mean_D": 0.6661947112237957,
+        "change_D_mean": 0.5895197180080901,
+        "first_gap_mean": 82.5,
+        "first_gap_median": 70.0,
+        "last_gap_mean": 12.428571428571429,
+        "last_gap_median": 5.0,
+        "francs_change_mean": 70.78571428571429,
+        "francs_change_median": 59.0,
+        "first_dev_mean": -82.5,
+        "first_dev_median": -70.0,
+        "last_dev_mean": -11.714285714285714,
+        "last_dev_median": -5.0
+      },
+      "seller": {
+        "periods": 13,
+        "trades": 200,
+        "first_D_mean": 1.0934535549920164,
+        "last_D_mean": 1.145299145299145,
+        "mean_D": 1.172734192953973,
+        "change_D_mean": 0.051845590307128764,
+        "first_gap_mean": 15.384615384615385,
+        "first_gap_median": 15.0,
+        "last_gap_mean": 5.384615384615385,
+        "last_gap_median": 5.0,
+        "francs_change_mean": -2.3076923076923075,
+        "francs_change_median": 0.0,
+        "first_dev_mean": -3.076923076923077,
+        "first_dev_median": -5.0,
+        "last_dev_mean": -5.384615384615385,
+        "last_dev_median": -5.0
+      }
+    }
+  },
+  "symmetric_sell_minus_buy": {
+    "Original market 4": 1.1822300000000001,
+    "Original markets 1-5 (background)": 1.0454403388278388,
+    "Symmetric markets A and B": -0.02243333333333336
+  },
+  "llm_metric_files": 51,
+  "notes": [
+    "Human transactions are transcribed from Appendix B of Caltech Social Science Working Paper 331.",
+    "The transcription contains 987 trades; the markets 3-5 insider sample contains 474 trades.",
+    "The original-market pool includes all supplied m1-m5 sessions, including one Gemini market-3 session.",
+    "The symmetric control uses prereported seeds 42, 43, and 44 for each of markets A and B (run IDs m7_* and m8_*).",
+    "Disclosure effects first pair periods, then average within each market-seed session pair.",
+    "Sign flips use session-pair means as the exchangeable units.",
+    "Figure 3 first averages period bins within sessions and bootstraps whole sessions.",
+    "Appendix E reports the completed market-4 four-, five-, and six-round checks."
+  ]
+}

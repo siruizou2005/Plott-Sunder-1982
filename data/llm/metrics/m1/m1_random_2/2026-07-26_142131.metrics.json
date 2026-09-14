@@ -1,0 +1,5596 @@
+{
+  "sessions": {
+    "0": {
+      "meta": {
+        "market": 1,
+        "sequence_preset": "random_prior_m1",
+        "seed": 20250729,
+        "n_periods": 11,
+        "summary": {
+          "calls": 1834,
+          "cost_usd": 1.137,
+          "session": 0,
+          "totals": {
+            "S01": {
+              "francs": 8025,
+              "insider": true,
+              "type": "I",
+              "usd": 16.05
+            },
+            "S02": {
+              "francs": 7312,
+              "insider": false,
+              "type": "I",
+              "usd": 14.624
+            },
+            "S03": {
+              "francs": 8465,
+              "insider": false,
+              "type": "I",
+              "usd": 16.93
+            },
+            "S04": {
+              "francs": 7047,
+              "insider": true,
+              "type": "II",
+              "usd": 14.094
+            },
+            "S05": {
+              "francs": 7156,
+              "insider": false,
+              "type": "II",
+              "usd": 14.312
+            },
+            "S06": {
+              "francs": 6865,
+              "insider": false,
+              "type": "II",
+              "usd": 13.73
+            },
+            "S07": {
+              "francs": 5459,
+              "insider": true,
+              "type": "III",
+              "usd": 10.918
+            },
+            "S08": {
+              "francs": 5390,
+              "insider": false,
+              "type": "III",
+              "usd": 10.78
+            },
+            "S09": {
+              "francs": 5481,
+              "insider": false,
+              "type": "III",
+              "usd": 10.962
+            }
+          },
+          "usage": {
+            "cache_hit_tokens": 1601792,
+            "cache_miss_tokens": 2917106,
+            "completion_tokens": 2417979,
+            "prompt_tokens": 4518898,
+            "reasoning_tokens": 2333628
+          },
+          "wall_clock_s": 13826.9
+        }
+      },
+      "paper": {
+        "prices": [
+          {
+            "period": 1,
+            "state": "Y",
+            "info": "none",
+            "n_trades": 6,
+            "mean_price": 167.0,
+            "first_price": 167,
+            "last_price": 167,
+            "pi_price": 283,
+            "re_price": 283,
+            "separating": false
+          },
+          {
+            "period": 2,
+            "state": "Y",
+            "info": "none",
+            "n_trades": 6,
+            "mean_price": 250.0,
+            "first_price": 250,
+            "last_price": 250,
+            "pi_price": 283,
+            "re_price": 283,
+            "separating": false
+          },
+          {
+            "period": 3,
+            "state": "Y",
+            "info": "none",
+            "n_trades": 11,
+            "mean_price": 279.1818181818182,
+            "first_price": 270,
+            "last_price": 283,
+            "pi_price": 283,
+            "re_price": 283,
+            "separating": false
+          },
+          {
+            "period": 4,
+            "state": "Y",
+            "info": "none",
+            "n_trades": 7,
+            "mean_price": 202.57142857142858,
+            "first_price": 170,
+            "last_price": 283,
+            "pi_price": 283,
+            "re_price": 283,
+            "separating": false
+          },
+          {
+            "period": 5,
+            "state": "Y",
+            "info": "insider",
+            "n_trades": 15,
+            "mean_price": 284.06666666666666,
+            "first_price": 280,
+            "last_price": 284,
+            "pi_price": 320,
+            "re_price": 320,
+            "separating": false
+          },
+          {
+            "period": 6,
+            "state": "Y",
+            "info": "insider",
+            "n_trades": 12,
+            "mean_price": 271.3333333333333,
+            "first_price": 270,
+            "last_price": 274,
+            "pi_price": 286,
+            "re_price": 286,
+            "separating": false
+          },
+          {
+            "period": 7,
+            "state": "Y",
+            "info": "insider",
+            "n_trades": 11,
+            "mean_price": 269.72727272727275,
+            "first_price": 265,
+            "last_price": 272,
+            "pi_price": 283,
+            "re_price": 262,
+            "separating": true
+          },
+          {
+            "period": 8,
+            "state": "Y",
+            "info": "insider",
+            "n_trades": 6,
+            "mean_price": 250.0,
+            "first_price": 250,
+            "last_price": 250,
+            "pi_price": 348,
+            "re_price": 348,
+            "separating": false
+          },
+          {
+            "period": 9,
+            "state": "Y",
+            "info": "all",
+            "n_trades": 14,
+            "mean_price": 260.7857142857143,
+            "first_price": 230,
+            "last_price": 271,
+            "pi_price": 272,
+            "re_price": 272,
+            "separating": false
+          },
+          {
+            "period": 10,
+            "state": "X",
+            "info": "all",
+            "n_trades": 12,
+            "mean_price": 250.83333333333334,
+            "first_price": 250,
+            "last_price": 260,
+            "pi_price": 272,
+            "re_price": 272,
+            "separating": false
+          },
+          {
+            "period": 11,
+            "state": "X",
+            "info": "all",
+            "n_trades": 14,
+            "mean_price": 261.0,
+            "first_price": 261,
+            "last_price": 261,
+            "pi_price": 262,
+            "re_price": 262,
+            "separating": false
+          }
+        ],
+        "price_changes_toward_re": {
+          "all": {
+            "toward_re": 29,
+            "away_from_re": 11,
+            "n": 40,
+            "share_toward_re": 0.725
+          },
+          "separating": {
+            "toward_re": 1,
+            "away_from_re": 8,
+            "n": 9,
+            "share_toward_re": 0.1111111111111111
+          }
+        },
+        "wrong_hands": {
+          "1": {
+            "PI": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "2": {
+            "PI": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "3": {
+            "PI": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "4": {
+            "PI": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "I+II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "5": {
+            "PI": {
+              "predicted_holder": "I_insider",
+              "in_right_hands": 7,
+              "in_wrong_hands": 11
+            },
+            "RE": {
+              "predicted_holder": "I",
+              "in_right_hands": 11,
+              "in_wrong_hands": 7
+            }
+          },
+          "6": {
+            "PI": {
+              "predicted_holder": "I_insider",
+              "in_right_hands": 5,
+              "in_wrong_hands": 13
+            },
+            "RE": {
+              "predicted_holder": "I",
+              "in_right_hands": 13,
+              "in_wrong_hands": 5
+            }
+          },
+          "7": {
+            "PI": {
+              "predicted_holder": "I+II_uninformed",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "II",
+              "in_right_hands": 11,
+              "in_wrong_hands": 7
+            }
+          },
+          "8": {
+            "PI": {
+              "predicted_holder": "I_insider",
+              "in_right_hands": 3,
+              "in_wrong_hands": 15
+            },
+            "RE": {
+              "predicted_holder": "I",
+              "in_right_hands": 9,
+              "in_wrong_hands": 9
+            }
+          },
+          "9": {
+            "PI": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "10": {
+            "PI": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          },
+          "11": {
+            "PI": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            },
+            "RE": {
+              "predicted_holder": "II",
+              "in_right_hands": 18,
+              "in_wrong_hands": 0
+            }
+          }
+        },
+        "insider_profit_ratio": {
+          "1": null,
+          "2": null,
+          "3": null,
+          "4": null,
+          "5": {
+            "insider_mean": 756.3333333333334,
+            "uninformed_mean": 613.5,
+            "ratio_pct": 123.28171692474872
+          },
+          "6": {
+            "insider_mean": 692.0,
+            "uninformed_mean": 662.3333333333334,
+            "ratio_pct": 104.47911424257674
+          },
+          "7": {
+            "insider_mean": 539.3333333333334,
+            "uninformed_mean": 688.6666666666666,
+            "ratio_pct": 78.31558567279768
+          },
+          "8": {
+            "insider_mean": 650.0,
+            "uninformed_mean": 650.0,
+            "ratio_pct": 100.0
+          },
+          "9": null,
+          "10": null,
+          "11": null
+        },
+        "re_side_profit_ratio": {
+          "1": {
+            "re_buyer_mean": 799.6666666666666,
+            "re_seller_mean": 334.0,
+            "ratio_pct": 239.4211576846307
+          },
+          "2": {
+            "re_buyer_mean": 716.6666666666666,
+            "re_seller_mean": 500.0,
+            "ratio_pct": 143.33333333333331
+          },
+          "3": {
+            "re_buyer_mean": 690.6666666666666,
+            "re_seller_mean": 552.0,
+            "ratio_pct": 125.12077294685989
+          },
+          "4": {
+            "re_buyer_mean": 777.5,
+            "re_seller_mean": 378.3333333333333,
+            "ratio_pct": 205.50660792951544
+          },
+          "5": {
+            "re_buyer_mean": 811.0,
+            "re_seller_mean": 586.1666666666666,
+            "ratio_pct": 138.35655388114873
+          },
+          "6": {
+            "re_buyer_mean": 883.0,
+            "re_seller_mean": 566.8333333333334,
+            "ratio_pct": 155.77771243751837
+          },
+          "7": {
+            "re_buyer_mean": 648.3333333333334,
+            "re_seller_mean": 634.1666666666666,
+            "ratio_pct": 102.23390275952694
+          },
+          "8": {
+            "re_buyer_mean": 800.0,
+            "re_seller_mean": 575.0,
+            "ratio_pct": 139.1304347826087
+          },
+          "9": {
+            "re_buyer_mean": 750.0,
+            "re_seller_mean": 525.0,
+            "ratio_pct": 142.85714285714286
+          },
+          "10": {
+            "re_buyer_mean": 496.6666666666667,
+            "re_seller_mean": 501.6666666666667,
+            "ratio_pct": 99.00332225913621
+          },
+          "11": {
+            "re_buyer_mean": 456.0,
+            "re_seller_mean": 522.0,
+            "ratio_pct": 87.35632183908046
+          }
+        },
+        "efficiency": {
+          "1": {
+            "actual": 5100.0,
+            "re": 5100.0,
+            "no_trade": 4400.0,
+            "E_pct": 100.0,
+            "TE_pct": 100.0
+          },
+          "2": {
+            "actual": 5100.0,
+            "re": 5100.0,
+            "no_trade": 4400.0,
+            "E_pct": 100.0,
+            "TE_pct": 100.0
+          },
+          "3": {
+            "actual": 5100.0,
+            "re": 5100.0,
+            "no_trade": 4400.0,
+            "E_pct": 100.0,
+            "TE_pct": 100.0
+          },
+          "4": {
+            "actual": 5100.0,
+            "re": 5100.0,
+            "no_trade": 4400.0,
+            "E_pct": 100.0,
+            "TE_pct": 100.0
+          },
+          "5": {
+            "actual": 5950.0,
+            "re": 6300.0,
+            "no_trade": 4500.0,
+            "E_pct": 94.44444444444444,
+            "TE_pct": 80.55555555555556
+          },
+          "6": {
+            "actual": 6050.0,
+            "re": 6300.0,
+            "no_trade": 4500.0,
+            "E_pct": 96.03174603174604,
+            "TE_pct": 86.11111111111111
+          },
+          "7": {
+            "actual": 5750.0,
+            "re": 6300.0,
+            "no_trade": 4500.0,
+            "E_pct": 91.26984126984127,
+            "TE_pct": 69.44444444444444
+          },
+          "8": {
+            "actual": 5850.0,
+            "re": 6300.0,
+            "no_trade": 4500.0,
+            "E_pct": 92.85714285714286,
+            "TE_pct": 75.0
+          },
+          "9": {
+            "actual": 5400.0,
+            "re": 6300.0,
+            "no_trade": 4500.0,
+            "E_pct": 85.71428571428571,
+            "TE_pct": 50.0
+          },
+          "10": {
+            "actual": 4500.0,
+            "re": 5400.0,
+            "no_trade": 4200.0,
+            "E_pct": 83.33333333333333,
+            "TE_pct": 25.0
+          },
+          "11": {
+            "actual": 4500.0,
+            "re": 5400.0,
+            "no_trade": 4200.0,
+            "E_pct": 83.33333333333333,
+            "TE_pct": 25.0
+          }
+        },
+        "table8": {
+          "1": {
+            "n_periods": 4,
+            "share_insider": 0.5,
+            "cumulative_share_insider": 0.5
+          },
+          "2": {
+            "n_periods": 4,
+            "share_insider": 0.5,
+            "cumulative_share_insider": 0.5
+          },
+          "3": {
+            "n_periods": 4,
+            "share_insider": 0.5,
+            "cumulative_share_insider": 0.5
+          },
+          "6": {
+            "n_periods": 4,
+            "share_insider": 0.25,
+            "cumulative_share_insider": 0.3333333333333333
+          },
+          "18": {
+            "n_periods": 4,
+            "share_insider": 0.5,
+            "cumulative_share_insider": 0.3055555555555555
+          }
+        },
+        "discovery_by_informed_side": {
+          "by_side": {
+            "buyer": {
+              "n": 3,
+              "mean_discovery": -1.665154639175247
+            },
+            "seller": {
+              "n": 1,
+              "mean_discovery": 0.6377840909090896
+            }
+          },
+          "periods": [
+            {
+              "period": 5,
+              "state": "Y",
+              "side": "buyer",
+              "uninformed_level": 283.3,
+              "re": 320,
+              "mean_price": 284.1,
+              "discovery": 0.02
+            },
+            {
+              "period": 6,
+              "state": "Y",
+              "side": "buyer",
+              "uninformed_level": 283.3,
+              "re": 286,
+              "mean_price": 271.3,
+              "discovery": -4.5
+            },
+            {
+              "period": 7,
+              "state": "Y",
+              "side": "seller",
+              "uninformed_level": 283.3,
+              "re": 262,
+              "mean_price": 269.7,
+              "discovery": 0.638
+            },
+            {
+              "period": 8,
+              "state": "Y",
+              "side": "buyer",
+              "uninformed_level": 283.3,
+              "re": 348,
+              "mean_price": 250.0,
+              "discovery": -0.515
+            }
+          ]
+        },
+        "totals": {
+          "per_seat": {
+            "S01": {
+              "francs": 8025,
+              "insider": true,
+              "type": "I",
+              "usd": 16.05
+            },
+            "S02": {
+              "francs": 7312,
+              "insider": false,
+              "type": "I",
+              "usd": 14.624
+            },
+            "S03": {
+              "francs": 8465,
+              "insider": false,
+              "type": "I",
+              "usd": 16.93
+            },
+            "S04": {
+              "francs": 7047,
+              "insider": true,
+              "type": "II",
+              "usd": 14.094
+            },
+            "S05": {
+              "francs": 7156,
+              "insider": false,
+              "type": "II",
+              "usd": 14.312
+            },
+            "S06": {
+              "francs": 6865,
+              "insider": false,
+              "type": "II",
+              "usd": 13.73
+            },
+            "S07": {
+              "francs": 5459,
+              "insider": true,
+              "type": "III",
+              "usd": 10.918
+            },
+            "S08": {
+              "francs": 5390,
+              "insider": false,
+              "type": "III",
+              "usd": 10.78
+            },
+            "S09": {
+              "francs": 5481,
+              "insider": false,
+              "type": "III",
+              "usd": 10.962
+            }
+          },
+          "insider_mean_francs": 6843.666666666667,
+          "uninformed_mean_francs": 6778.166666666667,
+          "insider_advantage_pct": 100.96633799700018,
+          "calls": 1834,
+          "usage": {
+            "cache_hit_tokens": 1601792,
+            "cache_miss_tokens": 2917106,
+            "completion_tokens": 2417979,
+            "prompt_tokens": 4518898,
+            "reasoning_tokens": 2333628
+          },
+          "cost_usd": 1.137,
+          "wall_clock_s": 13826.9
+        }
+      },
+      "book": {
+        "spread_trajectory": {
+          "1": [],
+          "2": [],
+          "3": [
+            {
+              "i": 10,
+              "spread": 3,
+              "bid": 282,
+              "ask": 285
+            },
+            {
+              "i": 11,
+              "spread": 2,
+              "bid": 283,
+              "ask": 285
+            },
+            {
+              "i": 12,
+              "spread": 1,
+              "bid": 283,
+              "ask": 284
+            }
+          ],
+          "4": [
+            {
+              "i": 13,
+              "spread": 2,
+              "bid": 282,
+              "ask": 284
+            },
+            {
+              "i": 14,
+              "spread": 2,
+              "bid": 282,
+              "ask": 284
+            },
+            {
+              "i": 15,
+              "spread": 1,
+              "bid": 283,
+              "ask": 284
+            }
+          ],
+          "5": [],
+          "6": [],
+          "7": [],
+          "8": [],
+          "9": [],
+          "10": [],
+          "11": []
+        },
+        "first_quote": {
+          "1": {
+            "seat": "S08",
+            "side": "bid",
+            "price": 166,
+            "insider": false,
+            "distance_to_re": 117
+          },
+          "2": {
+            "seat": "S06",
+            "side": "bid",
+            "price": 250,
+            "insider": false,
+            "distance_to_re": 33
+          },
+          "3": {
+            "seat": "S01",
+            "side": "bid",
+            "price": 270,
+            "insider": false,
+            "distance_to_re": 13
+          },
+          "4": {
+            "seat": "S08",
+            "side": "ask",
+            "price": 170,
+            "insider": false,
+            "distance_to_re": 113
+          },
+          "5": {
+            "seat": "S06",
+            "side": "bid",
+            "price": 280,
+            "insider": false,
+            "distance_to_re": 40
+          },
+          "6": {
+            "seat": "S01",
+            "side": "bid",
+            "price": 270,
+            "insider": true,
+            "distance_to_re": 16
+          },
+          "7": {
+            "seat": "S04",
+            "side": "ask",
+            "price": 265,
+            "insider": true,
+            "distance_to_re": 3
+          },
+          "8": {
+            "seat": "S08",
+            "side": "ask",
+            "price": 250,
+            "insider": false,
+            "distance_to_re": 98
+          },
+          "9": {
+            "seat": "S02",
+            "side": "bid",
+            "price": 230,
+            "insider": true,
+            "distance_to_re": 42
+          },
+          "10": {
+            "seat": "S03",
+            "side": "ask",
+            "price": 250,
+            "insider": true,
+            "distance_to_re": 22
+          },
+          "11": {
+            "seat": "S05",
+            "side": "ask",
+            "price": 280,
+            "insider": true,
+            "distance_to_re": 18
+          }
+        },
+        "quote_survival": {
+          "1": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "2": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "3": [
+            1,
+            1,
+            2,
+            2
+          ],
+          "4": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            2
+          ],
+          "5": [
+            1,
+            1
+          ],
+          "6": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "7": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "8": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "9": [
+            1,
+            1
+          ],
+          "10": [
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "11": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ]
+        },
+        "active_vs_passive": {
+          "uninformed": {
+            "quote": 48,
+            "accept_standing": 2,
+            "share_active": 0.96
+          },
+          "insider": {
+            "quote": 21,
+            "accept_standing": 1,
+            "share_active": 0.9545454545454546
+          }
+        },
+        "violations": {
+          "by_reason": {
+            "empty_note": 7
+          },
+          "by_period": {
+            "3": {
+              "empty_note": 1
+            },
+            "6": {
+              "empty_note": 1
+            },
+            "9": {
+              "empty_note": 2
+            },
+            "10": {
+              "empty_note": 1
+            },
+            "11": {
+              "empty_note": 2
+            }
+          },
+          "no_improvement_attempts": []
+        }
+      },
+      "llm": {
+        "posterior_convergence": [
+          {
+            "period": 1,
+            "state": "Y",
+            "info": "none",
+            "insider_mean": null,
+            "uninformed_mean": 0.6668987777777778,
+            "n_views": 27
+          },
+          {
+            "period": 2,
+            "state": "Y",
+            "info": "none",
+            "insider_mean": null,
+            "uninformed_mean": 0.6669321111111111,
+            "n_views": 27
+          },
+          {
+            "period": 3,
+            "state": "Y",
+            "info": "none",
+            "insider_mean": null,
+            "uninformed_mean": 0.6755851851851852,
+            "n_views": 27
+          },
+          {
+            "period": 4,
+            "state": "Y",
+            "info": "none",
+            "insider_mean": null,
+            "uninformed_mean": 0.6645740740740741,
+            "n_views": 27
+          },
+          {
+            "period": 5,
+            "state": "Y",
+            "info": "insider",
+            "insider_mean": 0.8506444444444444,
+            "uninformed_mean": 0.6942611111111111,
+            "n_views": 27
+          },
+          {
+            "period": 6,
+            "state": "Y",
+            "info": "insider",
+            "insider_mean": 0.6546666666666667,
+            "uninformed_mean": 0.6571111111111112,
+            "n_views": 27
+          },
+          {
+            "period": 7,
+            "state": "Y",
+            "info": "insider",
+            "insider_mean": 0.231,
+            "uninformed_mean": 0.6032055555555557,
+            "n_views": 27
+          },
+          {
+            "period": 8,
+            "state": "Y",
+            "info": "insider",
+            "insider_mean": 0.9876222222222223,
+            "uninformed_mean": 0.6643166666666667,
+            "n_views": 27
+          },
+          {
+            "period": 9,
+            "state": "Y",
+            "info": "all",
+            "insider_mean": 0.44482962962962963,
+            "uninformed_mean": null,
+            "n_views": 27
+          },
+          {
+            "period": 10,
+            "state": "X",
+            "info": "all",
+            "insider_mean": 0.5455333333333334,
+            "uninformed_mean": null,
+            "n_views": 27
+          },
+          {
+            "period": 11,
+            "state": "X",
+            "info": "all",
+            "insider_mean": 0.7692222222222223,
+            "uninformed_mean": null,
+            "n_views": 27
+          }
+        ],
+        "basis_drift": [
+          {
+            "period": 1,
+            "counts": {
+              "prior": 22,
+              "price": 5
+            },
+            "shares": {
+              "prior": 0.8148148148148148,
+              "price": 0.18518518518518517
+            }
+          },
+          {
+            "period": 2,
+            "counts": {
+              "prior": 22,
+              "price": 5
+            },
+            "shares": {
+              "prior": 0.8148148148148148,
+              "price": 0.18518518518518517
+            }
+          },
+          {
+            "period": 3,
+            "counts": {
+              "prior": 23,
+              "price": 4
+            },
+            "shares": {
+              "prior": 0.8518518518518519,
+              "price": 0.14814814814814814
+            }
+          },
+          {
+            "period": 4,
+            "counts": {
+              "prior": 24,
+              "price": 3
+            },
+            "shares": {
+              "prior": 0.8888888888888888,
+              "price": 0.1111111111111111
+            }
+          },
+          {
+            "period": 5,
+            "counts": {
+              "prior": 11,
+              "price": 7,
+              "clue": 9
+            },
+            "shares": {
+              "prior": 0.4074074074074074,
+              "price": 0.25925925925925924,
+              "clue": 0.3333333333333333
+            }
+          },
+          {
+            "period": 6,
+            "counts": {
+              "prior": 9,
+              "clue": 8,
+              "price": 10
+            },
+            "shares": {
+              "prior": 0.3333333333333333,
+              "clue": 0.2962962962962963,
+              "price": 0.37037037037037035
+            }
+          },
+          {
+            "period": 7,
+            "counts": {
+              "clue": 9,
+              "price": 6,
+              "prior": 12
+            },
+            "shares": {
+              "clue": 0.3333333333333333,
+              "price": 0.2222222222222222,
+              "prior": 0.4444444444444444
+            }
+          },
+          {
+            "period": 8,
+            "counts": {
+              "prior": 12,
+              "clue": 9,
+              "price": 5,
+              "others_behavior": 1
+            },
+            "shares": {
+              "prior": 0.4444444444444444,
+              "clue": 0.3333333333333333,
+              "price": 0.18518518518518517,
+              "others_behavior": 0.037037037037037035
+            }
+          },
+          {
+            "period": 9,
+            "counts": {
+              "clue": 26,
+              "price": 1
+            },
+            "shares": {
+              "clue": 0.9629629629629629,
+              "price": 0.037037037037037035
+            }
+          },
+          {
+            "period": 10,
+            "counts": {
+              "clue": 25,
+              "price": 1,
+              "others_behavior": 1
+            },
+            "shares": {
+              "clue": 0.9259259259259259,
+              "price": 0.037037037037037035,
+              "others_behavior": 0.037037037037037035
+            }
+          },
+          {
+            "period": 11,
+            "counts": {
+              "clue": 27
+            },
+            "shares": {
+              "clue": 1.0
+            }
+          }
+        ],
+        "belief_action_consistency": {
+          "n": 296,
+          "mean_gap_buy": 0.1993135135135,
+          "mean_gap_sell": -0.41555135135136484,
+          "detail": [
+            {
+              "period": 1,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 1,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 1,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 1,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 1,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 1,
+              "seat": "S04",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": -0.33499999999997954
+            },
+            {
+              "period": 1,
+              "seat": "S05",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 1,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 1,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 1,
+              "seat": "S08",
+              "implied": 166.66,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6599999999999966,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 1,
+              "seat": "S04",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": -0.33499999999997954
+            },
+            {
+              "period": 1,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 1,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 1,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 1,
+              "seat": "S03",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 1,
+              "seat": "S06",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": -0.33499999999997954
+            },
+            {
+              "period": 1,
+              "seat": "S09",
+              "implied": 166.66,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6599999999999966,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 1,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 1,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 1,
+              "seat": "S07",
+              "implied": 166.66660000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6666000000000167,
+              "gap_sell": 0.33339999999998327
+            },
+            {
+              "period": 1,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 1,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 1,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 1,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 1,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 1,
+              "seat": "S09",
+              "implied": 166.66,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6599999999999966,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 1,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 2,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 2,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 2,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S03",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 2,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 2,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 2,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 2,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 2,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 2,
+              "seat": "S05",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": -0.33499999999997954
+            },
+            {
+              "period": 2,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 2,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 166,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": -0.6000000000000227
+            },
+            {
+              "period": 2,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 2,
+              "seat": "S02",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": -0.339999999999975
+            },
+            {
+              "period": 2,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 2,
+              "seat": "S02",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": -0.339999999999975
+            },
+            {
+              "period": 2,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 2,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 2,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 2,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 2,
+              "seat": "S06",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": -0.33499999999997954
+            },
+            {
+              "period": 2,
+              "seat": "S09",
+              "implied": 166.66660000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6666000000000167,
+              "gap_sell": 0.33339999999998327
+            },
+            {
+              "period": 3,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 3,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 3,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 3,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S09",
+              "implied": 120.0,
+              "reservation_buy": 120,
+              "reservation_sell": 120,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 3,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 3,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 3,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 3,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 3,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 3,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 3,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 3,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 3,
+              "seat": "S04",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 3,
+              "seat": "S07",
+              "implied": 166.66,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6599999999999966,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 3,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 3,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 3,
+              "seat": "S01",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 3,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 3,
+              "seat": "S05",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 3,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 3,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 3,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S05",
+              "implied": 283.5,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.5,
+              "gap_sell": 0.5
+            },
+            {
+              "period": 4,
+              "seat": "S07",
+              "implied": 166.66,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.3400000000000034,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 4,
+              "seat": "S04",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 4,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 4,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 4,
+              "seat": "S09",
+              "implied": 180.0,
+              "reservation_buy": 180,
+              "reservation_sell": 180,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 4,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 4,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 4,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 4,
+              "seat": "S01",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 4,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S04",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 4,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 4,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S03",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 4,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 4,
+              "seat": "S07",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 4,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 4,
+              "seat": "S01",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 4,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 4,
+              "seat": "S04",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 4,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 4,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 4,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 5,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 5,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 5,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 5,
+              "seat": "S01",
+              "implied": 320.14,
+              "reservation_buy": 320,
+              "reservation_sell": 321,
+              "gap_buy": -0.13999999999998636,
+              "gap_sell": 0.8600000000000136
+            },
+            {
+              "period": 5,
+              "seat": "S09",
+              "implied": 120.0,
+              "reservation_buy": 120,
+              "reservation_sell": 120,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S07",
+              "implied": 129.79999999999998,
+              "reservation_buy": 130,
+              "reservation_sell": 130,
+              "gap_buy": 0.20000000000001705,
+              "gap_sell": 0.20000000000001705
+            },
+            {
+              "period": 5,
+              "seat": "S04",
+              "implied": 292.54999999999995,
+              "reservation_buy": 292,
+              "reservation_sell": 293,
+              "gap_buy": -0.5499999999999545,
+              "gap_sell": 0.4500000000000455
+            },
+            {
+              "period": 5,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 5,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 5,
+              "seat": "S01",
+              "implied": 320.2,
+              "reservation_buy": 320,
+              "reservation_sell": 321,
+              "gap_buy": -0.19999999999998863,
+              "gap_sell": 0.8000000000000114
+            },
+            {
+              "period": 5,
+              "seat": "S07",
+              "implied": 130.0,
+              "reservation_buy": 130,
+              "reservation_sell": 130,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S08",
+              "implied": 166.66,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6599999999999966,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 5,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 5,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 5,
+              "seat": "S09",
+              "implied": 140.0,
+              "reservation_buy": 140,
+              "reservation_sell": 285,
+              "gap_buy": 0.0,
+              "gap_sell": 145.0
+            },
+            {
+              "period": 5,
+              "seat": "S03",
+              "implied": 300.0,
+              "reservation_buy": 300,
+              "reservation_sell": 300,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S02",
+              "implied": 287.0,
+              "reservation_buy": 287,
+              "reservation_sell": 287,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S04",
+              "implied": 292.53000000000003,
+              "reservation_buy": 292,
+              "reservation_sell": 293,
+              "gap_buy": -0.5300000000000296,
+              "gap_sell": 0.46999999999997044
+            },
+            {
+              "period": 5,
+              "seat": "S03",
+              "implied": 287.0,
+              "reservation_buy": 287,
+              "reservation_sell": 287,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 5,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 5,
+              "seat": "S07",
+              "implied": 129.79999999999998,
+              "reservation_buy": 130,
+              "reservation_sell": 130,
+              "gap_buy": 0.20000000000001705,
+              "gap_sell": 0.20000000000001705
+            },
+            {
+              "period": 5,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 5,
+              "seat": "S09",
+              "implied": 166.0,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": 0.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 5,
+              "seat": "S01",
+              "implied": 320.0,
+              "reservation_buy": 320,
+              "reservation_sell": 320,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 5,
+              "seat": "S08",
+              "implied": 166.0,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": 0.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 5,
+              "seat": "S04",
+              "implied": 292.525,
+              "reservation_buy": 292,
+              "reservation_sell": 293,
+              "gap_buy": -0.5249999999999773,
+              "gap_sell": 0.47500000000002274
+            },
+            {
+              "period": 6,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 166,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": -0.6000000000000227
+            },
+            {
+              "period": 6,
+              "seat": "S01",
+              "implied": 286.20000000000005,
+              "reservation_buy": 286,
+              "reservation_sell": 286,
+              "gap_buy": -0.20000000000004547,
+              "gap_sell": -0.20000000000004547
+            },
+            {
+              "period": 6,
+              "seat": "S07",
+              "implied": 163.8,
+              "reservation_buy": 164,
+              "reservation_sell": 164,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 6,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 6,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 6,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 6,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 6,
+              "seat": "S04",
+              "implied": 284.05,
+              "reservation_buy": 284,
+              "reservation_sell": 284,
+              "gap_buy": -0.05000000000001137,
+              "gap_sell": -0.05000000000001137
+            },
+            {
+              "period": 6,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 6,
+              "seat": "S09",
+              "implied": 110.0,
+              "reservation_buy": 110,
+              "reservation_sell": 110,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 6,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 6,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 6,
+              "seat": "S02",
+              "implied": 270.0,
+              "reservation_buy": 270,
+              "reservation_sell": 270,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 6,
+              "seat": "S04",
+              "implied": 284.05,
+              "reservation_buy": 284,
+              "reservation_sell": 284,
+              "gap_buy": -0.05000000000001137,
+              "gap_sell": -0.05000000000001137
+            },
+            {
+              "period": 6,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 6,
+              "seat": "S01",
+              "implied": 286.0,
+              "reservation_buy": 285,
+              "reservation_sell": 287,
+              "gap_buy": -1.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 6,
+              "seat": "S05",
+              "implied": 273.0,
+              "reservation_buy": 273,
+              "reservation_sell": 273,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 6,
+              "seat": "S07",
+              "implied": 163.8,
+              "reservation_buy": 164,
+              "reservation_sell": 164,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 6,
+              "seat": "S07",
+              "implied": 163.8,
+              "reservation_buy": 164,
+              "reservation_sell": 164,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 6,
+              "seat": "S01",
+              "implied": 286.20000000000005,
+              "reservation_buy": 286,
+              "reservation_sell": 286,
+              "gap_buy": -0.20000000000004547,
+              "gap_sell": -0.20000000000004547
+            },
+            {
+              "period": 6,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 6,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 6,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 6,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 6,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 6,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 6,
+              "seat": "S06",
+              "implied": 274.0,
+              "reservation_buy": 274,
+              "reservation_sell": 274,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 7,
+              "seat": "S04",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 7,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 7,
+              "seat": "S01",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 7,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 7,
+              "seat": "S06",
+              "implied": 283.335,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.33499999999997954,
+              "gap_sell": 0.6650000000000205
+            },
+            {
+              "period": 7,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 7,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 7,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 7,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 7,
+              "seat": "S09",
+              "implied": 270.0,
+              "reservation_buy": 270,
+              "reservation_sell": 270,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 7,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 7,
+              "seat": "S02",
+              "implied": 272.0,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 7,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 7,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 7,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 7,
+              "seat": "S05",
+              "implied": 273.0,
+              "reservation_buy": 273,
+              "reservation_sell": 273,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 7,
+              "seat": "S04",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 261,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": -0.5500000000000114
+            },
+            {
+              "period": 7,
+              "seat": "S01",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 7,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 7,
+              "seat": "S04",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 7,
+              "seat": "S01",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 7,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 7,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": 0.5999999999999659
+            },
+            {
+              "period": 7,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 7,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 7,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 8,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 8,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 167,
+              "reservation_sell": 167,
+              "gap_buy": 0.39999999999997726,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 8,
+              "seat": "S01",
+              "implied": 348.20000000000005,
+              "reservation_buy": 348,
+              "reservation_sell": 348,
+              "gap_buy": -0.20000000000004547,
+              "gap_sell": -0.20000000000004547
+            },
+            {
+              "period": 8,
+              "seat": "S04",
+              "implied": 299.5,
+              "reservation_buy": 299,
+              "reservation_sell": 300,
+              "gap_buy": -0.5,
+              "gap_sell": 0.5
+            },
+            {
+              "period": 8,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 8,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 8,
+              "seat": "S02",
+              "implied": 284.0,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -1.0,
+              "gap_sell": -1.0
+            },
+            {
+              "period": 8,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 8,
+              "seat": "S07",
+              "implied": 101.8,
+              "reservation_buy": 102,
+              "reservation_sell": 102,
+              "gap_buy": 0.20000000000000284,
+              "gap_sell": 0.20000000000000284
+            },
+            {
+              "period": 8,
+              "seat": "S09",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 8,
+              "seat": "S05",
+              "implied": 265.0,
+              "reservation_buy": 265,
+              "reservation_sell": 265,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 8,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 8,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 8,
+              "seat": "S01",
+              "implied": 345.18,
+              "reservation_buy": 345,
+              "reservation_sell": 345,
+              "gap_buy": -0.18000000000000682,
+              "gap_sell": -0.18000000000000682
+            },
+            {
+              "period": 8,
+              "seat": "S07",
+              "implied": 101.8,
+              "reservation_buy": 102,
+              "reservation_sell": 102,
+              "gap_buy": 0.20000000000000284,
+              "gap_sell": 0.20000000000000284
+            },
+            {
+              "period": 8,
+              "seat": "S03",
+              "implied": 283.34,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.339999999999975,
+              "gap_sell": 0.660000000000025
+            },
+            {
+              "period": 8,
+              "seat": "S02",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 8,
+              "seat": "S04",
+              "implied": 299.55,
+              "reservation_buy": 299,
+              "reservation_sell": 300,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 8,
+              "seat": "S05",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": -0.35000000000002274
+            },
+            {
+              "period": 8,
+              "seat": "S09",
+              "implied": 120.0,
+              "reservation_buy": 275,
+              "reservation_sell": 0,
+              "gap_buy": 155.0,
+              "gap_sell": -120.0
+            },
+            {
+              "period": 8,
+              "seat": "S03",
+              "implied": 283.40000000000003,
+              "reservation_buy": 283,
+              "reservation_sell": 283,
+              "gap_buy": -0.4000000000000341,
+              "gap_sell": -0.4000000000000341
+            },
+            {
+              "period": 8,
+              "seat": "S06",
+              "implied": 283.35,
+              "reservation_buy": 283,
+              "reservation_sell": 284,
+              "gap_buy": -0.35000000000002274,
+              "gap_sell": 0.6499999999999773
+            },
+            {
+              "period": 8,
+              "seat": "S07",
+              "implied": 101.66,
+              "reservation_buy": 102,
+              "reservation_sell": 102,
+              "gap_buy": 0.3400000000000034,
+              "gap_sell": 0.3400000000000034
+            },
+            {
+              "period": 8,
+              "seat": "S02",
+              "implied": 300.0,
+              "reservation_buy": 300,
+              "reservation_sell": 300,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 8,
+              "seat": "S04",
+              "implied": 299.55,
+              "reservation_buy": 299,
+              "reservation_sell": 300,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 8,
+              "seat": "S08",
+              "implied": 166.60000000000002,
+              "reservation_buy": 166,
+              "reservation_sell": 167,
+              "gap_buy": -0.6000000000000227,
+              "gap_sell": 0.39999999999997726
+            },
+            {
+              "period": 8,
+              "seat": "S01",
+              "implied": 345.2,
+              "reservation_buy": 345,
+              "reservation_sell": 346,
+              "gap_buy": -0.19999999999998863,
+              "gap_sell": 0.8000000000000114
+            },
+            {
+              "period": 9,
+              "seat": "S09",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S02",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 9,
+              "seat": "S08",
+              "implied": 210.0,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": 1.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 9,
+              "seat": "S06",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 9,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 9,
+              "seat": "S07",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 9,
+              "seat": "S03",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 265,
+              "gap_buy": 0.0,
+              "gap_sell": 26.0
+            },
+            {
+              "period": 9,
+              "seat": "S01",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 240,
+              "gap_buy": 0.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 9,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 9,
+              "seat": "S08",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S03",
+              "implied": 238.8,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 9,
+              "seat": "S06",
+              "implied": 272.2,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.19999999999998863,
+              "gap_sell": -0.19999999999998863
+            },
+            {
+              "period": 9,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 273,
+              "gap_buy": -0.25,
+              "gap_sell": 0.75
+            },
+            {
+              "period": 9,
+              "seat": "S07",
+              "implied": 211.20000000000002,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 9,
+              "seat": "S02",
+              "implied": 238.88,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.12000000000000455,
+              "gap_sell": 0.12000000000000455
+            },
+            {
+              "period": 9,
+              "seat": "S01",
+              "implied": 238.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 1.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 9,
+              "seat": "S09",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 268,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": 56.99999999999997
+            },
+            {
+              "period": 9,
+              "seat": "S08",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S02",
+              "implied": 238.8,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 9,
+              "seat": "S09",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S03",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 9,
+              "seat": "S01",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 9,
+              "seat": "S06",
+              "implied": 272.25,
+              "reservation_buy": 271,
+              "reservation_sell": 273,
+              "gap_buy": -1.25,
+              "gap_sell": 0.75
+            },
+            {
+              "period": 9,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 273,
+              "gap_buy": -0.25,
+              "gap_sell": 0.75
+            },
+            {
+              "period": 9,
+              "seat": "S07",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 9,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S03",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 10,
+              "seat": "S09",
+              "implied": 211.12,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -0.12000000000000455,
+              "gap_sell": -0.12000000000000455
+            },
+            {
+              "period": 10,
+              "seat": "S01",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 250,
+              "gap_buy": 0.0,
+              "gap_sell": 11.0
+            },
+            {
+              "period": 10,
+              "seat": "S02",
+              "implied": 238.88,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.12000000000000455,
+              "gap_sell": 0.12000000000000455
+            },
+            {
+              "period": 10,
+              "seat": "S07",
+              "implied": 211.12,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -0.12000000000000455,
+              "gap_sell": -0.12000000000000455
+            },
+            {
+              "period": 10,
+              "seat": "S06",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 273,
+              "gap_buy": -0.25,
+              "gap_sell": 0.75
+            },
+            {
+              "period": 10,
+              "seat": "S08",
+              "implied": 211.20000000000002,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 10,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S01",
+              "implied": 238.8,
+              "reservation_buy": 238,
+              "reservation_sell": 239,
+              "gap_buy": -0.8000000000000114,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 10,
+              "seat": "S07",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 10,
+              "seat": "S06",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S02",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 10,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S08",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 10,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S09",
+              "implied": 210.0,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": 1.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 10,
+              "seat": "S03",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 10,
+              "seat": "S09",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 10,
+              "seat": "S01",
+              "implied": 290.0,
+              "reservation_buy": 270,
+              "reservation_sell": 0,
+              "gap_buy": -20.0,
+              "gap_sell": -290.0
+            },
+            {
+              "period": 10,
+              "seat": "S03",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 10,
+              "seat": "S06",
+              "implied": 272.22,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.22000000000002728,
+              "gap_sell": -0.22000000000002728
+            },
+            {
+              "period": 10,
+              "seat": "S02",
+              "implied": 239.0,
+              "reservation_buy": 239,
+              "reservation_sell": 239,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 10,
+              "seat": "S04",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 272,
+              "gap_buy": -0.25,
+              "gap_sell": -0.25
+            },
+            {
+              "period": 10,
+              "seat": "S05",
+              "implied": 272.25,
+              "reservation_buy": 272,
+              "reservation_sell": 273,
+              "gap_buy": -0.25,
+              "gap_sell": 0.75
+            },
+            {
+              "period": 10,
+              "seat": "S08",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 10,
+              "seat": "S07",
+              "implied": 211.00000000000003,
+              "reservation_buy": 211,
+              "reservation_sell": 211,
+              "gap_buy": -2.842170943040401e-14,
+              "gap_sell": -2.842170943040401e-14
+            },
+            {
+              "period": 11,
+              "seat": "S05",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S08",
+              "implied": 253.8,
+              "reservation_buy": 253,
+              "reservation_sell": 254,
+              "gap_buy": -0.8000000000000114,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S04",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S03",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 11,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S06",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S02",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 11,
+              "seat": "S09",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S01",
+              "implied": 196.0,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 11,
+              "seat": "S04",
+              "implied": 261.5,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5,
+              "gap_sell": 0.5
+            },
+            {
+              "period": 11,
+              "seat": "S06",
+              "implied": 261.5,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5,
+              "gap_sell": 0.5
+            },
+            {
+              "period": 11,
+              "seat": "S09",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S01",
+              "implied": 196.0,
+              "reservation_buy": 196,
+              "reservation_sell": 197,
+              "gap_buy": 0.0,
+              "gap_sell": 1.0
+            },
+            {
+              "period": 11,
+              "seat": "S05",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S03",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 11,
+              "seat": "S02",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 11,
+              "seat": "S08",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S02",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 197,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": 0.799999999999983
+            },
+            {
+              "period": 11,
+              "seat": "S08",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S07",
+              "implied": 253.8,
+              "reservation_buy": 254,
+              "reservation_sell": 254,
+              "gap_buy": 0.19999999999998863,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S09",
+              "implied": 253.8,
+              "reservation_buy": 253,
+              "reservation_sell": 254,
+              "gap_buy": -0.8000000000000114,
+              "gap_sell": 0.19999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S03",
+              "implied": 196.20000000000002,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": -0.20000000000001705,
+              "gap_sell": -0.20000000000001705
+            },
+            {
+              "period": 11,
+              "seat": "S01",
+              "implied": 196.0,
+              "reservation_buy": 196,
+              "reservation_sell": 196,
+              "gap_buy": 0.0,
+              "gap_sell": 0.0
+            },
+            {
+              "period": 11,
+              "seat": "S06",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": 0.44999999999998863
+            },
+            {
+              "period": 11,
+              "seat": "S05",
+              "implied": 261.55,
+              "reservation_buy": 261,
+              "reservation_sell": 261,
+              "gap_buy": -0.5500000000000114,
+              "gap_sell": -0.5500000000000114
+            },
+            {
+              "period": 11,
+              "seat": "S04",
+              "implied": 261.5,
+              "reservation_buy": 261,
+              "reservation_sell": 262,
+              "gap_buy": -0.5,
+              "gap_sell": 0.5
+            }
+          ]
+        },
+        "potential_demand": {
+          "pooled": [
+            {
+              "price": 166,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 8,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 167,
+              "demand_quotes": 1,
+              "demand_willing": 6,
+              "demand_asked": 8,
+              "supply_quotes": 6,
+              "supply_willing": 13,
+              "supply_asked": 43,
+              "demand_rate": 0.75,
+              "supply_rate": 0.3023255813953488
+            },
+            {
+              "price": 168,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 169,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 170,
+              "demand_quotes": 1,
+              "demand_willing": 6,
+              "demand_asked": 8,
+              "supply_quotes": 0,
+              "supply_willing": 0,
+              "supply_asked": 0,
+              "demand_rate": 0.75,
+              "supply_rate": null
+            },
+            {
+              "price": 180,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 3,
+              "supply_asked": 13,
+              "demand_rate": null,
+              "supply_rate": 0.23076923076923078
+            },
+            {
+              "price": 181,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 185,
+              "demand_quotes": 1,
+              "demand_willing": 6,
+              "demand_asked": 8,
+              "supply_quotes": 0,
+              "supply_willing": 0,
+              "supply_asked": 0,
+              "demand_rate": 0.75,
+              "supply_rate": null
+            },
+            {
+              "price": 190,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 2,
+              "supply_asked": 7,
+              "demand_rate": null,
+              "supply_rate": 0.2857142857142857
+            },
+            {
+              "price": 200,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 1,
+              "supply_asked": 11,
+              "demand_rate": null,
+              "supply_rate": 0.09090909090909091
+            },
+            {
+              "price": 210,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 1,
+              "supply_asked": 6,
+              "demand_rate": null,
+              "supply_rate": 0.16666666666666666
+            },
+            {
+              "price": 215,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 230,
+              "demand_quotes": 1,
+              "demand_willing": 6,
+              "demand_asked": 8,
+              "supply_quotes": 2,
+              "supply_willing": 3,
+              "supply_asked": 11,
+              "demand_rate": 0.75,
+              "supply_rate": 0.2727272727272727
+            },
+            {
+              "price": 250,
+              "demand_quotes": 12,
+              "demand_willing": 48,
+              "demand_asked": 96,
+              "supply_quotes": 15,
+              "supply_willing": 30,
+              "supply_asked": 96,
+              "demand_rate": 0.5,
+              "supply_rate": 0.3125
+            },
+            {
+              "price": 251,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 0,
+              "supply_asked": 7,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 252,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 0,
+              "supply_asked": 8,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 253,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 2,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 260,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 6,
+              "supply_willing": 7,
+              "supply_asked": 28,
+              "demand_rate": null,
+              "supply_rate": 0.25
+            },
+            {
+              "price": 261,
+              "demand_quotes": 12,
+              "demand_willing": 20,
+              "demand_asked": 96,
+              "supply_quotes": 5,
+              "supply_willing": 9,
+              "supply_asked": 23,
+              "demand_rate": 0.20833333333333334,
+              "supply_rate": 0.391304347826087
+            },
+            {
+              "price": 262,
+              "demand_quotes": 1,
+              "demand_willing": 0,
+              "demand_asked": 8,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": 0.0,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 263,
+              "demand_quotes": 1,
+              "demand_willing": 0,
+              "demand_asked": 8,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": 0.0,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 264,
+              "demand_quotes": 1,
+              "demand_willing": 0,
+              "demand_asked": 8,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": 0.0,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 265,
+              "demand_quotes": 5,
+              "demand_willing": 13,
+              "demand_asked": 40,
+              "supply_quotes": 4,
+              "supply_willing": 16,
+              "supply_asked": 27,
+              "demand_rate": 0.325,
+              "supply_rate": 0.5925925925925926
+            },
+            {
+              "price": 266,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 3,
+              "supply_willing": 6,
+              "supply_asked": 17,
+              "demand_rate": null,
+              "supply_rate": 0.35294117647058826
+            },
+            {
+              "price": 267,
+              "demand_quotes": 2,
+              "demand_willing": 4,
+              "demand_asked": 16,
+              "supply_quotes": 2,
+              "supply_willing": 2,
+              "supply_asked": 9,
+              "demand_rate": 0.25,
+              "supply_rate": 0.2222222222222222
+            },
+            {
+              "price": 268,
+              "demand_quotes": 2,
+              "demand_willing": 3,
+              "demand_asked": 16,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": 0.1875,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 269,
+              "demand_quotes": 2,
+              "demand_willing": 3,
+              "demand_asked": 16,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": 0.1875,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 270,
+              "demand_quotes": 4,
+              "demand_willing": 14,
+              "demand_asked": 32,
+              "supply_quotes": 12,
+              "supply_willing": 19,
+              "supply_asked": 78,
+              "demand_rate": 0.4375,
+              "supply_rate": 0.24358974358974358
+            },
+            {
+              "price": 271,
+              "demand_quotes": 2,
+              "demand_willing": 10,
+              "demand_asked": 16,
+              "supply_quotes": 7,
+              "supply_willing": 5,
+              "supply_asked": 35,
+              "demand_rate": 0.625,
+              "supply_rate": 0.14285714285714285
+            },
+            {
+              "price": 272,
+              "demand_quotes": 1,
+              "demand_willing": 4,
+              "demand_asked": 8,
+              "supply_quotes": 4,
+              "supply_willing": 0,
+              "supply_asked": 18,
+              "demand_rate": 0.5,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 273,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 8,
+              "supply_willing": 5,
+              "supply_asked": 38,
+              "demand_rate": null,
+              "supply_rate": 0.13157894736842105
+            },
+            {
+              "price": 274,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 4,
+              "supply_willing": 1,
+              "supply_asked": 18,
+              "demand_rate": null,
+              "supply_rate": 0.05555555555555555
+            },
+            {
+              "price": 275,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 4,
+              "supply_willing": 2,
+              "supply_asked": 21,
+              "demand_rate": null,
+              "supply_rate": 0.09523809523809523
+            },
+            {
+              "price": 276,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 0,
+              "supply_asked": 8,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 277,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 0,
+              "supply_asked": 9,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 278,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 2,
+              "supply_willing": 0,
+              "supply_asked": 8,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 279,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 1,
+              "supply_willing": 0,
+              "supply_asked": 5,
+              "demand_rate": null,
+              "supply_rate": 0.0
+            },
+            {
+              "price": 280,
+              "demand_quotes": 3,
+              "demand_willing": 12,
+              "demand_asked": 24,
+              "supply_quotes": 3,
+              "supply_willing": 4,
+              "supply_asked": 19,
+              "demand_rate": 0.5,
+              "supply_rate": 0.21052631578947367
+            },
+            {
+              "price": 281,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 3,
+              "supply_willing": 1,
+              "supply_asked": 16,
+              "demand_rate": null,
+              "supply_rate": 0.0625
+            },
+            {
+              "price": 282,
+              "demand_quotes": 0,
+              "demand_willing": 0,
+              "demand_asked": 0,
+              "supply_quotes": 4,
+              "supply_willing": 3,
+              "supply_asked": 22,
+              "demand_rate": null,
+              "supply_rate": 0.13636363636363635
+            },
+            {
+              "price": 283,
+              "demand_quotes": 1,
+              "demand_willing": 6,
+              "demand_asked": 8,
+              "supply_quotes": 9,
+              "supply_willing": 8,
+              "supply_asked": 43,
+              "demand_rate": 0.75,
+              "supply_rate": 0.18604651162790697
+            },
+            {
+              "price": 284,
+              "demand_quotes": 4,
+              "demand_willing": 5,
+              "demand_asked": 32,
+              "supply_quotes": 3,
+              "supply_willing": 5,
+              "supply_asked": 11,
+              "demand_rate": 0.15625,
+              "supply_rate": 0.45454545454545453
+            },
+            {
+              "price": 285,
+              "demand_quotes": 2,
+              "demand_willing": 2,
+              "demand_asked": 16,
+              "supply_quotes": 1,
+              "supply_willing": 5,
+              "supply_asked": 6,
+              "demand_rate": 0.125,
+              "supply_rate": 0.8333333333333334
+            },
+            {
+              "price": 286,
+              "demand_quotes": 1,
+              "demand_willing": 2,
+              "demand_asked": 8,
+              "supply_quotes": 0,
+              "supply_willing": 0,
+              "supply_asked": 0,
+              "demand_rate": 0.25,
+              "supply_rate": null
+            },
+            {
+              "price": 287,
+              "demand_quotes": 1,
+              "demand_willing": 2,
+              "demand_asked": 8,
+              "supply_quotes": 2,
+              "supply_willing": 3,
+              "supply_asked": 6,
+              "demand_rate": 0.25,
+              "supply_rate": 0.5
+            }
+          ],
+          "by_period": {
+            "1": [
+              {
+                "price": 166,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 8,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 167,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 6,
+                "supply_willing": 13,
+                "supply_asked": 43,
+                "demand_rate": 0.75,
+                "supply_rate": 0.3023255813953488
+              },
+              {
+                "price": 168,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 169,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 180,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 181,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 200,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 250,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 251,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 252,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 260,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 261,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 270,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              }
+            ],
+            "2": [
+              {
+                "price": 250,
+                "demand_quotes": 3,
+                "demand_willing": 18,
+                "demand_asked": 24,
+                "supply_quotes": 3,
+                "supply_willing": 6,
+                "supply_asked": 21,
+                "demand_rate": 0.75,
+                "supply_rate": 0.2857142857142857
+              },
+              {
+                "price": 260,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 261,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 262,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 263,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 264,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 265,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 266,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 267,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 268,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 269,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 270,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 271,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 272,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 273,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 274,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              }
+            ],
+            "3": [
+              {
+                "price": 270,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 6,
+                "supply_asked": 16,
+                "demand_rate": null,
+                "supply_rate": 0.375
+              },
+              {
+                "price": 275,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 2,
+                "supply_asked": 7,
+                "demand_rate": null,
+                "supply_rate": 0.2857142857142857
+              },
+              {
+                "price": 280,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 6,
+                "demand_rate": 0.75,
+                "supply_rate": 0.16666666666666666
+              },
+              {
+                "price": 281,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 1,
+                "supply_asked": 11,
+                "demand_rate": null,
+                "supply_rate": 0.09090909090909091
+              },
+              {
+                "price": 282,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 283,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 5,
+                "supply_willing": 4,
+                "supply_asked": 22,
+                "demand_rate": null,
+                "supply_rate": 0.18181818181818182
+              },
+              {
+                "price": 284,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 285,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              }
+            ],
+            "4": [
+              {
+                "price": 170,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.75,
+                "supply_rate": null
+              },
+              {
+                "price": 180,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 3,
+                "supply_asked": 8,
+                "demand_rate": null,
+                "supply_rate": 0.375
+              },
+              {
+                "price": 185,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.75,
+                "supply_rate": null
+              },
+              {
+                "price": 190,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 2,
+                "supply_asked": 7,
+                "demand_rate": null,
+                "supply_rate": 0.2857142857142857
+              },
+              {
+                "price": 200,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 6,
+                "demand_rate": null,
+                "supply_rate": 0.16666666666666666
+              },
+              {
+                "price": 210,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 6,
+                "demand_rate": null,
+                "supply_rate": 0.16666666666666666
+              },
+              {
+                "price": 215,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 250,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 275,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 280,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 281,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 282,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 283,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 1,
+                "supply_asked": 10,
+                "demand_rate": null,
+                "supply_rate": 0.1
+              },
+              {
+                "price": 284,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              }
+            ],
+            "5": [
+              {
+                "price": 280,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 1,
+                "supply_willing": 3,
+                "supply_asked": 8,
+                "demand_rate": 0.75,
+                "supply_rate": 0.375
+              },
+              {
+                "price": 282,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 3,
+                "supply_asked": 12,
+                "demand_rate": null,
+                "supply_rate": 0.25
+              },
+              {
+                "price": 283,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 2,
+                "supply_willing": 3,
+                "supply_asked": 11,
+                "demand_rate": 0.75,
+                "supply_rate": 0.2727272727272727
+              },
+              {
+                "price": 284,
+                "demand_quotes": 2,
+                "demand_willing": 5,
+                "demand_asked": 16,
+                "supply_quotes": 3,
+                "supply_willing": 5,
+                "supply_asked": 11,
+                "demand_rate": 0.3125,
+                "supply_rate": 0.45454545454545453
+              },
+              {
+                "price": 285,
+                "demand_quotes": 1,
+                "demand_willing": 2,
+                "demand_asked": 8,
+                "supply_quotes": 1,
+                "supply_willing": 5,
+                "supply_asked": 6,
+                "demand_rate": 0.25,
+                "supply_rate": 0.8333333333333334
+              },
+              {
+                "price": 286,
+                "demand_quotes": 1,
+                "demand_willing": 2,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.25,
+                "supply_rate": null
+              },
+              {
+                "price": 287,
+                "demand_quotes": 1,
+                "demand_willing": 2,
+                "demand_asked": 8,
+                "supply_quotes": 2,
+                "supply_willing": 3,
+                "supply_asked": 6,
+                "demand_rate": 0.25,
+                "supply_rate": 0.5
+              }
+            ],
+            "6": [
+              {
+                "price": 270,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 5,
+                "supply_willing": 9,
+                "supply_asked": 37,
+                "demand_rate": 0.75,
+                "supply_rate": 0.24324324324324326
+              },
+              {
+                "price": 271,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 3,
+                "supply_willing": 1,
+                "supply_asked": 16,
+                "demand_rate": 0.75,
+                "supply_rate": 0.0625
+              },
+              {
+                "price": 272,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 273,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 4,
+                "supply_willing": 3,
+                "supply_asked": 19,
+                "demand_rate": null,
+                "supply_rate": 0.15789473684210525
+              },
+              {
+                "price": 274,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.2
+              }
+            ],
+            "7": [
+              {
+                "price": 265,
+                "demand_quotes": 1,
+                "demand_willing": 4,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.5,
+                "supply_rate": null
+              },
+              {
+                "price": 266,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 5,
+                "supply_asked": 8,
+                "demand_rate": null,
+                "supply_rate": 0.625
+              },
+              {
+                "price": 267,
+                "demand_quotes": 1,
+                "demand_willing": 4,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.5,
+                "supply_rate": null
+              },
+              {
+                "price": 270,
+                "demand_quotes": 2,
+                "demand_willing": 8,
+                "demand_asked": 16,
+                "supply_quotes": 1,
+                "supply_willing": 4,
+                "supply_asked": 8,
+                "demand_rate": 0.5,
+                "supply_rate": 0.5
+              },
+              {
+                "price": 271,
+                "demand_quotes": 1,
+                "demand_willing": 4,
+                "demand_asked": 8,
+                "supply_quotes": 1,
+                "supply_willing": 3,
+                "supply_asked": 7,
+                "demand_rate": 0.5,
+                "supply_rate": 0.42857142857142855
+              },
+              {
+                "price": 272,
+                "demand_quotes": 1,
+                "demand_willing": 4,
+                "demand_asked": 8,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": 0.5,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 273,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 2,
+                "supply_asked": 9,
+                "demand_rate": null,
+                "supply_rate": 0.2222222222222222
+              },
+              {
+                "price": 274,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 275,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 276,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 277,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 4,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 278,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              }
+            ],
+            "8": [
+              {
+                "price": 250,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 6,
+                "supply_willing": 10,
+                "supply_asked": 42,
+                "demand_rate": 0.75,
+                "supply_rate": 0.23809523809523808
+              },
+              {
+                "price": 260,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 270,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 271,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 272,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 273,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 274,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 275,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 6,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 276,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 277,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 278,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 279,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              }
+            ],
+            "9": [
+              {
+                "price": 230,
+                "demand_quotes": 1,
+                "demand_willing": 6,
+                "demand_asked": 8,
+                "supply_quotes": 2,
+                "supply_willing": 3,
+                "supply_asked": 11,
+                "demand_rate": 0.75,
+                "supply_rate": 0.2727272727272727
+              },
+              {
+                "price": 260,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 6,
+                "supply_asked": 8,
+                "demand_rate": null,
+                "supply_rate": 0.75
+              },
+              {
+                "price": 265,
+                "demand_quotes": 3,
+                "demand_willing": 9,
+                "demand_asked": 24,
+                "supply_quotes": 3,
+                "supply_willing": 16,
+                "supply_asked": 22,
+                "demand_rate": 0.375,
+                "supply_rate": 0.7272727272727273
+              },
+              {
+                "price": 266,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 4,
+                "demand_rate": null,
+                "supply_rate": 0.25
+              },
+              {
+                "price": 267,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 2,
+                "supply_asked": 4,
+                "demand_rate": null,
+                "supply_rate": 0.5
+              },
+              {
+                "price": 268,
+                "demand_quotes": 1,
+                "demand_willing": 3,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.375,
+                "supply_rate": null
+              },
+              {
+                "price": 269,
+                "demand_quotes": 1,
+                "demand_willing": 3,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.375,
+                "supply_rate": null
+              },
+              {
+                "price": 270,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 2,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 271,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 1,
+                "supply_asked": 2,
+                "demand_rate": null,
+                "supply_rate": 0.5
+              }
+            ],
+            "10": [
+              {
+                "price": 250,
+                "demand_quotes": 8,
+                "demand_willing": 24,
+                "demand_asked": 64,
+                "supply_quotes": 4,
+                "supply_willing": 14,
+                "supply_asked": 23,
+                "demand_rate": 0.375,
+                "supply_rate": 0.6086956521739131
+              },
+              {
+                "price": 251,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 2,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 252,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 3,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 253,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 2,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              },
+              {
+                "price": 260,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 2,
+                "supply_willing": 1,
+                "supply_asked": 5,
+                "demand_rate": null,
+                "supply_rate": 0.2
+              },
+              {
+                "price": 261,
+                "demand_quotes": 0,
+                "demand_willing": 0,
+                "demand_asked": 0,
+                "supply_quotes": 1,
+                "supply_willing": 0,
+                "supply_asked": 2,
+                "demand_rate": null,
+                "supply_rate": 0.0
+              }
+            ],
+            "11": [
+              {
+                "price": 261,
+                "demand_quotes": 12,
+                "demand_willing": 20,
+                "demand_asked": 96,
+                "supply_quotes": 2,
+                "supply_willing": 9,
+                "supply_asked": 11,
+                "demand_rate": 0.20833333333333334,
+                "supply_rate": 0.8181818181818182
+              },
+              {
+                "price": 262,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 263,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 264,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 265,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 267,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 268,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 269,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 270,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              },
+              {
+                "price": 280,
+                "demand_quotes": 1,
+                "demand_willing": 0,
+                "demand_asked": 8,
+                "supply_quotes": 0,
+                "supply_willing": 0,
+                "supply_asked": 0,
+                "demand_rate": 0.0,
+                "supply_rate": null
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}

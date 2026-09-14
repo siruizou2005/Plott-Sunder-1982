@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use these data or code, please cite the paper."
+title: "Replication package for: Trading Direction and Price Discovery: Human Evidence and LLM Experiments"
+type: dataset
+authors:
+  - family-names: Zou
+    given-names: Sirui
+    affiliation: "School of Economics, Southwestern University of Finance and Economics"
+license:
+  - BSD-3-Clause
+  - CC-BY-4.0
+keywords:
+  - information aggregation
+  - insider trading
+  - experimental asset markets
+  - large language models
+  - market design
+preferred-citation:
+  type: unpublished
+  title: "Trading Direction and Price Discovery: Human Evidence and LLM Experiments"
+  authors:
+    - family-names: Zou
+      given-names: Sirui
+  year: 2026
+  month: 9

@@ -1,0 +1,131 @@
+This is an experiment in the economics of market decision making. The instructions are
+simple, and if you follow them carefully and make good decisions, you might earn a
+considerable amount of money.
+
+You are one of twelve investors in a market where certificates are bought and sold over
+a sequence of 14 market years. You are investor Investor A.
+
+The currency of this market is francs. All trading and earnings are in francs. Each franc
+is worth $0.003 to you. Do not reveal this number to anyone.
+
+== YOUR PRIVATE INFORMATION AND RECORD ==
+
+Your profits come from two sources: from collecting certificate earnings on the
+certificates you hold at the end of the year, and from buying and selling certificates.
+
+For each certificate you hold at the end of a year, you receive ONE of the two
+amounts below. Which one is paid is determined by the mechanism described further down.
+
+    If the X-dividend is paid:  360 francs per certificate
+    If the Y-dividend is paid:  110 francs per certificate
+
+These numbers are YOUR earnings per certificate. They are your own private information;
+do not reveal them to anyone. Earnings may be different for different investors.
+
+At the start of every year you are given an initial holding of 2 certificates and
+10,000 francs on hand. You may sell your certificates or hold them; you may keep your
+francs or use them to buy certificates.
+
+At the end of each year:
+  - every certificate you still hold pays you its earnings per certificate;
+  - all your remaining holdings are then automatically sold to the experimenter at a
+    price of 0, so a certificate is worth nothing to you after the year ends;
+  - a fixed cost of 10,000 francs is subtracted from your francs on hand.
+Whatever remains is your profit for that year, and it is yours to keep. Your profits
+accumulate across years.
+
+== HOW THE DIVIDEND IS DETERMINED ==
+
+At the beginning of each year, before trading starts, the experimenter rotates a bingo
+cage containing 40 balls numbered 1 through 40, and draws one ball.
+
+  If the drawn ball is numbered 1 through 24, the X-dividend is paid at the end of that year.
+  If the drawn ball is numbered 25 through 40, the Y-dividend is paid at the end of that year.
+
+The draw is made once per year and its outcome is fixed for the whole year.
+
+Also at the beginning of each year, before trading starts, every investor receives a clue
+card. A clue card carries one of three things:
+  (i   ) the letter X  — the X-dividend WILL be paid at the end of this year;
+  (ii  ) the letter Y  — the Y-dividend WILL be paid at the end of this year;
+  (iii ) a blank       — this tells you nothing about which dividend will be paid.
+
+A clue card that carries a letter is always correct.
+
+== WHAT EVERY INVESTOR KNOWS ==
+
+The following three things are known to all twelve investors:
+  1. No one is told how many investors receive a clue card that is not blank, or which
+     investors they are.
+  2. Every clue card that is not blank, handed out in a given year, carries the SAME
+     content.
+  3. Each investor's earnings-per-certificate amounts stay the same in every year of the
+     experiment. Yours will not change.
+
+== TRADING RULES ==
+
+ 1. All transactions are for one certificate at a time.
+ 2. Anyone wishing to buy may announce a BID: an offer to buy one certificate at a stated
+    price. Anyone wishing to sell may announce an ASK: an offer to sell one certificate at
+    a stated price. All bids and asks are announced publicly and recorded.
+ 3. At most ONE bid and ONE ask stand in the market at any moment. A standing bid or ask
+    leaves the market when it is accepted, when it is replaced by a new quote on the same
+    side, or when the year ends.
+ 4. Any investor holding a certificate may accept the standing bid; any investor with
+    enough francs may accept the standing ask. You may not accept your own quote.
+ 5. A new bid takes effect only if its price is STRICTLY HIGHER than the standing bid;
+    a new ask takes effect only if its price is STRICTLY LOWER than the standing ask. When
+    the corresponding side is empty, any price takes effect. You may replace your own
+    standing quote with a better one. A quote that does not improve on the standing quote
+    is rejected by the market and no one else learns that you attempted it.
+ 6. If a new bid is at or above the standing ask (or a new ask is at or below the standing
+    bid), the trade happens immediately at the price of the quote that was already
+    standing.
+ 7. Your certificate holdings may never go below zero — you cannot sell a certificate you
+    do not hold. Your francs on hand may never go below zero.
+ 8. If several investors accept the same quote, one of them is chosen at random and the
+    others are not told that anyone else tried.
+ 9. Except for making quotes and accepting them, you are not to communicate with any other
+    investor in any way.
+
+== WHAT YOU DO ON YOUR TURN ==
+
+The market gives each investor turns in a rotating order. On your turn you are shown your
+own position, your clue card, the current standing quotes, and the public record of every
+quote and trade so far this year. You then choose exactly one of:
+
+  - post a quote (a bid or an ask at a price you name),
+  - accept a standing quote,
+  - or do nothing this turn.
+
+You are free to make as much profit as you can. There are likely to be many quotes that
+are not accepted, but you are free to keep trying.
+
+== YOUR REPLY ==
+
+Reply with a single json object and nothing else — no prose, no code fences.
+
+{
+  "posterior": {"X": <number between 0 and 1>, "Y": <number between 0 and 1>},
+  "reservation_buy": <integer francs: the most you would pay for one certificate now>,
+  "reservation_sell": <integer francs: the least you would accept for one certificate now>,
+  "basis": "<one of: prior | clue | price | others_behavior | spread>",
+  "action": <one of the three action objects below>
+}
+
+"posterior" is how strongly you currently lean toward each dividend being the one that
+will be paid this year; the two numbers must sum to 1.
+"basis" is the single thing that most drove this turn's judgement:
+  prior            — only the bingo cage mechanism
+  clue             — your own clue card
+  price            — the prices at which certificates have actually traded
+  others_behavior  — who has been quoting or accepting, and how
+  spread           — the gap between the standing bid and the standing ask
+
+The three action objects:
+  {"type": "no_quote"}
+  {"type": "quote", "side": "bid" | "ask", "price": <integer francs>}
+  {"type": "accept_standing", "side": "bid" | "ask"}
+
+For "accept_standing", "side" names the quote you are accepting: "ask" means you buy at
+the standing ask, "bid" means you sell at the standing bid.

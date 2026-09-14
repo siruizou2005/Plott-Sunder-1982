@@ -1,0 +1,187 @@
+{
+  "scenario": "scenarios/m1_random.yaml",
+  "run_name": "m1_random_2",
+  "stamp": "2026-07-26_142131",
+  "status": "done",
+  "config": {
+    "run_name": "m1_random_2",
+    "seed": 20250729,
+    "market": 1,
+    "sequence_preset": "random_prior",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": null,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 8192,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "sequence": {
+    "name": "random_prior_m1",
+    "states": [
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "Y",
+      "X",
+      "X"
+    ],
+    "info": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "all",
+      "all",
+      "all"
+    ],
+    "note": "states redrawn from the prior (seed 20250729); information design unchanged"
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 8025,
+          "usd": 16.05,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 7312,
+          "usd": 14.624,
+          "type": "I",
+          "insider": false
+        },
+        "S03": {
+          "francs": 8465,
+          "usd": 16.93,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 7047,
+          "usd": 14.094,
+          "type": "II",
+          "insider": true
+        },
+        "S05": {
+          "francs": 7156,
+          "usd": 14.312,
+          "type": "II",
+          "insider": false
+        },
+        "S06": {
+          "francs": 6865,
+          "usd": 13.73,
+          "type": "II",
+          "insider": false
+        },
+        "S07": {
+          "francs": 5459,
+          "usd": 10.918,
+          "type": "III",
+          "insider": true
+        },
+        "S08": {
+          "francs": 5390,
+          "usd": 10.78,
+          "type": "III",
+          "insider": false
+        },
+        "S09": {
+          "francs": 5481,
+          "usd": 10.962,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 1834,
+      "usage": {
+        "prompt_tokens": 4518898,
+        "completion_tokens": 2417979,
+        "cache_hit_tokens": 1601792,
+        "cache_miss_tokens": 2917106,
+        "reasoning_tokens": 2333628
+      },
+      "cost_usd": 1.137,
+      "wall_clock_s": 13826.9
+    }
+  ],
+  "totals": {
+    "calls": 1834,
+    "cost_usd": 1.137,
+    "wall_clock_s": 13826.9
+  },
+  "market": {
+    "number": 1,
+    "paper": true,
+    "states": [
+      "X",
+      "Y"
+    ],
+    "n_agents": 9,
+    "dividends": {
+      "I": {
+        "X": 150,
+        "Y": 350
+      },
+      "II": {
+        "X": 250,
+        "Y": 300
+      },
+      "III": {
+        "X": 300,
+        "Y": 100
+      }
+    },
+    "prior_ev": {
+      "I": 283.33,
+      "II": 283.33,
+      "III": 166.67
+    },
+    "bingo_total": 30,
+    "note": "Imperfect information: a 10-draw sample, not a letter. Nine investors."
+  }
+}

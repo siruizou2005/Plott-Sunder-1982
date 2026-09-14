@@ -1,6 +1,6 @@
-numpy
-pandas
-scipy
-statsmodels
-matplotlib
-Pillow
+# Versions used to produce the shipped results (Python 3.13.7).
+numpy==2.5.1
+pandas==2.3.3
+scipy==1.16.1
+statsmodels==0.14.6
+matplotlib==3.10.5

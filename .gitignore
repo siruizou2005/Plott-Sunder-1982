@@ -1,5 +1,4 @@
 __pycache__/
+*.pyc
 .DS_Store
-
-# The manuscript is not distributed with the replication package.
-paper/
+.venv/

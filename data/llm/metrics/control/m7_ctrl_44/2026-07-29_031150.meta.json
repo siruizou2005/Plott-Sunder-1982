@@ -1,0 +1,211 @@
+{
+  "scenario": "scenarios/m7_control.yaml",
+  "run_name": "control/m7_ctrl_44",
+  "stamp": "2026-07-29_031150",
+  "status": "done",
+  "config": {
+    "run_name": "control/m7_ctrl_44",
+    "seed": 44,
+    "market": 7,
+    "sequence_preset": "random_prior",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": null,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 8192,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "market": {
+    "number": 7,
+    "paper": false,
+    "states": [
+      "X",
+      "Y"
+    ],
+    "n_agents": 12,
+    "dividends": {
+      "I": {
+        "X": 360,
+        "Y": 110
+      },
+      "II": {
+        "X": 330,
+        "Y": 130
+      },
+      "III": {
+        "X": 290,
+        "Y": 160
+      }
+    },
+    "prior_ev": {
+      "I": 260.0,
+      "II": 250.0,
+      "III": 238.0
+    },
+    "bingo_total": 40,
+    "note": "states redrawn from the prior (seed 44); information design unchanged"
+  },
+  "sequence": {
+    "name": "random_prior_m7",
+    "states": [
+      "X",
+      "Y",
+      "X",
+      "Y",
+      "X",
+      "X",
+      "X",
+      "X",
+      "X",
+      "X",
+      "Y",
+      "X",
+      "Y",
+      "X"
+    ],
+    "info": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "none"
+    ],
+    "note": "states redrawn from the prior (seed 44); information design unchanged"
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 10314,
+          "usd": 30.942,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 9772,
+          "usd": 29.316,
+          "type": "I",
+          "insider": true
+        },
+        "S03": {
+          "francs": 8157,
+          "usd": 24.471,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 6702,
+          "usd": 20.106,
+          "type": "I",
+          "insider": false
+        },
+        "S05": {
+          "francs": 8975,
+          "usd": 26.925,
+          "type": "II",
+          "insider": true
+        },
+        "S06": {
+          "francs": 8939,
+          "usd": 26.817,
+          "type": "II",
+          "insider": true
+        },
+        "S07": {
+          "francs": 4912,
+          "usd": 14.736,
+          "type": "II",
+          "insider": false
+        },
+        "S08": {
+          "francs": 6450,
+          "usd": 19.35,
+          "type": "II",
+          "insider": false
+        },
+        "S09": {
+          "francs": 8035,
+          "usd": 24.105,
+          "type": "III",
+          "insider": true
+        },
+        "S10": {
+          "francs": 7874,
+          "usd": 23.622,
+          "type": "III",
+          "insider": true
+        },
+        "S11": {
+          "francs": 6668,
+          "usd": 20.004,
+          "type": "III",
+          "insider": false
+        },
+        "S12": {
+          "francs": 7242,
+          "usd": 21.726,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 3959,
+      "usage": {
+        "prompt_tokens": 9588817,
+        "completion_tokens": 4524268,
+        "cache_hit_tokens": 3414016,
+        "cache_miss_tokens": 6174801,
+        "reasoning_tokens": 4354581
+      },
+      "cost_usd": 2.2402,
+      "wall_clock_s": 24218.0
+    }
+  ],
+  "totals": {
+    "calls": 3959,
+    "cost_usd": 2.2402,
+    "wall_clock_s": 24218.0
+  }
+}

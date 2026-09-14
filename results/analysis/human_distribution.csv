@@ -1,0 +1,3 @@
+side,periods,open_below,open_at,open_above,close_below,close_at,close_above,price_rises,price_falls,price_unchanged,open_abs_dev_mean,open_abs_dev_median,close_abs_dev_mean,close_abs_dev_median,D_first_ci95_low,D_first_ci95_high
+buyer,14,14,0,0,13,0,1,11,0,3,82.5,70.0,12.428571428571429,5.0,-0.03759466902602865,0.6470381970742078
+seller,13,8,2,3,13,0,0,6,5,2,15.384615384615385,15.0,5.384615384615385,5.0,0.7858844487734225,1.4010226612106103

@@ -1,0 +1,206 @@
+{
+  "scenario": "scenarios/bailian_paper.yaml",
+  "run_name": "m3_paper_0",
+  "stamp": "2026-07-25_223020",
+  "status": "done",
+  "config": {
+    "run_name": "m3_paper_0",
+    "seed": 20250745,
+    "sequence_preset": "paper_exact",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": false,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 512,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "sequence": {
+    "name": "paper_exact",
+    "states": [
+      "Y",
+      "Y",
+      "Y",
+      "X",
+      "Y",
+      "Y",
+      "X",
+      "Y",
+      "X",
+      "Y",
+      "Y",
+      "X"
+    ],
+    "info": [
+      "none",
+      "none",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "all",
+      "all"
+    ],
+    "note": "Table 1, market 3, verbatim. Periods 11-12 are 'All' (everyone informed)."
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 7229,
+          "usd": 21.687,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 7553,
+          "usd": 22.659,
+          "type": "I",
+          "insider": true
+        },
+        "S03": {
+          "francs": 3656,
+          "usd": 10.968,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 3848,
+          "usd": 11.544,
+          "type": "I",
+          "insider": false
+        },
+        "S05": {
+          "francs": 5247,
+          "usd": 15.741,
+          "type": "II",
+          "insider": true
+        },
+        "S06": {
+          "francs": 5600,
+          "usd": 16.8,
+          "type": "II",
+          "insider": true
+        },
+        "S07": {
+          "francs": 4782,
+          "usd": 14.346,
+          "type": "II",
+          "insider": false
+        },
+        "S08": {
+          "francs": 4662,
+          "usd": 13.986,
+          "type": "II",
+          "insider": false
+        },
+        "S09": {
+          "francs": 5343,
+          "usd": 16.029,
+          "type": "III",
+          "insider": true
+        },
+        "S10": {
+          "francs": 5300,
+          "usd": 15.9,
+          "type": "III",
+          "insider": true
+        },
+        "S11": {
+          "francs": 4981,
+          "usd": 14.943,
+          "type": "III",
+          "insider": false
+        },
+        "S12": {
+          "francs": 5249,
+          "usd": 15.747,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 3498,
+      "usage": {
+        "prompt_tokens": 8522769,
+        "completion_tokens": 3641291,
+        "cache_hit_tokens": 2981632,
+        "cache_miss_tokens": 5541137,
+        "reasoning_tokens": 3490216
+      },
+      "cost_usd": 1.89,
+      "wall_clock_s": 20087.9
+    }
+  ],
+  "totals": {
+    "calls": 3498,
+    "cost_usd": 1.89,
+    "wall_clock_s": 20087.9
+  },
+  "market": {
+    "number": 3,
+    "paper": true,
+    "states": [
+      "X",
+      "Y"
+    ],
+    "n_agents": 12,
+    "dividends": {
+      "I": {
+        "X": 400,
+        "Y": 100
+      },
+      "II": {
+        "X": 300,
+        "Y": 150
+      },
+      "III": {
+        "X": 125,
+        "Y": 175
+      }
+    },
+    "prior_ev": {
+      "I": 220.0,
+      "II": 210.0,
+      "III": 155.0
+    },
+    "bingo_total": 40,
+    "note": "The market already implemented in params.py."
+  }
+}

@@ -1,0 +1,211 @@
+{
+  "scenario": "scenarios/m4_random.yaml",
+  "run_name": "m4_random_0",
+  "stamp": "2026-07-26_142155",
+  "status": "done",
+  "config": {
+    "run_name": "m4_random_0",
+    "seed": 20250757,
+    "market": 4,
+    "sequence_preset": "random_prior",
+    "sessions": 1,
+    "max_rounds_per_period": 3,
+    "periods": null,
+    "broadcast_workers": 12,
+    "rules": {
+      "price_improvement": true,
+      "announce_no_info_period": null,
+      "elicit_beliefs": true,
+      "broadcast_reason": true,
+      "market_log_window": 0,
+      "period_end_notes": 2,
+      "trade_notes": 3,
+      "not_selected_window": 5
+    },
+    "agents": [
+      {
+        "kind": "llm",
+        "seats": [],
+        "model": "deepseek-v4-flash",
+        "base_url": "$DASHSCOPE_BASE_URL",
+        "api_key_env": "DASHSCOPE_API_KEY",
+        "temperature": 0.7,
+        "max_output_tokens": 8192,
+        "thinking": true,
+        "reasoning_effort": null,
+        "broadcast_thinking": true,
+        "broadcast_max_output_tokens": 8192,
+        "reflect_thinking": true,
+        "reflect_max_output_tokens": 3000,
+        "repair_retries": 2,
+        "pace": 0.25,
+        "max_retries": 5
+      }
+    ],
+    "pricing": {
+      "input_per_mtok": 0.1408,
+      "cached_input_per_mtok": 0.0282,
+      "output_per_mtok": 0.2817
+    }
+  },
+  "sequence": {
+    "name": "random_prior_m4",
+    "states": [
+      "Y",
+      "X",
+      "X",
+      "X",
+      "X",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "X",
+      "Y",
+      "Y",
+      "Y",
+      "Y"
+    ],
+    "info": [
+      "none",
+      "none",
+      "none",
+      "none",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "insider",
+      "none"
+    ],
+    "note": "states redrawn from the prior (seed 20250757); information design unchanged"
+  },
+  "summaries": [
+    {
+      "session": 0,
+      "totals": {
+        "S01": {
+          "francs": 9284,
+          "usd": 27.852,
+          "type": "I",
+          "insider": true
+        },
+        "S02": {
+          "francs": 10534,
+          "usd": 31.602,
+          "type": "I",
+          "insider": true
+        },
+        "S03": {
+          "francs": 5961,
+          "usd": 17.883,
+          "type": "I",
+          "insider": false
+        },
+        "S04": {
+          "francs": 4811,
+          "usd": 14.433,
+          "type": "I",
+          "insider": false
+        },
+        "S05": {
+          "francs": 6605,
+          "usd": 19.815,
+          "type": "II",
+          "insider": true
+        },
+        "S06": {
+          "francs": 6506,
+          "usd": 19.518,
+          "type": "II",
+          "insider": true
+        },
+        "S07": {
+          "francs": 6741,
+          "usd": 20.223,
+          "type": "II",
+          "insider": false
+        },
+        "S08": {
+          "francs": 5486,
+          "usd": 16.458,
+          "type": "II",
+          "insider": false
+        },
+        "S09": {
+          "francs": 5742,
+          "usd": 17.226,
+          "type": "III",
+          "insider": true
+        },
+        "S10": {
+          "francs": 5412,
+          "usd": 16.236,
+          "type": "III",
+          "insider": true
+        },
+        "S11": {
+          "francs": 5257,
+          "usd": 15.771,
+          "type": "III",
+          "insider": false
+        },
+        "S12": {
+          "francs": 5161,
+          "usd": 15.483,
+          "type": "III",
+          "insider": false
+        }
+      },
+      "calls": 4322,
+      "usage": {
+        "prompt_tokens": 10601226,
+        "completion_tokens": 5060902,
+        "cache_hit_tokens": 3691776,
+        "cache_miss_tokens": 6909450,
+        "reasoning_tokens": 4878100
+      },
+      "cost_usd": 2.5026,
+      "wall_clock_s": 28735.2
+    }
+  ],
+  "totals": {
+    "calls": 4322,
+    "cost_usd": 2.5026,
+    "wall_clock_s": 28735.2
+  },
+  "market": {
+    "number": 4,
+    "paper": true,
+    "states": [
+      "X",
+      "Y"
+    ],
+    "n_agents": 12,
+    "dividends": {
+      "I": {
+        "X": 375,
+        "Y": 100
+      },
+      "II": {
+        "X": 275,
+        "Y": 150
+      },
+      "III": {
+        "X": 100,
+        "Y": 175
+      }
+    },
+    "prior_ev": {
+      "I": 210.0,
+      "II": 200.0,
+      "III": 145.0
+    },
+    "bingo_total": 40,
+    "note": "The only market with a no-information period at the END as well as the start (period 14). Table 1 prints its posterior as '.04'; under a .4 prior a no-information period must be .4, and it is read that way."
+  }
+}

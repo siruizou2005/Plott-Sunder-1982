@@ -1,0 +1,6 @@
+market,periods,no_information,all_informed,informed_selling,informed_buying
+1,11,4,3,2,2
+2,11,4,2,2,3
+3,12,2,2,5,3
+4,14,5,0,5,4
+5,13,3,0,3,7

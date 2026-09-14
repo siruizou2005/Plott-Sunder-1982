@@ -1,0 +1,52 @@
+group,run_id,session,market,treatment,seed,model,rounds,preset,state_sequence,insider_periods,valid_periods,no_trade_periods,status
+control,m7_ctrl_42,0,A,0 / symmetric,42,deepseek-v4-flash,3,random_prior_m7,XXXXYXYXYYXXXX,9,8,10,done
+control,m7_ctrl_43,0,A,0 / symmetric,43,deepseek-v4-flash,3,random_prior_m7,YXXYXXXXXYYXYY,9,9,--,done
+control,m7_ctrl_44,0,A,0 / symmetric,44,deepseek-v4-flash,3,random_prior_m7,XYXYXXXXXXYXYX,9,9,--,done
+control,m7_ctrl_45,0,A,0,45,deepseek-v4-flash,3,random_prior_m7,XYYXXXYXYYYYXY,9,9,--,done
+control,m8_ctrl_42,0,B,0 / symmetric,42,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYY,9,9,--,done
+control,m8_ctrl_43,0,B,0 / symmetric,43,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYX,9,9,--,done
+control,m8_ctrl_44,0,B,0 / symmetric,44,deepseek-v4-flash,3,random_prior_m8,XYYXXYYYXYXYYX,9,9,--,done
+disclosed,m7_disc_42,0,A,1,42,deepseek-v4-flash,3,random_prior_m7,XXXXYXYXYYXXXX,9,9,--,done
+disclosed,m8_disc_42,0,B,1,42,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYY,9,9,--,done
+ladder1b,m7_lad1b_42,0,A,1b,42,deepseek-v4-flash,3,random_prior_m7,XXXXYXYXYYXXXX,9,9,--,done
+ladder1b,m8_lad1b_42,0,B,1b,42,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYY,9,9,--,done
+ladder2,m7_lad2_42,0,A,2,42,deepseek-v4-flash,3,random_prior_m7,XXXXYXYXYYXXXX,9,9,--,done
+ladder2,m7_lad2_45,0,A,2,45,deepseek-v4-flash,3,random_prior_m7,XYYXXXYXYYYYXY,9,9,--,done
+ladder2,m8_lad2_42,0,B,2,42,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYY,9,8,5,done
+ladder2,m8_lad2_44,0,B,2,44,deepseek-v4-flash,3,random_prior_m8,XYYXXYYYXYXYYX,9,9,--,done
+ladder3,m7_lad3_42,0,A,3,42,deepseek-v4-flash,3,random_prior_m7,XXXXYXYXYYXXXX,9,9,--,done
+ladder3,m7_lad3_45,0,A,3,45,deepseek-v4-flash,3,random_prior_m7,XYYXXXYXYYYYXY,9,8,10,done
+ladder3,m8_lad3_42,0,B,3,42,deepseek-v4-flash,3,random_prior_m8,XXXXYYXXXXXXYY,9,9,--,done
+ladder3,m8_lad3_44,0,B,3,44,deepseek-v4-flash,3,random_prior_m8,XYYXXYYYXYXYYX,9,9,--,done
+m1,m1_paper_0,0,1,original,20250725,deepseek-v4-flash,3,paper_exact_m1,YYXYYXYYYXY,4,4,--,done
+m1,m1_paper_1,0,1,original,20250726,deepseek-v4-flash,3,paper_exact_m1,YYXYYXYYYXY,4,4,--,done
+m1,m1_random_0,0,1,original,20250727,deepseek-v4-flash,3,random_prior_m1,YYYXXYYYYYY,4,4,--,done
+m1,m1_random_1,0,1,original,20250728,deepseek-v4-flash,3,random_prior_m1,XYYYXYYXYYY,4,4,--,done
+m1,m1_random_2,0,1,original,20250729,deepseek-v4-flash,3,random_prior_m1,YYYYYYYYYXX,4,4,--,done
+m2,m2_paper_0,0,2,original,20250735,deepseek-v4-flash,3,paper_exact_m2,XXYYYYXYXYY,5,5,--,done
+m2,m2_paper_1,0,2,original,20250736,deepseek-v4-flash,3,paper_exact_m2,XXYYYYXYXYY,5,5,--,done
+m2,m2_random_0,0,2,original,20250737,deepseek-v4-flash,3,random_prior_m2,XXYYXYYXYYY,5,5,--,done
+m2,m2_random_1,0,2,original,20250738,deepseek-v4-flash,3,random_prior_m2,YXYYYYXYYYY,5,5,--,done
+m2,m2_random_2,0,2,original,20250739,deepseek-v4-flash,3,random_prior_m2,YXXYYYXXYYY,5,5,--,done
+m3,m3_gem_paper,0,3,original,20250745,gemini-3.5-flash,3,paper_exact,YYYXYYXYXYYX,8,8,--,done
+m3,m3_paper_0,0,3,original,20250745,deepseek-v4-flash,3,paper_exact,YYYXYYXYXYYX,8,8,--,done
+m3,m3_paper_1,0,3,original,20250746,deepseek-v4-flash,3,paper_exact,YYYXYYXYXYYX,8,8,--,done
+m3,m3_random_0,0,3,original,20250747,deepseek-v4-flash,3,random_prior_20250747,XYXXXYYYXYYY,8,8,--,done
+m3,m3_random_1,0,3,original,20250748,deepseek-v4-flash,3,random_prior_20250748,XYXYXYYYXXYX,8,8,--,done
+m3,m3_random_2,0,3,original,20250749,deepseek-v4-flash,3,random_prior_20250749,XYYYYXYYYYYY,8,8,--,done
+m4,m4_paper_0,0,4,original,20250755,deepseek-v4-flash,3,paper_exact_m4,XYYXYXYYXYXYXY,9,9,--,done
+m4,m4_paper_1,0,4,original,20250756,deepseek-v4-flash,3,paper_exact_m4,XYYXYXYYXYXYXY,9,9,--,done
+m4,m4_random_0,0,4,original,20250757,deepseek-v4-flash,3,random_prior_m4,YXXXXXYYYXYYYY,9,9,--,done
+m4,m4_random_1,0,4,original,20250758,deepseek-v4-flash,3,random_prior_m4,YYXXXXYYYYYXYX,9,9,--,done
+m4,m4_random_2,0,4,original,20250759,deepseek-v4-flash,3,random_prior_m4,YYYYXYYXXYXXYY,9,9,--,done
+m5,m5_paper_0,0,5,original,20250765,deepseek-v4-flash,3,paper_exact_m5,ZXZXXYZZYYXYZ,10,10,--,done
+m5,m5_paper_1,0,5,original,20250766,deepseek-v4-flash,3,paper_exact_m5,ZXZXXYZZYYXYZ,10,10,--,done
+m5,m5_random_0,0,5,original,20250767,deepseek-v4-flash,3,random_prior_m5,XZYZZXXZZXXXX,10,10,--,done
+m5,m5_random_1,0,5,original,20250768,deepseek-v4-flash,3,random_prior_m5,ZYYZZYZXYXZZY,10,10,--,done
+m5,m5_random_2,0,5,original,20250769,deepseek-v4-flash,3,random_prior_m5,YXZXZZXYZZYZX,10,10,--,done
+rounds,m4_r4_paper,0,4,round check,20250755,deepseek-v4-flash,4,paper_exact_m4,XYYXYXYYXYXYXY,9,9,--,done
+rounds,m4_r5_paper,0,4,round check,20250755,deepseek-v4-flash,5,paper_exact_m4,XYYXYXYYXYXYXY,9,9,--,done
+rounds,m4_r6_paper,0,4,round check,20250755,deepseek-v4-flash,6,paper_exact_m4,XYYXYXYYXYXYXY,9,9,--,done
+rounds,m4_r4_random,0,4,round check,20250757,deepseek-v4-flash,4,random_prior_m4,YXXXXXYYYXYYYY,9,9,--,done
+rounds,m4_r5_random,0,4,round check,20250757,deepseek-v4-flash,5,random_prior_m4,YXXXXXYYYXYYYY,9,9,--,done
+rounds,m4_r6_random,0,4,round check,20250757,deepseek-v4-flash,6,random_prior_m4,YXXXXXYYYXYYYY,9,9,--,done
