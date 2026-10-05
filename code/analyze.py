@@ -846,7 +846,7 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
             f"{r['diff']:+.3f} & {fmt_p(r.p_welch)} & {fmt_p(r.p_mwu)} & "
             f"{fmt_p(r.p_perm_within_market)} & {fmt_p(r.p_fe_cluster)}" + " \\\\")
     write_longtable("appendix_human_robustness.tex",
-                    r"p{2.1cm}p{3.6cm}p{3.0cm}rrrrr",
+                    r"p{2.1cm}p{3.5cm}p{3.0cm}rrrrr",
                     r"Human-data inference and sample robustness",
                     "tab:app-human-robustness",
                     r"Panel & Sample & Measure & Difference & Welch $p$ & MWU $p$ & Within-market $p$ & Clustered FE $p$ \\",
@@ -858,7 +858,7 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
             f"{market_label(r.market)} & {int(r.traders)} & {int(r.informed)} & {r.states} & "
             f"{latex_escape(r.prior)} & {int(r.periods)} & {latex_escape(r.information_schedule)} & "
             f"{int(r.francs_per_dollar)}" + " \\\\")
-    write_longtable("appendix_market_structure.tex", r"rrrrlrp{6.2cm}r",
+    write_longtable("appendix_market_structure.tex", r"rrrrlrp{4.9cm}r",
                     r"Market structure, priors, and information schedules",
                     "tab:app-market-structure",
                     r"Market & Traders & Informed & States & Prior & Periods & Information schedule & Francs/\$ \\",
@@ -915,7 +915,7 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
         effect_rows.append(
             f"{latex_escape(r.step)} & {r.side.title()} & {market_label(r.market)} & {int(r.seed)} & "
             f"{int(r.paired_periods)} & {r.before_mean:.3f} & {r.after_mean:.3f} & {r.mean_change:+.3f}" + " \\\\")
-    write_longtable("appendix_ladder_sessions.tex", r"p{3.9cm}lrrrrrr",
+    write_longtable("appendix_ladder_sessions.tex", r"p{3.8cm}lrrrrrr",
                     r"Disclosure effects by market--seed session pair",
                     "tab:app-ladder-sessions",
                     r"Step & Side & Market & Seed & Paired periods & Before & After & Change \\",
