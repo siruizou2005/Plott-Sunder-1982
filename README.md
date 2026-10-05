@@ -2,7 +2,7 @@
 
 Data and code for
 
-> Sirui Zou. "Trading Direction and Price Discovery: Human Evidence and LLM Experiments." Working paper, September 2026.
+> Sirui Zou. "Trading Direction and Price Discovery: Human Evidence and LLM-Agent Experiments." Working paper, September 2026.
 
 The package reproduces every table and figure in the paper, from two inputs:
 
@@ -98,7 +98,7 @@ Model outputs are not deterministic. Re-running a scenario produces a new sessio
 
 ### Raw simulation logs
 
-Each session also wrote a JSONL event log with the complete agent record: every prompt, model response, stated reasoning, belief report, quote, and trade. The 51 logs total 3.3 GB, and several exceed GitHub's 100 MB file limit, so they are not included here.
+Each session also wrote a JSONL event log with the complete agent record: every prompt, model response, stated reasoning, belief report, quote, and trade. The 51 logs total 3.6 GB, and several exceed GitHub's 100 MB file limit, so they are not included here.
 
 - **Online viewer.** Part of this material can be browsed at <https://plott-demo.siruizou.com/>.
 - **Complete logs.** The full raw logs, including all agent reasoning, are available from the author on request: <siruizou2005@gmail.com>.

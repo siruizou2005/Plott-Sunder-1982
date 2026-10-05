@@ -74,6 +74,6 @@ Rendered system prompts received by a Type I trader in market A at each rung of 
 
 ## `llm/raw_log_manifest.csv`
 
-The 51 raw JSONL event logs (3.3 GB), which are not included in this repository. They contain every prompt, model response, stated reasoning, belief report, quote, and trade. Part of this material can be browsed at <https://plott-demo.siruizou.com/>. The complete logs are available from the author on request (<siruizou2005@gmail.com>).
+The 51 raw JSONL event logs (3.6 GB), which are not included in this repository. They contain every prompt, model response, stated reasoning, belief report, quote, and trade. Part of this material can be browsed at <https://plott-demo.siruizou.com/>. The complete logs are available from the author on request (<siruizou2005@gmail.com>).
 
 `file` is the log's path relative to the simulation repository root, followed by its size in `bytes` and its `sha256` hash.

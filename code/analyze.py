@@ -965,7 +965,7 @@ def selection_tables() -> None:
     ledger = pd.DataFrame(rows)
     to_csv(ledger, ANALYSIS / "selection_ledger.csv")
     cols = ["periods", "no_information", "all_informed", "informed_selling", "informed_buying"]
-    lines = [r"% Counts carried from the author's earlier manuscript (Fast When Insiders Sell), Table 1.",
+    lines = [r"% Counts computed from results/human/period_table.csv by code/analyze.py.",
              r"\begin{tabular}{lrrrrr}", r"\toprule",
              r" & & \multicolumn{2}{c}{No insider--outsider split} & \multicolumn{2}{c}{Insider periods} \\",
              r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}",
