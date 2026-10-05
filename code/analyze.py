@@ -287,7 +287,7 @@ def human_analysis() -> dict:
         ax.spines[["top", "right"]].set_visible(False)
     axes[0].set_ylabel("Transaction price minus RE (francs)")
     fig.tight_layout()
-    fig.savefig(FIGURES / "human_paths.pdf", bbox_inches="tight")
+    fig.savefig(FIGURES / "human_paths.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
 
     ctab = pd.crosstab(identity["side"], identity["predictions_differ"])
@@ -379,7 +379,7 @@ def symmetric_analysis(discovery: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     axes[0].set_ylabel("Price discovery, D")
     axes[1].legend(frameon=False, loc="lower right")
     fig.tight_layout()
-    fig.savefig(FIGURES / "symmetric_markets.pdf", bbox_inches="tight")
+    fig.savefig(FIGURES / "symmetric_markets.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
     return out, {k: v for k, v in gaps.groupby(level=0)["sell_minus_buy"].mean().items()}
 
@@ -507,7 +507,7 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
         ax.spines[["top", "right"]].set_visible(False)
     axes[0].set_ylabel("Mean price discovery, D")
     fig.tight_layout()
-    fig.savefig(FIGURES / "disclosure_ladder.pdf", bbox_inches="tight")
+    fig.savefig(FIGURES / "disclosure_ladder.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
 
     # Put the market-level heterogeneity in the main text rather than hiding it in an
@@ -538,7 +538,7 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
     axes[0].set_ylabel("Paired change in mean discovery")
     axes[1].legend(frameon=False, loc="best")
     fig.tight_layout()
-    fig.savefig(FIGURES / "disclosure_market_heterogeneity.pdf", bbox_inches="tight")
+    fig.savefig(FIGURES / "disclosure_market_heterogeneity.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
     return effects, mech
 
@@ -905,7 +905,7 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
             f"{int(r.valid_periods)}/{int(r.insider_periods)} & {r.no_trade_periods} & {latex_escape(model)}" + " \\\\")
     write_longtable("appendix_run_inventory.tex",
                     r"p{2.6cm}rrrp{.8cm}p{1.6cm}p{3.0cm}p{1.0cm}p{1.0cm}p{2.0cm}",
-                    r"LLM run inventory and sample selection", "tab:app-run-list",
+                    r"LLM-agent run inventory and sample selection", "tab:app-run-list",
                     r"Run & Mkt. & Rung & Seed & Turns & Preset & Realized states & Traded & No-trade & Model \\",
                     inventory_rows, r"\tiny")
 
@@ -965,7 +965,8 @@ def selection_tables() -> None:
     ledger = pd.DataFrame(rows)
     to_csv(ledger, ANALYSIS / "selection_ledger.csv")
     cols = ["periods", "no_information", "all_informed", "informed_selling", "informed_buying"]
-    lines = [r"\begin{tabular}{lrrrrr}", r"\toprule",
+    lines = [r"% Counts carried from the author's earlier manuscript (Fast When Insiders Sell), Table 1.",
+             r"\begin{tabular}{lrrrrr}", r"\toprule",
              r" & & \multicolumn{2}{c}{No insider--outsider split} & \multicolumn{2}{c}{Insider periods} \\",
              r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}",
              r"Market & Periods & No information & All informed & Informed selling & Informed buying \\",
