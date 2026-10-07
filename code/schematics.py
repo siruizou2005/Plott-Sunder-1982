@@ -23,6 +23,7 @@ import pandas as pd
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "code" / "human"))
 import ps1982_params as P  # noqa: E402
+from printsize import RC, width  # noqa: E402
 
 ANALYSIS = ROOT / "results" / "analysis"
 TABLES = ROOT / "results" / "tables"
@@ -126,75 +127,78 @@ def _supply_demand(ax, state: str, learned: bool, color: str, ls: str, xmax: flo
 
 
 def market4_demand_figure() -> None:
+    """Figure 1, printed at the full text width."""
     mu = P.VBAR[4]
     xmax = 30
-    fig, axes = plt.subplots(1, 2, figsize=(9.6, 4.3), sharey=True)
     notes = {
-        "Y": [(210, "uninformed type I bid their prior value, 210"),
-              (175, "after learning, type III values it most, at 175")],
-        "X": [(375, "informed type I value it most, at 375,\nwhether or not the uninformed learn")],
+        "Y": (1.0, 432, "PI: uninformed type I bid\ntheir prior value, 210\n"
+                        "RE: after learning, type III\nvalues it most, at 175"),
+        "X": (1.0, 362, "PI and RE: informed\ntype I value it most,\nat 375"),
     }
-    for ax, state, title in ((axes[0], "Y", "State $Y$: a downward period"),
-                             (axes[1], "X", "State $X$: an upward period")):
-        re_ = P.re_price(4, state)
-        ax.axhline(mu, color="black", lw=.8, ls=":")
-        ax.text(xmax + .3, mu, r"$\mu=$" + f"{mu:.0f}", va="center", fontsize=8.5)
-        ax.text(xmax + .3, re_, r"$P_{\mathrm{RE}}=$" + f"{re_:.0f}", va="center",
-                fontsize=8.5, color=RE_COLOR)
-        _supply_demand(ax, state, False, PI_COLOR, "-", xmax)
-        _supply_demand(ax, state, True, RE_COLOR, "--", xmax)
-        for y, text in notes[state]:
-            ax.text(1.0, y + 7, text, fontsize=7.5, va="bottom", ha="left")
-        ax.set_title(title, loc="left", fontsize=10)
-        ax.set_xlim(0, xmax)
-        ax.set_ylim(60, 440)
-        ax.set_xlabel("Certificates", fontsize=9)
-        ax.text(24.3, 70, "total supply,\n24 certificates", fontsize=7, color="#777777", va="bottom")
-        ax.spines[["top", "right"]].set_visible(False)
-        ax.tick_params(labelsize=8)
-    axes[0].set_ylabel("Francs per certificate", fontsize=9)
-    handles = [plt.Line2D([], [], color=PI_COLOR, lw=1.6, ls="-"),
-               plt.Line2D([], [], color=RE_COLOR, lw=1.6, ls="--")]
-    fig.legend(handles, ["Uninformed keep their prior values (PI)", "Uninformed learn the state (RE)"],
-               loc="lower center", ncol=2, frameon=False, fontsize=8.5, bbox_to_anchor=(.5, -.02))
-    fig.tight_layout(rect=(0, .05, 1, 1))
-    fig.savefig(FIGURES / "market4_demand.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(1, 2, figsize=(width(1.0), 3.35), sharey=True, layout="constrained")
+        for ax, state, title in ((axes[0], "Y", "State $Y$: a downward period"),
+                                 (axes[1], "X", "State $X$: an upward period")):
+            re_ = P.re_price(4, state)
+            ax.axhline(mu, color="black", lw=.8, ls=":")
+            _supply_demand(ax, state, False, PI_COLOR, "-", xmax)
+            _supply_demand(ax, state, True, RE_COLOR, "--", xmax)
+            # Labels sit left of the vertical supply line at 24 certificates.
+            ax.text(23.4, mu + 4, r"$\mu=$" + f"{mu:.0f}", ha="right", va="bottom", fontsize=8)
+            ax.text(23.4, re_ + 4, r"$P_{\mathrm{RE}}=$" + f"{re_:.0f}", ha="right", va="bottom",
+                    fontsize=8, color=RE_COLOR)
+            x, y, text = notes[state]
+            ax.text(x, y, text, fontsize=8, va="top", ha="left", linespacing=1.15)
+            ax.text(23.6, 66, "total supply,\n24 certificates", fontsize=8, color="#666666",
+                    ha="right", va="bottom")
+            ax.set_title(title, loc="left")
+            ax.set_xlim(0, xmax)
+            ax.set_ylim(60, 440)
+            ax.set_xlabel("Certificates")
+            ax.spines[["top", "right"]].set_visible(False)
+        axes[0].set_ylabel("Francs per certificate")
+        handles = [plt.Line2D([], [], color=PI_COLOR, lw=1.6, ls="-"),
+                   plt.Line2D([], [], color=RE_COLOR, lw=1.6, ls="--")]
+        fig.legend(handles, ["Uninformed keep their prior values (PI)", "Uninformed learn the state (RE)"],
+                   loc="outside lower center", ncol=2, frameon=False)
+        fig.savefig(FIGURES / "market4_demand.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
 
 
 def position_scale_figure() -> None:
+    """Figure 4, printed at 0.9 of the text width."""
     mu = P.VBAR[4]
-    fig, axes = plt.subplots(2, 1, figsize=(8.2, 3.3))
-    cases = [(axes[0], "X", "Upward period (market 4, state $X$)", 140, 445, UP_COLOR),
-             (axes[1], "Y", "Downward period (market 4, state $Y$)", 140, 445, DOWN_COLOR)]
-    for ax, state, title, lo, hi, color in cases:
-        re_ = P.re_price(4, state)
-        ax.set_xlim(lo, hi)
-        ax.set_ylim(-1.25, 1.35)
-        ax.axis("off")
-        ax.annotate("", xy=(hi, 0), xytext=(lo, 0),
-                    arrowprops=dict(arrowstyle="->", color="black", lw=.9))
-        ax.text(hi, -.42, "price", ha="right", va="top", fontsize=8)
-        left, right = sorted((mu, re_))
-        ax.fill_between([left, right], -.12, .12, color=color, alpha=.18, lw=0)
-        for x, d_label, p_label in ((mu, "$D=0$", r"$\mu=$" + f"{mu:.0f}"),
-                                    (re_, "$D=1$", r"$P_{\mathrm{RE}}=$" + f"{re_:.0f}")):
-            ax.plot([x, x], [-.18, .18], color="black", lw=1.2)
-            ax.text(x, .3, d_label, ha="center", va="bottom", fontsize=9)
-            ax.text(x, -.3, p_label, ha="center", va="top", fontsize=8.5)
-        ax.annotate("", xy=(re_, .62), xytext=(mu, .62),
-                    arrowprops=dict(arrowstyle="->", color=color, lw=1.4))
-        ax.text((mu + re_) / 2, .7, "adjustment", ha="center", va="bottom", fontsize=7.5, color=color)
-        if re_ > mu:
-            ax.text(hi, -.9, "$D>1$: beyond the informed value", ha="right", fontsize=7.5, color="#555555")
-            ax.text(lo, -.9, r"$D<0$: on the far side of $\mu$", ha="left", fontsize=7.5, color="#555555")
-        else:
-            ax.text(lo, -.9, "$D>1$: beyond the informed value", ha="left", fontsize=7.5, color="#555555")
-            ax.text(hi, -.9, r"$D<0$: on the far side of $\mu$", ha="right", fontsize=7.5, color="#555555")
-        ax.text(lo, 1.25, title, ha="left", va="top", fontsize=9)
-    fig.tight_layout()
-    fig.savefig(FIGURES / "position_scale.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(2, 1, figsize=(width(0.9), 2.7), layout="constrained")
+        cases = [(axes[0], "X", "Upward period (market 4, state $X$)", 140, 445, UP_COLOR),
+                 (axes[1], "Y", "Downward period (market 4, state $Y$)", 140, 445, DOWN_COLOR)]
+        for ax, state, title, lo, hi, color in cases:
+            re_ = P.re_price(4, state)
+            ax.set_xlim(lo, hi)
+            ax.set_ylim(-1.3, 1.4)
+            ax.axis("off")
+            ax.annotate("", xy=(hi, 0), xytext=(lo, 0),
+                        arrowprops=dict(arrowstyle="->", color="black", lw=.9))
+            ax.text(hi, -.42, "price", ha="right", va="top", fontsize=8)
+            left, right = sorted((mu, re_))
+            ax.fill_between([left, right], -.12, .12, color=color, alpha=.18, lw=0)
+            for x, d_label, p_label in ((mu, "$D=0$", r"$\mu=$" + f"{mu:.0f}"),
+                                        (re_, "$D=1$", r"$P_{\mathrm{RE}}=$" + f"{re_:.0f}")):
+                ax.plot([x, x], [-.18, .18], color="black", lw=1.2)
+                ax.text(x, .3, d_label, ha="center", va="bottom", fontsize=9)
+                ax.text(x, -.3, p_label, ha="center", va="top", fontsize=8)
+            ax.annotate("", xy=(re_, .64), xytext=(mu, .64),
+                        arrowprops=dict(arrowstyle="->", color=color, lw=1.4))
+            ax.text((mu + re_) / 2, .72, "adjustment", ha="center", va="bottom", fontsize=8, color=color)
+            if re_ > mu:
+                ax.text(hi, -.95, "$D>1$: beyond the informed value", ha="right", fontsize=8, color="#555555")
+                ax.text(lo, -.95, r"$D<0$: on the far side of $\mu$", ha="left", fontsize=8, color="#555555")
+            else:
+                ax.text(lo, -.95, "$D>1$: beyond the informed value", ha="left", fontsize=8, color="#555555")
+                ax.text(hi, -.95, r"$D<0$: on the far side of $\mu$", ha="right", fontsize=8, color="#555555")
+            ax.text(lo, 1.38, title, ha="left", va="top", fontsize=9)
+        fig.savefig(FIGURES / "position_scale.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
 
 
 def run() -> None:

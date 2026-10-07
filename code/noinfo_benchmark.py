@@ -23,6 +23,8 @@ import pandas as pd
 import statsmodels.formula.api as smf
 from scipy import stats
 
+from printsize import RC, width
+
 ROOT = Path(__file__).resolve().parents[1]
 HUMAN = ROOT / "results" / "human"
 ANALYSIS = ROOT / "results" / "analysis"
@@ -260,56 +262,57 @@ def _longtable(filename: str, spec: str, caption: str, label: str, header: str,
 
 
 def figure(pp: pd.DataFrame) -> None:
-    """Five panels: no-information and downward period means against mu and P_RE."""
+    """Five panels: no-information and downward period means against mu and P_RE.
+
+    Printed at the full text width (Figure 3)."""
     span = 100.0
-    fig, axes = plt.subplots(2, 3, figsize=(9.4, 5.6))
-    for ax, market in zip(axes.flat, range(1, 6)):
-        g = pp[pp["market"].eq(market)]
-        noinfo = g[g["group"].eq("no-information") & ~g["excluded"]]
-        down = g[g["group"].eq("downward")]
-        mu = g["vbar"].iloc[0]
-        res = sorted(down["re_price"].unique())
-        values = list(noinfo["p_mean"]) + list(down["p_mean"]) + [mu] + res
-        center = (min(values) + max(values)) / 2
-        ax.set_ylim(center - span / 2, center + span / 2)
-        ax.axhline(mu, color="black", lw=1.0, ls=":")
-        ax.text(1.0, mu, r" $\mu$", transform=ax.get_yaxis_transform(), va="center", fontsize=9)
-        for re_ in res:
-            ax.axhline(re_, color=DOWN_COLOR, lw=1.0, ls="--")
-            label = r" $P_{\mathrm{RE}}$"
-            if len(res) > 1:  # market 1: the clue-conditional value differs by period
-                label += " (period " + ", ".join(str(int(x)) for x in down.loc[down["re_price"].eq(re_), "period"]) + ")"
-            ax.text(1.0, re_, label, transform=ax.get_yaxis_transform(), va="center",
-                    fontsize=8 if len(res) > 1 else 9, color=DOWN_COLOR)
-        ax.scatter(noinfo["period"], noinfo["p_mean"], s=38, facecolors="white",
-                   edgecolors=NOINFO_COLOR, lw=1.3, zorder=3, label="No-information period")
-        ax.scatter(down["period"], down["p_mean"], s=38, marker="s", color=DOWN_COLOR,
-                   zorder=3, label="Downward period")
-        if market == 4:
-            p1 = g[g["excluded"]].iloc[0]
-            top = center + span / 2
-            ax.annotate(f"period 1: {p1.p_mean:.0f} (excluded)", xy=(1, top - 1),
-                        xytext=(2.0, top - 9), fontsize=7.5, color=NOINFO_COLOR,
-                        arrowprops=dict(arrowstyle="->", color=NOINFO_COLOR, lw=.8))
-        n = int(g["period"].max())
-        ax.set_xlim(0.3, n + 0.7)
-        ax.set_xticks(range(1, n + 1, 2 if n > 12 else 1))
-        ax.set_title(f"Market {market}", loc="left", fontsize=10)
-        ax.set_xlabel("Period", fontsize=9)
-        ax.tick_params(labelsize=8)
-        ax.spines[["top", "right"]].set_visible(False)
-    for ax in axes[:, 0]:
-        ax.set_ylabel("Mean price (francs)", fontsize=9)
-    legend_ax = axes.flat[5]
-    legend_ax.axis("off")
-    handles, labels = axes.flat[0].get_legend_handles_labels()
-    handles += [plt.Line2D([], [], color="black", ls=":", lw=1.0),
-                plt.Line2D([], [], color=DOWN_COLOR, ls="--", lw=1.0)]
-    labels += [r"Prior value $\mu$", r"Informed value $P_{\mathrm{RE}}$ (downward state)"]
-    legend_ax.legend(handles, labels, loc="center left", frameon=False, fontsize=9)
-    fig.tight_layout()
-    fig.savefig(FIGURES / "noinfo_downward.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(2, 3, figsize=(width(1.0), 4.4), layout="constrained")
+        for ax, market in zip(axes.flat, range(1, 6)):
+            g = pp[pp["market"].eq(market)]
+            noinfo = g[g["group"].eq("no-information") & ~g["excluded"]]
+            down = g[g["group"].eq("downward")]
+            mu = g["vbar"].iloc[0]
+            res = sorted(down["re_price"].unique())
+            values = list(noinfo["p_mean"]) + list(down["p_mean"]) + [mu] + res
+            center = (min(values) + max(values)) / 2
+            n = int(g["period"].max())
+            ax.set_ylim(center - span / 2, center + span / 2)
+            ax.set_xlim(0.3, n + 0.7)
+            ax.axhline(mu, color="black", lw=1.0, ls=":")
+            ax.text(n + 0.6, mu + 1, r"$\mu$", ha="right", va="bottom", fontsize=8)
+            for re_ in res:
+                ax.axhline(re_, color=DOWN_COLOR, lw=1.0, ls="--")
+                label = r"$P_{\mathrm{RE}}$"
+                if len(res) > 1:  # market 1: the clue-conditional value differs by period
+                    label += " (period " + ", ".join(
+                        str(int(x)) for x in down.loc[down["re_price"].eq(re_), "period"]) + ")"
+                ax.text(n + 0.6, re_ + 1, label, ha="right", va="bottom", fontsize=8, color=DOWN_COLOR)
+            ax.scatter(noinfo["period"], noinfo["p_mean"], s=22, facecolors="white",
+                       edgecolors=NOINFO_COLOR, lw=1.1, zorder=3, label="No-information period")
+            ax.scatter(down["period"], down["p_mean"], s=22, marker="s", color=DOWN_COLOR,
+                       zorder=3, label="Downward period")
+            if market == 4:
+                p1 = g[g["excluded"]].iloc[0]
+                top = center + span / 2
+                ax.annotate(f"period 1: {p1.p_mean:.0f}\n(excluded)", xy=(1, top - 1),
+                            xytext=(2.2, top - 4), fontsize=8, color=NOINFO_COLOR, va="top",
+                            arrowprops=dict(arrowstyle="->", color=NOINFO_COLOR, lw=.8))
+            ax.set_xticks(range(1, n + 1, 2) if n > 11 else range(1, n + 1, 2))
+            ax.set_title(f"Market {market}", loc="left")
+            ax.set_xlabel("Period")
+            ax.spines[["top", "right"]].set_visible(False)
+        for ax in axes[:, 0]:
+            ax.set_ylabel("Mean price (francs)")
+        legend_ax = axes.flat[5]
+        legend_ax.axis("off")
+        handles, labels = axes.flat[0].get_legend_handles_labels()
+        handles += [plt.Line2D([], [], color="black", ls=":", lw=1.0),
+                    plt.Line2D([], [], color=DOWN_COLOR, ls="--", lw=1.0)]
+        labels += [r"Prior value $\mu$", "Informed value $P_{\\mathrm{RE}}$\n(downward state)"]
+        legend_ax.legend(handles, labels, loc="center left", frameon=False)
+        fig.savefig(FIGURES / "noinfo_downward.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
 
 
 def run() -> dict:

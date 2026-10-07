@@ -25,6 +25,7 @@ from scipy import stats
 
 import noinfo_benchmark
 import schematics
+from printsize import RC, width
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -280,28 +281,29 @@ def human_analysis() -> dict:
     h["u"] = np.where(h["n_trades_in_period"] > 1,
                       (h["trade_index"] - 1) / (h["n_trades_in_period"] - 1), 0)
     h["gap"] = h["price"] - h["re_price"]
-    fig, axes = plt.subplots(1, 2, figsize=(10.2, 4.35), sharey=True)
-    for ax, side in zip(axes, ("seller", "buyer")):
-        g = h.query("side == @side")
-        for _, p in g.groupby(["market", "period"]):
-            ax.plot(p["u"], p["gap"], color=colors[side], alpha=.18, lw=.9)
-        bins = pd.cut(g["u"], np.linspace(0, 1, 11), include_lowest=True, labels=False)
-        g = g.assign(bin=bins)
-        by_period = g.groupby(["market", "period", "bin"], observed=True)["gap"].mean().reset_index()
-        agg = by_period.groupby("bin")["gap"].agg(["mean", "std", "count"]).reset_index()
-        x = (agg["bin"] + .5) / 10
-        se = agg["std"] / np.sqrt(agg["count"])
-        ax.plot(x, agg["mean"], color=colors[side], lw=2.8)
-        ax.fill_between(x, agg["mean"] - 1.96*se, agg["mean"] + 1.96*se,
-                        color=colors[side], alpha=.15)
-        ax.axhline(0, color="black", lw=1)
-        ax.set_title(f"{period_type(side)} periods")
-        ax.set_xlabel("Trade order in period, $u$ (0 = first, 1 = last)")
-        ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel(r"Price minus $P_{\mathrm{RE}}$ (francs)")
-    fig.tight_layout()
-    fig.savefig(FIGURES / "human_paths.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    # Printed at 0.94 of the text width (Figure 5).
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(1, 2, figsize=(width(0.94), 2.75), sharey=True, layout="constrained")
+        for ax, side in zip(axes, ("seller", "buyer")):
+            g = h.query("side == @side")
+            for _, p in g.groupby(["market", "period"]):
+                ax.plot(p["u"], p["gap"], color=colors[side], alpha=.18, lw=.7)
+            bins = pd.cut(g["u"], np.linspace(0, 1, 11), include_lowest=True, labels=False)
+            g = g.assign(bin=bins)
+            by_period = g.groupby(["market", "period", "bin"], observed=True)["gap"].mean().reset_index()
+            agg = by_period.groupby("bin")["gap"].agg(["mean", "std", "count"]).reset_index()
+            x = (agg["bin"] + .5) / 10
+            se = agg["std"] / np.sqrt(agg["count"])
+            ax.plot(x, agg["mean"], color=colors[side], lw=2.2)
+            ax.fill_between(x, agg["mean"] - 1.96*se, agg["mean"] + 1.96*se,
+                            color=colors[side], alpha=.15)
+            ax.axhline(0, color="black", lw=.9)
+            ax.set_title(f"{period_type(side)} periods", loc="left")
+            ax.set_xlabel("Trade order in period, $u$")
+            ax.spines[["top", "right"]].set_visible(False)
+        axes[0].set_ylabel(r"Price minus $P_{\mathrm{RE}}$ (francs)")
+        fig.savefig(FIGURES / "human_paths.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
 
     ctab = pd.crosstab(identity["side"], identity["predictions_differ"])
     return {
@@ -396,31 +398,33 @@ def symmetric_analysis(discovery: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
                  "Symmetric markets A and B", "")
     )
     tx = tx[tx["sample"].ne("")].copy()
-    fig, axes = plt.subplots(1, 2, figsize=(10.0, 4.35), sharex=True, sharey=True)
-    colors = {"buyer": UP_COLOR, "seller": DOWN_COLOR}
-    for ax, name in zip(axes, ("Original market 4", "Symmetric markets A and B")):
-        panel = tx.query("sample == @name")
-        for side in ("buyer", "seller"):
-            g = panel.query("side == @side").copy()
-            bins = pd.cut(g["u"], np.linspace(0, 1, 11), include_lowest=True, labels=False)
-            g["bin"] = bins
-            agg = session_equal_path(g)
-            x = (agg["bin"].to_numpy() + .5) / 10
-            ax.plot(x, agg["mean"], color=colors[side], lw=2.5,
-                    label=f"{period_type(side)} periods")
-            ax.fill_between(x, agg["low"], agg["high"],
-                            color=colors[side], alpha=.14)
-        ax.axhline(1, color="black", lw=1, ls="--")
-        ax.set_title({"Original market 4": "Market 4",
-                      "Symmetric markets A and B": "Symmetric markets A and B"}[name])
-        ax.set_xlabel("Trade order in period, $u$ (0 = first, 1 = last)")
-        ax.set_ylim(-.45, 1.65)
-        ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Price position, $D$")
-    axes[1].legend(frameon=False, loc="lower right")
-    fig.tight_layout()
-    fig.savefig(FIGURES / "symmetric_markets.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    # Printed at 0.78 of the text width (Figure 6).
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(1, 2, figsize=(width(0.78), 2.65), sharex=True, sharey=True,
+                                 layout="constrained")
+        colors = {"buyer": UP_COLOR, "seller": DOWN_COLOR}
+        for ax, name in zip(axes, ("Original market 4", "Symmetric markets A and B")):
+            panel = tx.query("sample == @name")
+            for side in ("buyer", "seller"):
+                g = panel.query("side == @side").copy()
+                bins = pd.cut(g["u"], np.linspace(0, 1, 11), include_lowest=True, labels=False)
+                g["bin"] = bins
+                agg = session_equal_path(g)
+                x = (agg["bin"].to_numpy() + .5) / 10
+                ax.plot(x, agg["mean"], color=colors[side], lw=2.0,
+                        label=f"{period_type(side)} periods")
+                ax.fill_between(x, agg["low"], agg["high"],
+                                color=colors[side], alpha=.14)
+            ax.axhline(1, color="black", lw=.9, ls="--")
+            ax.set_title({"Original market 4": "Market 4",
+                          "Symmetric markets A and B": "Symmetric markets A and B"}[name], loc="left")
+            ax.set_xlabel("Trade order in period, $u$")
+            ax.set_ylim(-.45, 1.65)
+            ax.spines[["top", "right"]].set_visible(False)
+        axes[0].set_ylabel("Price position, $D$")
+        axes[1].legend(frameon=False, loc="lower right")
+        fig.savefig(FIGURES / "symmetric_markets.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
     return out, {k: v for k, v in gaps.groupby(level=0)["sell_minus_buy"].mean().items()}
 
 
@@ -529,26 +533,28 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
     mech = mech.sort_values(["rung_order", "side"]).drop(columns="rung_order")
     to_csv(mech, ANALYSIS / "ladder_mechanisms_seed42.csv")
 
-    fig, axes = plt.subplots(1, 2, figsize=(9.4, 4.25), sharey=True)
-    for ax, side in zip(axes, ("buyer", "seller")):
-        g = (lad.query("seed == 42 and side == @side")
-                .groupby(["market", "rung"])["discovery"].mean().unstack())
-        g = g.reindex(columns=order)
-        for market, row in g.iterrows():
-            ax.plot(range(len(order)), row.to_numpy(), color="#999999", alpha=.8,
-                    marker="o", ms=4, lw=1, label=f"Market {market_label(market)}" if side == "buyer" else None)
-        ax.plot(range(len(order)), g.mean(axis=0).to_numpy(), marker="o", ms=6,
-                color={"buyer": UP_COLOR, "seller": DOWN_COLOR}[side], lw=2.5,
-                label="Two-session mean" if side == "buyer" else None)
-        ax.axhline(1, color="black", lw=1, ls="--")
-        ax.set_xticks(range(len(order)), order)
-        ax.set_xlabel("Disclosure step")
-        ax.set_title(f"{period_type(side)} periods")
-        ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Mean price position, $D$")
-    fig.tight_layout()
-    fig.savefig(FIGURES / "disclosure_ladder.pdf", bbox_inches="tight", metadata={"CreationDate": None})
-    plt.close(fig)
+    # Printed at 0.88 of the text width (Figure 7).
+    with plt.rc_context(RC):
+        fig, axes = plt.subplots(1, 2, figsize=(width(0.88), 2.75), sharey=True, layout="constrained")
+        for ax, side in zip(axes, ("buyer", "seller")):
+            g = (lad.query("seed == 42 and side == @side")
+                    .groupby(["market", "rung"])["discovery"].mean().unstack())
+            g = g.reindex(columns=order)
+            for market, row in g.iterrows():
+                ax.plot(range(len(order)), row.to_numpy(), color="#999999", alpha=.8,
+                        marker="o", ms=3, lw=.9,
+                        label=f"Market {market_label(market)}" if side == "buyer" else None)
+            ax.plot(range(len(order)), g.mean(axis=0).to_numpy(), marker="o", ms=4.5,
+                    color={"buyer": UP_COLOR, "seller": DOWN_COLOR}[side], lw=2.0,
+                    label="Two-session mean" if side == "buyer" else None)
+            ax.axhline(1, color="black", lw=.9, ls="--")
+            ax.set_xticks(range(len(order)), order)
+            ax.set_xlabel("Disclosure step")
+            ax.set_title(f"{period_type(side)} periods", loc="left")
+            ax.spines[["top", "right"]].set_visible(False)
+        axes[0].set_ylabel("Mean price position, $D$")
+        fig.savefig(FIGURES / "disclosure_ladder.pdf", metadata={"CreationDate": None})
+        plt.close(fig)
 
     # Put the market-level heterogeneity in the main text rather than hiding it in an
     # average. Each marker is one market-seed session-pair effect.
