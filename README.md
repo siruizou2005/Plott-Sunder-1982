@@ -1,8 +1,8 @@
-# Replication Package: Trading Direction and Price Discovery
+# Replication Package: Do Prices Reveal What Insiders Know?
 
 Data and code for
 
-> Sirui Zou. "Trading Direction and Price Discovery: Human Evidence and LLM-Agent Experiments." Working paper, September 2026.
+> Sirui Zou. "Do Prices Reveal What Insiders Know? A Reexamination of Plott and Sunder (1982)." Working paper, October 2026.
 
 The package reproduces every table and figure in the paper, from two inputs:
 
@@ -23,7 +23,7 @@ make all
 | Stage | Command | Reads | Writes |
 |---|---|---|---|
 | 1. Human data | `python3 code/human/run_all.py` | `data/human/plott_sunder_1982_prices.csv` | `results/human/*.csv`, `results/figures/selection_identity.png` |
-| 2. Analysis | `python3 code/analyze.py` | `data/`, `results/human/` | `results/analysis/*.csv`, `results/tables/*.tex`, `results/figures/*` |
+| 2. Analysis | `python3 code/analyze.py` (calls `code/schematics.py` and `code/noinfo_benchmark.py`) | `data/`, `results/human/` | `results/analysis/*.csv`, `results/tables/*.tex`, `results/figures/*` |
 
 An optional stage rebuilds the compact LLM transaction file from the raw simulation logs (see [Raw simulation logs](#raw-simulation-logs)):
 
@@ -43,11 +43,13 @@ The code was run with Python 3.13 and the package versions pinned in `requiremen
 │   └── llm/
 │       ├── metrics/<group>/<run_id>/       per-session metrics.json and meta.json (51 sessions)
 │       ├── llm_transactions.csv            6,808 public trades in the insider periods used
-│       ├── prompts/                        rendered system prompts for the disclosure ladder
+│       ├── prompts/                        rendered system prompts for the disclosure steps
 │       └── raw_log_manifest.csv            size and SHA-256 of the 51 raw JSONL logs (not shipped)
 ├── code/
-│   ├── human/                              stage 1: human period data, Table 1 ledger, Figure 1
+│   ├── human/                              stage 1: human period data, period classification, Figure 2
 │   ├── analyze.py                          stage 2: every other table and figure
+│   ├── schematics.py                       stage 2: design exhibits (Tables 1-2, Figures 1 and 4)
+│   ├── noinfo_benchmark.py                 stage 2: no-information benchmark (Section 4, Appendix C)
 │   └── extract_llm_transactions.py         optional: raw JSONL logs -> llm_transactions.csv
 ├── results/                                generated outputs, committed for inspection
 │   ├── human/                              period-level human data and supplementary checks
@@ -70,7 +72,7 @@ The code was run with Python 3.13 and the package versions pinned in `requiremen
 
 Plott and Sunder (1982) publish period-average prices and price plots, but not individual transactions. The working-paper version, Caltech Social Science Working Paper 331 (Plott and Sunder, 1980; revised August 1980), prints the full record of bids, offers, and trades in its Appendix B, "Bids, Offers, Prices" (typescript pp. 81–97). `data/human/plott_sunder_1982_prices.csv` transcribes that appendix by hand, row by row; no text in it comes from automated character recognition. A row is a transaction only when the appendix lists a buyer, a seller, and a numeric price. Unaccepted bids and offers are not included.
 
-Every period is checked against the published paper's own arithmetic: the mean of the transcribed prices must reproduce the average price printed under the corresponding panel. The check passes, within one franc, in 60 of the 61 periods. The exception is market 1, period 2, where the 14 listed trades average 263.93 francs against a printed 269. That period is a no-information period, outside every comparison in the paper. `results/human/validation.csv` and `results/human/rounding_check.csv` report the check period by period.
+Every period is checked against the published paper's own arithmetic: the mean of the transcribed prices must reproduce the average price printed under the corresponding panel. The check passes, within one franc, in 60 of the 61 periods. The exception is market 1, period 2, where the 14 listed trades (rechecked against the page image) average 263.93 francs against a printed 269. That period is a no-information period; it enters only market 1's no-information price in Section 4 of the paper, which changes by about one franc if the printed 269 is used instead. `results/human/validation.csv` and `results/human/rounding_check.csv` report the check period by period.
 
 The appendix also records buyer and seller identifiers. They were transcribed but are not released, because the published paper offers nothing to check them against.
 
@@ -85,11 +87,11 @@ The 51 sessions comprise:
 | Group | Sessions | Role in the paper |
 |---|---:|---|
 | `m1`–`m5` | 26 | Original markets 1–5: two sessions on the published state sequence and three prior redraws per market, plus one market-3 session with a second model vendor (Gemini 3.5 Flash, `m3_gem_paper`). Market 4 is the reference design. |
-| `control` | 7 | Rung 0 (baseline) of constructed markets A (`m7_*`, seeds 42–45) and B (`m8_*`, seeds 42–44). Seeds 42–44 form the symmetric-market sample. |
-| `disclosed` | 2 | Rung 1: dividend schedules and informed counts disclosed (seed 42). |
-| `ladder1b` | 2 | Rung 1b: profit objective, clue certainty, and persistent memo (seed 42). |
-| `ladder2` | 4 | Rung 2: current-period information-status announcement (A seeds 42, 45; B seeds 42, 44). |
-| `ladder3` | 4 | Rung 3: identity-fixedness disclosure (same seeds as rung 2). |
+| `control` | 7 | Step 0 (baseline) of the symmetric markets A (`m7_*`, seeds 42–45) and B (`m8_*`, seeds 42–44). Seeds 42–44 form the symmetric-market sample. |
+| `disclosed` | 2 | Step 1: dividend schedules and informed counts disclosed (seed 42). |
+| `ladder1b` | 2 | Step 1b: profit objective, clue certainty, and persistent memo (seed 42). |
+| `ladder2` | 4 | Step 2: current-period information-status announcement (A seeds 42, 45; B seeds 42, 44). |
+| `ladder3` | 4 | Step 3: disclosure that the same traders always receive the clues (same seeds as step 2). |
 | `rounds` | 6 | Market 4 with four, five, and six turns per trader, on the published and prior-redraw sequences. |
 
 As in the paper's run inventory, run IDs use the prefix `m7` for market A and `m8` for market B. All outputs refer to the markets as A and B. Unless a table says otherwise, sessions use DeepSeek-V4-Flash at temperature 0.7 with reasoning enabled. `results/analysis/llm_run_inventory.csv` lists every session with its model, seed, realized states, and no-trade periods.

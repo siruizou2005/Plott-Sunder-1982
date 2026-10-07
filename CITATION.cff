@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use these data or code, please cite the paper."
-title: "Replication package for: Trading Direction and Price Discovery: Human Evidence and LLM-Agent Experiments"
+title: "Replication package for: Do Prices Reveal What Insiders Know? A Reexamination of Plott and Sunder (1982)"
 type: dataset
 authors:
   - family-names: Zou
@@ -10,16 +10,16 @@ license:
   - BSD-3-Clause
   - CC-BY-4.0
 keywords:
-  - information aggregation
   - insider trading
+  - rational expectations
   - experimental asset markets
   - large language models
-  - market design
+  - Plott and Sunder (1982)
 preferred-citation:
   type: unpublished
-  title: "Trading Direction and Price Discovery: Human Evidence and LLM-Agent Experiments"
+  title: "Do Prices Reveal What Insiders Know? A Reexamination of Plott and Sunder (1982)"
   authors:
     - family-names: Zou
       given-names: Sirui
   year: 2026
-  month: 9
+  month: 10

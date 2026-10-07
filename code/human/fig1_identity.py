@@ -1,7 +1,7 @@
-"""Figure 1.  The two models predict different prices only when the informed sell,
-so every period the original's price test discards is a period in which they buy.
+"""The RE and PI price predictions differ only in downward periods, so every period
+the original price test cannot use is an upward period.
 
-Paper Figure 1 (figures/selection_identity.png).  Run by run_all.py.
+Paper Section 3.2 (figures/selection_identity.png).  Run by run_all.py.
 """
 import sys
 from pathlib import Path
@@ -46,12 +46,12 @@ for side, col, xx in [("seller", SELL, 0), ("buyer", BUY, 1)]:
     ax.scatter(np.full(len(g), xx) + j, g["gap_pi"], s=24, facecolors="none", edgecolors=col, lw=1.0, zorder=2)
 ax.axhline(0, color=META_GREY, lw=0.9, ls="--")
 ax.set_xticks([0, 1])
-ax.set_xticklabels(["informed\nselling", "informed\nbuying"])
-ax.set_ylabel("Predicted price minus $\\bar v$ (francs)")
-ax.set_title("The two models differ only\nwhen the informed sell")
+ax.set_xticklabels(["downward\nperiods", "upward\nperiods"])
+ax.set_ylabel("Predicted price minus $\\mu$ (francs)")
+ax.set_title("The two predictions differ only\nin downward periods")
 ax.set_ylim(-88, 232)
 ax.set_xlim(-0.5, 1.6)
-ax.text(1.02, 1.0, "$\\bar v$", fontsize=7.5, color=META_GREY, va="center", transform=ax.get_yaxis_transform())
+ax.text(1.02, 1.0, "$\\mu$", fontsize=7.5, color=META_GREY, va="center", transform=ax.get_yaxis_transform())
 ax.scatter([-0.30], [205], s=24, color=META_GREY, lw=0)
 ax.text(-0.24, 205, "RE", fontsize=6.5, color=META_GREY, va="center")
 ax.scatter([-0.30], [178], s=24, facecolors="none", edgecolors=META_GREY, lw=1.0)
@@ -61,9 +61,9 @@ ax.text(0.98, 46, "RE $=$ PI:\nno test", fontsize=6.5, color=BUY, linespacing=1.
 fig1.tight_layout()
 
 for t in list(axA.texts):
-    if t.get_text() == "$\\bar v$":
+    if t.get_text() == "$\\mu$":
         t.remove()
-axA.text(1.48, 6, "$\\bar v$", fontsize=8, color=META_GREY, va="bottom", ha="right")
+axA.text(1.48, 6, "$\\mu$", fontsize=8, color=META_GREY, va="bottom", ha="right")
 
 (REPO / "results" / "figures").mkdir(parents=True, exist_ok=True)
 fig1.savefig(REPO / "results" / "figures" / "selection_identity.png", dpi=300)

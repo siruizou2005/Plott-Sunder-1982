@@ -61,16 +61,16 @@ The stamp links each session to its raw log (`<stamp>.jsonl`; see `raw_log_manif
 
 ## `llm/prompts/`
 
-Rendered system prompts received by a Type I trader in market A at each rung of the disclosure ladder. Other trader types and market B differ only in the type name and dividend lines.
+Rendered system prompts received by a Type I trader in market A at each step of the disclosure sequence (Section 6.4 of the paper). File names keep the engine's word "rung" for a step. Other trader types and market B differ only in the type name and dividend lines.
 
-| File | Rung |
+| File | Step |
 |---|---|
 | `marketA_typeI_rung0_baseline.txt` | 0: baseline instructions. |
 | `marketA_typeI_rung1_structure.txt` | 1: all dividend schedules and the number of informed traders disclosed. |
 | `marketA_typeI_rung1b_implementation.txt` | 1b: adds the profit objective, clue-certainty emphasis, and persistent memo. |
 | `marketA_typeI_rung2_info_status.txt` | 2: adds the current-period information-status announcement. |
 | `marketA_typeI_rung3_fixed.txt` | 3: discloses that informed identities are fixed across periods. |
-| `rung2_period_announcements.txt` | The two period lines shown at rungs 2 and 3. |
+| `rung2_period_announcements.txt` | The two period lines shown at steps 2 and 3. |
 
 ## `llm/raw_log_manifest.csv`
 

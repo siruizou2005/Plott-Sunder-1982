@@ -23,6 +23,9 @@ import numpy as np
 import pandas as pd
 from scipy import stats
 
+import noinfo_benchmark
+import schematics
+
 
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
@@ -55,6 +58,16 @@ def to_csv(df: pd.DataFrame, path: Path) -> None:
 
 
 RNG = np.random.default_rng(20260907)
+
+# The paper calls a period by its direction of adjustment: downward when the informed
+# value P_RE lies below the prior value mu (every insider would sell at mu), upward
+# when it lies above.  Engine records and CSVs keep the side names seller and buyer.
+PERIOD_TYPE = {"seller": "Downward", "buyer": "Upward"}
+UP_COLOR, DOWN_COLOR = "#4C72B0", "#C44E52"
+
+
+def period_type(side: str) -> str:
+    return PERIOD_TYPE[side]
 
 
 def latex_escape(value: object) -> str:
@@ -260,9 +273,9 @@ def human_analysis() -> dict:
         ))
     to_csv(pd.DataFrame(dist).sort_values("side"), ANALYSIS / "human_distribution.csv")
 
-    colors = {"seller": "#C44E52", "buyer": "#4C72B0"}
+    colors = {"seller": DOWN_COLOR, "buyer": UP_COLOR}
 
-    # Figure 2: within-period human paths in francs relative to RE.
+    # Within-period human paths in francs relative to RE.
     h = trades.query("market in [3, 4, 5] and info == 'insider'").copy()
     h["u"] = np.where(h["n_trades_in_period"] > 1,
                       (h["trade_index"] - 1) / (h["n_trades_in_period"] - 1), 0)
@@ -282,10 +295,10 @@ def human_analysis() -> dict:
         ax.fill_between(x, agg["mean"] - 1.96*se, agg["mean"] + 1.96*se,
                         color=colors[side], alpha=.15)
         ax.axhline(0, color="black", lw=1)
-        ax.set_title(f"Informed {side}s")
-        ax.set_xlabel("Position in period (0 = first, 1 = last)")
+        ax.set_title(f"{period_type(side)} periods")
+        ax.set_xlabel("Trade order in period, $u$ (0 = first, 1 = last)")
         ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Transaction price minus RE (francs)")
+    axes[0].set_ylabel(r"Price minus $P_{\mathrm{RE}}$ (francs)")
     fig.tight_layout()
     fig.savefig(FIGURES / "human_paths.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
@@ -301,17 +314,43 @@ def human_analysis() -> dict:
 
 
 def design_table() -> pd.DataFrame:
-    rows = [
-        (3, "+180", "-45", "+2", "-6", 0, 2),
-        (4, "+165", "-35", "+2", "-6", 0, 2),
-        (5, "+32.5 or +107.5", "-32.5", "-2", "-6", 0, 4),
-        ("A", "+100", "-100", "+6", "-6", 0, 0),
-        ("B", "+100", "-100", "+6", "-6", 0, 0),
-    ]
-    out = pd.DataFrame(rows, columns=[
-        "market", "buy_distance", "sell_distance", "buy_net_informed_demand",
-        "sell_net_informed_demand", "buy_free_riders", "sell_free_riders"
-    ])
+    """The three conditions that vary with the direction of adjustment (Section 3.3).
+
+    Computed from the dividend schedules and priors in market_specs():
+      distance       P_RE - mu, the distance prices must travel;
+      net insiders   insiders who would buy at mu minus insiders who would sell at mu
+                     (two insiders per type);
+      uninformed     uninformed traders whose prior value already lets them trade at
+                     P_RE in the direction of adjustment (prior value below P_RE in a
+                     downward state); none can in an upward state, since P_RE > mu.
+    """
+    specs = market_specs()
+    rows = []
+    for market in (3, 4, 5, 7, 8):
+        spec = specs[market]
+        prior_ev = {t: sum(p * d for p, d in zip(spec["prior"], vals))
+                    for t, vals in spec["div"].items()}
+        mu = max(prior_ev.values())
+        per_type = spec["insiders"] // len(spec["div"])
+        uninformed_per_type = spec["n"] // len(spec["div"]) - per_type
+        cells = {"buyer": [], "seller": []}
+        for i, state in enumerate(spec["states"]):
+            values = {t: vals[i] for t, vals in spec["div"].items()}
+            re = max(values.values())
+            side = "buyer" if re > mu else "seller"
+            buy = sum(per_type for v in values.values() if v > mu)
+            sell = sum(per_type for v in values.values() if v < mu)
+            helpers = (sum(uninformed_per_type for v in prior_ev.values() if v < re)
+                       if side == "seller" else 0)
+            cells[side].append((re - mu, buy - sell, helpers))
+        row = dict(market=market)
+        for side, label in (("buyer", "up"), ("seller", "down")):
+            vals = sorted(set(cells[side]), key=lambda c: c[0])
+            row[f"{label}_distance"] = " or ".join(f"{c[0]:+g}" for c in vals)
+            row[f"{label}_net_insiders"] = " or ".join(sorted({f"{c[1]:+d}" for c in vals}))
+            row[f"{label}_uninformed_at_target"] = " or ".join(sorted({str(c[2]) for c in vals}))
+        rows.append(row)
+    out = pd.DataFrame(rows)
     to_csv(out, ANALYSIS / "design_asymmetries.csv")
     return out
 
@@ -358,7 +397,7 @@ def symmetric_analysis(discovery: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
     )
     tx = tx[tx["sample"].ne("")].copy()
     fig, axes = plt.subplots(1, 2, figsize=(10.0, 4.35), sharex=True, sharey=True)
-    colors = {"buyer": "#4C72B0", "seller": "#C44E52"}
+    colors = {"buyer": UP_COLOR, "seller": DOWN_COLOR}
     for ax, name in zip(axes, ("Original market 4", "Symmetric markets A and B")):
         panel = tx.query("sample == @name")
         for side in ("buyer", "seller"):
@@ -368,15 +407,16 @@ def symmetric_analysis(discovery: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
             agg = session_equal_path(g)
             x = (agg["bin"].to_numpy() + .5) / 10
             ax.plot(x, agg["mean"], color=colors[side], lw=2.5,
-                    label=f"Informed {side}s")
+                    label=f"{period_type(side)} periods")
             ax.fill_between(x, agg["low"], agg["high"],
                             color=colors[side], alpha=.14)
         ax.axhline(1, color="black", lw=1, ls="--")
-        ax.set_title(name)
-        ax.set_xlabel("Position in period (0 = first, 1 = last)")
+        ax.set_title({"Original market 4": "Market 4",
+                      "Symmetric markets A and B": "Symmetric markets A and B"}[name])
+        ax.set_xlabel("Trade order in period, $u$ (0 = first, 1 = last)")
         ax.set_ylim(-.45, 1.65)
         ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Price discovery, D")
+    axes[0].set_ylabel("Price position, $D$")
     axes[1].legend(frameon=False, loc="lower right")
     fig.tight_layout()
     fig.savefig(FIGURES / "symmetric_markets.pdf", bbox_inches="tight", metadata={"CreationDate": None})
@@ -455,11 +495,11 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
         return rows
 
     effects = pd.DataFrame(
-        paired("0", "1", "Structure: 0 to 1", True)
-        + paired("1", "1b", "Implementation: 1 to 1b", True)
-        + paired("1b", "2", "Info status: 1b to 2", True)
-        + paired("2", "3", "Fixed identities: 2 to 3")
-        + paired("0", "3", "Baseline to rung 3: 0 to 3")
+        paired("0", "1", "0 to 1: dividends and clue count", True)
+        + paired("1", "1b", "1 to 1b: implementation changes", True)
+        + paired("1b", "2", "1b to 2: period announcement", True)
+        + paired("2", "3", "2 to 3: same insiders")
+        + paired("0", "3", "0 to 3: all steps")
     )
     to_csv(effects, ANALYSIS / "ladder_paired_effects.csv")
     session_effects = pd.DataFrame(session_details)
@@ -498,23 +538,23 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
             ax.plot(range(len(order)), row.to_numpy(), color="#999999", alpha=.8,
                     marker="o", ms=4, lw=1, label=f"Market {market_label(market)}" if side == "buyer" else None)
         ax.plot(range(len(order)), g.mean(axis=0).to_numpy(), marker="o", ms=6,
-                color={"buyer":"#4C72B0","seller":"#C44E52"}[side], lw=2.5,
+                color={"buyer": UP_COLOR, "seller": DOWN_COLOR}[side], lw=2.5,
                 label="Two-session mean" if side == "buyer" else None)
         ax.axhline(1, color="black", lw=1, ls="--")
         ax.set_xticks(range(len(order)), order)
-        ax.set_xlabel("Disclosure rung")
-        ax.set_title(f"Informed {side}s")
+        ax.set_xlabel("Disclosure step")
+        ax.set_title(f"{period_type(side)} periods")
         ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Mean price discovery, D")
+    axes[0].set_ylabel("Mean price position, $D$")
     fig.tight_layout()
     fig.savefig(FIGURES / "disclosure_ladder.pdf", bbox_inches="tight", metadata={"CreationDate": None})
     plt.close(fig)
 
     # Put the market-level heterogeneity in the main text rather than hiding it in an
     # average. Each marker is one market-seed session-pair effect.
-    focus_steps = ["Info status: 1b to 2", "Fixed identities: 2 to 3"]
+    focus_steps = ["1b to 2: period announcement", "2 to 3: same insiders"]
     fig, axes = plt.subplots(1, 2, figsize=(9.5, 4.15), sharey=True)
-    colors = {"buyer": "#4C72B0", "seller": "#C44E52"}
+    colors = {"buyer": UP_COLOR, "seller": DOWN_COLOR}
     markers = {"buyer": "o", "seller": "s"}
     for ax, step in zip(axes, focus_steps):
         panel = session_effects.query("step == @step")
@@ -522,7 +562,7 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
             g = panel.query("side == @side")
             ax.scatter(g["market"] + offset, g["mean_change"], s=50,
                        marker=markers[side], color=colors[side],
-                       label=f"Informed {side}s", zorder=3)
+                       label=f"{period_type(side)} periods", zorder=3)
             for _, row in g.iterrows():
                 if len(g) > 2:
                     ax.annotate(str(int(row.seed)),
@@ -532,10 +572,10 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
         ax.axhline(0, color="black", lw=1)
         ax.set_xticks([7, 8], [f"Market {market_label(m)}" for m in (7, 8)])
         ax.set_xlim(6.6, 8.4)
-        ax.set_title("Information-status announcement" if "Info status" in step
-                     else "Fixed informed identities")
+        ax.set_title("Step 1b to 2: period announcement" if "announcement" in step
+                     else "Step 2 to 3: same insiders")
         ax.spines[["top", "right"]].set_visible(False)
-    axes[0].set_ylabel("Paired change in mean discovery")
+    axes[0].set_ylabel("Paired change in mean price position")
     axes[1].legend(frameon=False, loc="best")
     fig.tight_layout()
     fig.savefig(FIGURES / "disclosure_market_heterogeneity.pdf", bbox_inches="tight", metadata={"CreationDate": None})
@@ -734,57 +774,84 @@ def appendix_analysis(discovery: pd.DataFrame) -> dict[str, pd.DataFrame]:
 def latex_tables(human: dict, design: pd.DataFrame, symmetric: pd.DataFrame,
                  effects: pd.DataFrame, mechanisms: pd.DataFrame) -> None:
     hs = pd.DataFrame(human["summary"]).T.loc[["seller", "buyer"]]
+    dist = pd.read_csv(ANALYSIS / "human_distribution.csv").set_index("side")
+
+    def one(x: float) -> str:
+        text = f"{x:.1f}"
+        text = "0.0" if text == "-0.0" else text
+        return text.replace("-", "$-$")
 
     def francs(mean: float, median: float) -> str:
         """Signed mean with the signed median in parentheses."""
-        def one(x: float) -> str:
-            text = f"{x:.1f}"
-            return "0.0" if text == "-0.0" else text
-        return f"${one(mean)}$ (${one(median)}$)"
+        return f"{one(mean)} ({one(median)})"
 
+    # Section 5: human price positions (main text, two decimals for D).
     lines = [r"\begin{tabular}{lrrrrrrrr}", r"\toprule",
-             r"Side & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ & $p_1-P_{\RE}$ & $p_T-P_{\RE}$ & $\Delta p$ \\",
+             r" & & & & & & \multicolumn{2}{c}{Opening $p_1-P_{\RE}$} & \\",
+             r"\cmidrule(lr){7-8}",
+             r"Period type & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ & Signed & Absolute & $p_T-p_1$ \\",
              r"\midrule"]
     for side, r in hs.iterrows():
-        lines.append(f"{side.title()} & {int(r.periods)} & {int(r.trades)} & {r.first_D_mean:.3f} & {r.mean_D:.3f} & {r.last_D_mean:.3f} & "
-                     f"{francs(r.first_dev_mean, r.first_dev_median)} & {francs(r.last_dev_mean, r.last_dev_median)} & "
+        lines.append(f"{period_type(side)} & {int(r.periods)} & {int(r.trades)} & {r.first_D_mean:.2f} & "
+                     f"{r.mean_D:.2f} & {r.last_D_mean:.2f} & {francs(r.first_dev_mean, r.first_dev_median)} & "
+                     f"{francs(dist.loc[side, 'open_abs_dev_mean'], dist.loc[side, 'open_abs_dev_median'])} & "
                      f"{francs(r.francs_change_mean, r.francs_change_median)}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
-    (TABLES / "human_adjustment.tex").write_text("\n".join(lines)+"\n")
+    (TABLES / "human_adjustment.tex").write_text("\n".join(lines) + "\n")
 
-    lines = [r"\begin{tabular}{crrrrrr}", r"\toprule",
-             r"Market & Buy distance & Sell distance & Buy net informed & Sell net informed & Buy free riders & Sell free riders \\",
-             r"\midrule"]
-    for _, r in design.iterrows():
-        lines.append(f"{r.market} & {r.buy_distance} & {r.sell_distance} & {r.buy_net_informed_demand} & {r.sell_net_informed_demand} & {r.buy_free_riders} & {r.sell_free_riders}" + r" \\")
-    lines += [r"\bottomrule", r"\end{tabular}"]
-    (TABLES / "design_asymmetries.tex").write_text("\n".join(lines)+"\n")
+    # Section 3.3 (markets 3-5) and Section 6.3 (with A and B).
+    def design_lines(rows: pd.DataFrame) -> list[str]:
+        out = [r"\begin{tabular}{lcccccc}", r"\toprule",
+               r" & \multicolumn{2}{c}{Distance $P_{\RE}-\mu$} & \multicolumn{2}{c}{Insiders buying minus selling at $\mu$} & \multicolumn{2}{c}{Uninformed trading at $P_{\RE}$ at prior value} \\",
+               r"\cmidrule(lr){2-3}\cmidrule(lr){4-5}\cmidrule(lr){6-7}",
+               r"Market & Upward & Downward & Upward & Downward & Upward & Downward \\",
+               r"\midrule"]
+        for _, r in rows.iterrows():
+            cells = [r.up_distance, r.down_distance, r.up_net_insiders, r.down_net_insiders,
+                     r.up_uninformed_at_target, r.down_uninformed_at_target]
+            cells = [str(c).replace("-", "$-$") for c in cells]
+            out.append(f"{market_label(r.market)} & " + " & ".join(cells) + r" \\")
+        return out + [r"\bottomrule", r"\end{tabular}"]
 
+    (TABLES / "design_asymmetries.tex").write_text(
+        "\n".join(design_lines(design[design["market"].isin([3, 4, 5])])) + "\n")
+    (TABLES / "design_symmetric.tex").write_text("\n".join(design_lines(design)) + "\n")
+
+    # Section 6: LLM-agent markets with original and symmetric parameters.
     lines = [r"\begin{tabular}{llrrrrrr}", r"\toprule",
-             r"Sample & Side & Sessions & Periods & $D_1$ & $\bar D$ & $D_T$ & $\Delta D$ \\", r"\midrule"]
+             r"Sample & Period type & Sessions & Periods & $D_1$ & $\bar D$ & $D_T$ & $D_T-D_1$ \\", r"\midrule"]
     order = {"Original market 4": 0, "Symmetric markets A and B": 1,
              "Original markets 1-5 (background)": 2}
     shown = symmetric.assign(sample_order=symmetric["sample"].map(order)).sort_values(["sample_order", "side"])
+    previous = None
     for _, r in shown.iterrows():
-        label = {"Original market 4": "Original market 4",
-                 "Symmetric markets A and B": "Symmetric A/B",
-                 "Original markets 1-5 (background)": "Original 1--5 (background)"}[r["sample"]]
-        lines.append(f"{label} & {r.side.title()} & {int(r.sessions)} & {int(r.periods)} & {r.first_discovery:.3f} & {r.mean_discovery:.3f} & {r.last_discovery:.3f} & {r.change_discovery:+.3f}" + r" \\")
+        label = {"Original market 4": "Market 4",
+                 "Symmetric markets A and B": "Markets A and B",
+                 "Original markets 1-5 (background)": "Markets 1--5"}[r["sample"]]
+        if previous is not None and r["sample"] != previous:
+            lines.append(r"\addlinespace")
+        previous = r["sample"]
+        cells = [f"{x:.2f}".replace("-", "$-$") for x in
+                 (r.first_discovery, r.mean_discovery, r.last_discovery)]
+        change = f"{r.change_discovery:+.2f}".replace("-", "$-$")
+        lines.append(f"{label} & {period_type(r.side)} & {int(r.sessions)} & {int(r.periods)} & "
+                     + " & ".join(cells) + f" & {change}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
-    (TABLES / "symmetric_comparison.tex").write_text("\n".join(lines)+"\n")
+    (TABLES / "symmetric_comparison.tex").write_text("\n".join(lines) + "\n")
 
+    # Appendix E.5: paired changes along the disclosure steps.
     lines = [r"\begin{tabular}{llrrrrrrr}", r"\toprule",
-             r"Step & Side & Sessions & Period pairs & Before & After & Change & Positive & Session $p$ \\", r"\midrule"]
+             r"Step & Period type & Sessions & Period pairs & Before & After & Change & Positive & Session $p$ \\", r"\midrule"]
     for _, r in effects.iterrows():
         p_text = f"{r.p_session_sign_flip:.3f}"
-        lines.append(f"{r.step} & {r.side.title()} & {int(r.sessions)} & {int(r.periods)} & {r.before_mean:.3f} & {r.after_mean:.3f} & {r.mean_change:+.3f} & {int(r.improved_sessions)}/{int(r.sessions)} & {p_text}" + r" \\")
+        lines.append(f"{r.step} & {period_type(r.side)} & {int(r.sessions)} & {int(r.periods)} & {r.before_mean:.3f} & {r.after_mean:.3f} & {r.mean_change:+.3f} & {int(r.improved_sessions)}/{int(r.sessions)} & {p_text}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (TABLES / "ladder_effects.tex").write_text("\n".join(lines)+"\n")
 
     lines = [r"\begin{tabular}{clrrrrr}", r"\toprule",
-             r"Rung & Side & $D$ & True-state belief & Price basis & TE (\%) & Insider profit ratio (\%) \\", r"\midrule"]
+             r"Step & Period type & $\bar D$ & True-state belief & Price basis & TE (\%) & Insider profit ratio (\%) \\", r"\midrule"]
     for _, r in mechanisms.iterrows():
-        lines.append(f"{r.rung} & {r.side.title()} & {r.discovery:.3f} & {r.true_state_belief:.3f} & {r.price_basis_share:.3f} & {r.TE_pct:.1f} & {r.insider_advantage_pct:.1f}" + r" \\")
+        lines.append(f"{r.rung} & {period_type(r.side)} & {r.discovery:.3f} & {r.true_state_belief:.3f} & {r.price_basis_share:.3f} & {r.TE_pct:.1f} & {r.insider_advantage_pct:.1f}" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}"]
     (TABLES / "ladder_mechanisms.tex").write_text("\n".join(lines)+"\n")
 
@@ -817,24 +884,24 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
     main_rows = []
     for _, r in a["main_h"].sort_values(["market", "period"]).iterrows():
         main_rows.append(
-            f"{int(r.market)} & {int(r.period)} & {r.state} & {r.side.title()} & {int(r.n_trades)} & "
+            f"{int(r.market)} & {int(r.period)} & {r.state} & {period_type(r.side)} & {int(r.n_trades)} & "
             f"{r.vbar:.1f} & {r.re_price:.1f} & {r.p_first:.1f} & {r.p_mean:.1f} & {r.p_last:.1f} & "
             f"{r.D_first:.3f} & {r.D_mean:.3f} & {r.D_last:.3f}" + " \\\\")
     write_longtable("appendix_human_main_periods.tex", "rrllrrrrrrrrr",
                     r"The 27 human insider periods in the main sample",
                     "tab:app-human-main",
-                    r"Mkt. & Per. & State & Side & $N$ & $\bar v$ & $P_{RE}$ & $p_1$ & $\bar p$ & $p_T$ & $D_1$ & $\bar D$ & $D_T$ \\",
+                    r"Mkt. & Per. & State & Type & $N$ & $\mu$ & $P_{\RE}$ & $p_1$ & $\bar p$ & $p_T$ & $D_1$ & $\bar D$ & $D_T$ \\",
                     main_rows, r"\tiny")
 
     by_market_rows = []
     for _, r in a["by_market"].iterrows():
         by_market_rows.append(
-            f"{int(r.market)} & {r.side.title()} & {int(r.periods)} & {int(r.trades)} & "
+            f"{int(r.market)} & {period_type(r.side)} & {int(r.periods)} & {int(r.trades)} & "
             f"{r.D_first:.3f} & {r.D_mean:.3f} & {r.D_last:.3f} & {r.change_francs:+.1f}" + " \\\\")
     write_longtable("appendix_human_by_market.tex", "rlrrrrrr",
-                    r"Human adjustment results by market and informed side",
+                    r"Human price positions by market and period type",
                     "tab:app-human-market",
-                    r"Market & Side & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ & Mean $\Delta p$ \\",
+                    r"Market & Period type & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ & Mean $p_T-p_1$ \\",
                     by_market_rows)
 
     rob_rows = []
@@ -876,10 +943,10 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
     for _, r in a["benchmarks"].iterrows():
         benchmark_rows.append(
             f"{market_label(r.market)} & {r.state} & {r.vbar:.1f} & {r.RE:.1f} & {r.PI:.1f} & "
-            f"{r.distance:+.1f} & {r.side.title()}" + " \\\\")
+            f"{r.distance:+.1f} & {period_type(r.side)}" + " \\\\")
     write_longtable("appendix_theory_benchmarks.tex", "rlrrrrl",
-                    r"Exact-signal RE and PI price benchmarks", "tab:app-benchmarks",
-                    r"Market & State & $\bar v$ & $P_{RE}$ & $P_{PI}$ & $P_{RE}-\bar v$ & Side \\",
+                    r"Prior value, informed value, and PI prediction by market and state", "tab:app-benchmarks",
+                    r"Market & State & $\mu$ & $P_{\RE}$ & $P_{\PI}$ & $P_{\RE}-\mu$ & Period type \\",
                     benchmark_rows)
 
     m1_rows = []
@@ -888,11 +955,11 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
         m1_rows.append(
             f"{int(r.period)} & {r.state} & {latex_escape(clue)} & {int(r.clue_ones)} & "
             f"{r.posterior_X:.4f} & {r.re_price:.3f} & {r.pi_price:.3f} & "
-            f"{r.side.title()} & {'Yes' if r.predictions_differ else 'No'}" + " \\\\")
+            f"{period_type(r.side)} & {'Yes' if r.predictions_differ else 'No'}" + " \\\\")
     write_longtable("appendix_market1_posterior.tex", "rrlrrrrll",
-                    r"Market 1 posterior-price construction in insider periods",
+                    r"Market 1: clue-conditional benchmarks in the insider periods",
                     "tab:app-market1",
-                    r"Period & State & Ten-draw clue & Ones & $q(X\mid c)$ & $P_{RE}(c)$ & $P_{PI}(c)$ & Side & Differ? \\",
+                    r"Period & State & Ten-draw clue & Ones & $q(X\mid c)$ & $P_{\RE}(c)$ & $P_{\PI}(c)$ & Period type & Differ? \\",
                     m1_rows, r"\footnotesize")
 
     inventory_rows = []
@@ -905,50 +972,159 @@ def appendix_latex_tables(a: dict[str, pd.DataFrame]) -> None:
             f"{int(r.valid_periods)}/{int(r.insider_periods)} & {r.no_trade_periods} & {latex_escape(model)}" + " \\\\")
     write_longtable("appendix_run_inventory.tex",
                     r"p{2.6cm}rrrp{.8cm}p{1.6cm}p{3.0cm}p{1.0cm}p{1.0cm}p{2.0cm}",
-                    r"LLM-agent run inventory and sample selection", "tab:app-run-list",
-                    r"Run & Mkt. & Rung & Seed & Turns & Preset & Realized states & Traded & No-trade & Model \\",
+                    r"LLM sessions and sample selection", "tab:app-run-list",
+                    r"Run & Mkt. & Step & Seed & Turns & Preset & Realized states & Traded & No-trade & Model \\",
                     inventory_rows, r"\tiny")
 
     session_effects = pd.read_csv(ANALYSIS / "ladder_session_effects.csv")
     effect_rows = []
     for _, r in session_effects.iterrows():
         effect_rows.append(
-            f"{latex_escape(r.step)} & {r.side.title()} & {market_label(r.market)} & {int(r.seed)} & "
+            f"{latex_escape(r.step)} & {period_type(r.side)} & {market_label(r.market)} & {int(r.seed)} & "
             f"{int(r.paired_periods)} & {r.before_mean:.3f} & {r.after_mean:.3f} & {r.mean_change:+.3f}" + " \\\\")
-    write_longtable("appendix_ladder_sessions.tex", r"p{3.8cm}lrrrrrr",
+    write_longtable("appendix_ladder_sessions.tex", r"p{3.3cm}lrrrrrr",
                     r"Disclosure effects by market--seed session pair",
                     "tab:app-ladder-sessions",
-                    r"Step & Side & Market & Seed & Paired periods & Before & After & Change \\",
+                    r"Step & Type & Market & Seed & Pairs & Before & After & Change \\",
                     effect_rows, r"\footnotesize")
 
     gaps = pd.read_csv(ANALYSIS / "symmetric_session_gaps.csv")
     gap_rows = []
     for _, r in gaps.iterrows():
-        gap_rows.append(f"{latex_escape(r['sample'])} & {latex_escape(r.run_id)} & {r.buyer:.3f} & {r.seller:.3f} & {r.sell_minus_buy:+.3f}" + " \\\\")
-    write_longtable("appendix_symmetric_sessions.tex", r"p{4.2cm}p{2.7cm}rrr",
-                    r"Price discovery by session in the design comparison",
+        sample = {"Original market 4": "Market 4",
+                  "Symmetric markets A and B": "Markets A and B",
+                  "Original markets 1-5 (background)": "Markets 1--5"}[r["sample"]]
+        gap_rows.append(f"{sample} & {latex_escape(r.run_id)} & {r.buyer:.3f} & {r.seller:.3f} & {r.sell_minus_buy:+.3f}" + " \\\\")
+    write_longtable("appendix_symmetric_sessions.tex", r"p{3.0cm}p{2.7cm}rrr",
+                    r"Mean price position by session in the design comparison",
                     "tab:app-symmetric-sessions",
-                    r"Sample & Run & Buyer & Seller & Sell minus buy \\", gap_rows)
+                    r"Sample & Run & Upward & Downward & Downward minus upward \\", gap_rows)
 
     common_rows = []
     for _, r in a["common"].sort_values(["side", "rung"]).iterrows():
-        common_rows.append(f"{r.side.title()} & {r.rung} & {int(r.period_pairs)} & {r.discovery:.3f} & {r.change_from_0:+.3f}" + " \\\\")
+        common_rows.append(f"{period_type(r.side)} & {r.rung} & {int(r.period_pairs)} & {r.discovery:.3f} & {r.change_from_0:+.3f}" + " \\\\")
     write_longtable("appendix_common_support.tex", "lrrrr",
-                    r"Five-rung results on a common seed-42 period support",
+                    r"The five disclosure steps on a common seed-42 period support",
                     "tab:app-common-support",
-                    r"Side & Rung & Market--period cells & $D$ & Change from rung 0 \\",
+                    r"Period type & Step & Market--period cells & $\bar D$ & Change from step 0 \\",
                     common_rows)
 
     round_rows = []
     for _, r in a["rounds"].iterrows():
         round_rows.append(
-            f"{latex_escape(r.sequence)} & {int(r.rounds)} & {r.side.title()} & {int(r.periods)} & "
+            f"{latex_escape(r.sequence)} & {int(r.rounds)} & {period_type(r.side)} & {int(r.periods)} & "
             f"{int(r.trades)} & {r.D_first:.3f} & {r.D_mean:.3f} & {r.D_last:.3f}" + " \\\\")
     write_longtable("appendix_rounds.tex", "lrlrrrrr",
-                    r"Market-4 robustness to longer trading horizons",
+                    r"Market 4 with more turns per trader",
                     "tab:app-rounds",
-                    r"State sequence & Rounds & Side & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ \\",
+                    r"State sequence & Turns & Period type & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ \\",
                     round_rows)
+
+
+def human_appendix_d(p0: dict) -> None:
+    """Appendix D.3-D.6: five-market pooling, the closeness index A, distances from the
+    no-information price, and the familiar-state and opening-window checks."""
+    period = pd.read_csv(HUMAN / "period_table.csv")
+    ins = period.query("info == 'insider'").copy()
+    ins["dev_first"] = ins["p_first"] - ins["re_price"]
+    ins["dev_last"] = ins["p_last"] - ins["re_price"]
+
+    def fmt(x: float, digits: int = 2) -> str:
+        text = f"{x:.{digits}f}"
+        text = "0.0" if text in ("-0.0", "-0.00") else text
+        return text.replace("-", "$-$")
+
+    # D.3: markets 3-5, markets 1-2, and all five markets.
+    rows = []
+    for label, sub in (("Markets 3--5", ins[ins["market"].isin([3, 4, 5])]),
+                       ("Markets 1--2", ins[ins["market"].isin([1, 2])]),
+                       ("Markets 1--5", ins)):
+        for side in ("seller", "buyer"):
+            g = sub[sub["side"].eq(side)]
+            rows.append(dict(sample=label, side=side, periods=len(g), trades=int(g["n_trades"].sum()),
+                             D_first=g["D_first"].mean(), D_mean=g["D_mean"].mean(),
+                             D_last=g["D_last"].mean(), dev_first=g["dev_first"].mean(),
+                             dev_last=g["dev_last"].mean(), change=g["francs_change"].mean()))
+    five = pd.DataFrame(rows)
+    to_csv(five, ANALYSIS / "human_five_markets.csv")
+    body = []
+    for _, r in five.iterrows():
+        body.append(f"{r['sample'].replace('Markets ', '')} & {period_type(r.side)} & {r.periods} & {r.trades} & {fmt(r.D_first)} & "
+                    f"{fmt(r.D_mean)} & {fmt(r.D_last)} & {fmt(r.dev_first, 1)} & {fmt(r.dev_last, 1)} & "
+                    f"{fmt(r.change, 1)}" + r" \\")
+    write_longtable("appendix_human_five_markets.tex", "llrrrrrrrr",
+                    r"Price positions in markets 3--5, markets 1--2, and all five markets",
+                    "tab:app-human-five",
+                    r"Markets & Type & Periods & Trades & $D_1$ & $\bar D$ & $D_T$ & $p_1-P_{\RE}$ & $p_T-P_{\RE}$ & $p_T-p_1$ \\",
+                    body, r"\scriptsize")
+
+    # D.4: closeness A = 1 - |p - P_RE| / |P_RE - mu| = 1 - |D - 1|.
+    main = ins[ins["market"].isin([3, 4, 5])].copy()
+    rows = []
+    for d_col, label in (("D_first", "opening"), ("D_mean", "period mean"), ("D_last", "closing")):
+        a = 1 - (main[d_col] - 1).abs()
+        for measure, values in ((f"$D$, {label} price", main[d_col]), (f"$A$, {label} price", a)):
+            down, up = values[main["side"].eq("seller")], values[main["side"].eq("buyer")]
+            rows.append(dict(measure=measure, downward=down.mean(), upward=up.mean(),
+                             difference=down.mean() - up.mean(),
+                             p_welch=stats.ttest_ind(down, up, equal_var=False).pvalue))
+    closeness = pd.DataFrame(rows)
+    to_csv(closeness, ANALYSIS / "human_closeness.csv")
+    fmt_p = lambda p: r"$<$0.001" if p < 0.001 else f"{p:.3f}"
+    body = [f"{r.measure} & {fmt(r.downward, 3)} & {fmt(r.upward, 3)} & {fmt(r.difference, 3)} & {fmt_p(r.p_welch)}" + r" \\"
+            for _, r in closeness.iterrows()]
+    write_longtable("appendix_human_closeness.tex", "lrrrr",
+                    r"Price position $D$ and closeness $A$ in markets 3--5",
+                    "tab:app-human-closeness",
+                    r"Measure & Downward & Upward & Downward minus upward & Welch $p$ \\",
+                    body, r"\footnotesize")
+
+    # D.5: distance to P_RE measured from the no-information price p0.
+    rows = []
+    for (market, side, re), g in main.groupby(["market", "side", "re_price"]):
+        base = p0[market]
+        dist0 = re - base
+        same_direction = np.sign(dist0) == np.sign(re - g["vbar"].iloc[0])
+        rows.append(dict(market=int(market), side=side, re=re, mu=g["vbar"].iloc[0], p0=base,
+                         periods=len(g), distance_mu=re - g["vbar"].iloc[0], distance_p0=dist0,
+                         D0_first=((g["p_first"] - base) / dist0).mean() if same_direction else np.nan,
+                         D0_last=((g["p_last"] - base) / dist0).mean() if same_direction else np.nan))
+    dist = pd.DataFrame(rows).sort_values(["market", "side", "re"], ascending=[True, False, True])
+    to_csv(dist, ANALYSIS / "human_noinfo_distance.csv")
+    body = []
+    for _, r in dist.iterrows():
+        d0 = "--" if pd.isna(r.D0_first) else fmt(r.D0_first)
+        dT = "--" if pd.isna(r.D0_last) else fmt(r.D0_last)
+        body.append(f"{r.market} & {period_type(r.side)} & {r.re:.0f} & {r.mu:.1f} & {r.p0:.1f} & {r.periods} & "
+                    f"{fmt(r.distance_mu, 1)} & {fmt(r.distance_p0, 1)} & {d0} & {dT}" + r" \\")
+    write_longtable("appendix_human_noinfo_distance.tex", "rlrrrrrrrr",
+                    r"Distances to the informed value from the prior value and from the no-information price",
+                    "tab:app-human-noinfo-distance",
+                    r"Market & Period type & $P_{\RE}$ & $\mu$ & $\bar p_0$ & Periods & $P_{\RE}-\mu$ & $P_{\RE}-\bar p_0$ & $D^0_1$ & $D^0_T$ \\",
+                    body, r"\footnotesize")
+
+    # D.6: familiar states and the first tenth of each period's trades.
+    est = pd.read_csv(HUMAN / "established.csv")
+    traj = pd.read_csv(HUMAN / "trajectory.csv").query("bin == 1")
+    labels = {"all": "All insider periods", "k>=2": "State seen in at least one earlier insider period",
+              "k>=3": "State seen in at least two earlier insider periods"}
+    body = []
+    for sample in ("all", "k>=2", "k>=3"):
+        g = est[est["sample"].eq(sample)].set_index("side")
+        for side in ("seller", "buyer"):
+            r = g.loc[side]
+            body.append(f"{labels[sample]} & {period_type(side)} & {int(r.n)} & {fmt(r.D_first, 3)} & "
+                        f"{fmt_p(r.p_first_vs_1)} & {fmt(r.D_last, 3)}" + r" \\")
+        c = g.loc["between-side contrast"]
+        body.append(f" & Difference & {int(c.n)} & {fmt(c.D_first, 3)} & {fmt_p(c.p_first_vs_1)} & " + r"\\")
+        body.append(r"\addlinespace")
+    write_longtable("appendix_human_familiar.tex", r"p{5.2cm}lrrrr",
+                    r"Opening positions in periods with familiar states",
+                    "tab:app-human-familiar",
+                    r"Sample & Period type & Periods & $D_1$ & $p$ & $D_T$ \\",
+                    body[:-1], r"\footnotesize")
+    window = traj.set_index("side")[["n_periods", "D_mean", "F_mean", "F_median"]]
+    to_csv(window.reset_index(), ANALYSIS / "human_opening_window.csv")
 
 
 def selection_tables() -> None:
@@ -967,9 +1143,9 @@ def selection_tables() -> None:
     cols = ["periods", "no_information", "all_informed", "informed_selling", "informed_buying"]
     lines = [r"% Counts computed from results/human/period_table.csv by code/analyze.py.",
              r"\begin{tabular}{lrrrrr}", r"\toprule",
-             r" & & \multicolumn{2}{c}{No insider--outsider split} & \multicolumn{2}{c}{Insider periods} \\",
-             r"\cmidrule(lr){3-4}\cmidrule(lr){5-6}",
-             r"Market & Periods & No information & All informed & Informed selling & Informed buying \\",
+             r" & & & & \multicolumn{2}{c}{Insider periods} \\",
+             r"\cmidrule(lr){5-6}",
+             r"Market & Periods & No-information & All-informed & Downward & Upward \\",
              r"\midrule"]
     for _, r in ledger.iterrows():
         lines.append(" & ".join([str(r["market"])] + [str(r[c]) for c in cols]) + r" \\")
@@ -991,16 +1167,16 @@ def selection_tables() -> None:
             width = (v1 - v2) / abs(v1 - vbar)
             buying = v1 > vbar
             interval_rows.append(dict(
-                market=market, state=state, side="buying" if buying else "selling",
+                market=market, state=state, side="upward" if buying else "downward",
                 vbar=vbar, v2=v2, re=v1, price_low=v2, price_high=v1,
                 D_low=1 - width if buying else 1.0, D_high=1.0 if buying else 1 + width))
     intervals = pd.DataFrame(interval_rows)
     to_csv(intervals, ANALYSIS / "competitive_intervals_AB.csv")
     lines = [r"\begin{table}[!htbp]", r"\centering",
-             r"\caption{\textbf{RE point benchmarks and documented competitive-price intervals in A/B}}",
+             r"\caption{Informed values and competitive-price intervals in markets A and B}",
              r"\label{tab:app-competitive-intervals}", r"\footnotesize",
              r"\fittable{\begin{tabular}{lllrrrrl}", r"\toprule",
-             r"Market & State & Side & $\bar v$ & $v_{(2)}$ & $P_{\RE}=v_{(1)}$ & $\mathcal P^{CE}$ & $\mathcal D^{CE}$ \\",
+             r"Market & State & Period type & $\mu$ & $v_{(2)}$ & $P_{\RE}=v_{(1)}$ & $\mathcal P^{CE}$ & $\mathcal D^{CE}$ \\",
              r"\midrule"]
     for _, r in intervals.iterrows():
         lines.append(
@@ -1009,11 +1185,10 @@ def selection_tables() -> None:
             f"$[{r.D_low:.1f},{r.D_high:.1f}]$" + r" \\")
     lines += [r"\bottomrule", r"\end{tabular}}",
               r"\caption*{\footnotesize Notes: Valuations and price intervals are in francs per "
-              r"certificate. $v_{(2)}$ is the second-highest informed type valuation; $P_{\RE}$ is "
+              r"certificate. $v_{(2)}$ is the second-highest type value in the realized state; $P_{\RE}$ is "
               r"the highest and the upper price endpoint. $\mathcal D^{CE}$ maps the price interval "
-              r"through $D=(p-\bar v)/(P_{\RE}-\bar v)$. Source: dividend schedules in Table "
-              r"\ref{tab:app-dividends}; author's calculations. These intervals do not replace the paper's "
-              r"point-based outcome or classify observed transactions.}",
+              r"through $D=(p-\mu)/(P_{\RE}-\mu)$. Source: dividend schedules in Table "
+              r"\ref{tab:app-dividends}; author's calculations.}",
               r"\end{table}"]
     (TABLES / "appendix_competitive_intervals.tex").write_text("\n".join(lines) + "\n")
 
@@ -1031,9 +1206,13 @@ def main() -> None:
     appendix = appendix_analysis(discovery)
     appendix_latex_tables(appendix)
     selection_tables()
+    schematics.run()
+    benchmark = noinfo_benchmark.run()
+    human_appendix_d(benchmark["p0"])
     summary = {
         "human": human,
         "symmetric_sell_minus_buy": gaps,
+        "noinfo_benchmark": benchmark,
         "llm_metric_files": len(list((LLM_RUNS).glob("**/*.metrics.json"))),
         "notes": [
             "Human transactions are transcribed from Appendix B of Caltech Social Science Working Paper 331.",

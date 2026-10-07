@@ -57,6 +57,26 @@
     "Original markets 1-5 (background)": 1.0454403388278388,
     "Symmetric markets A and B": -0.02243333333333336
   },
+  "noinfo_benchmark": {
+    "p0": {
+      "1": 263.656512605042,
+      "2": 257.18898809523813,
+      "3": 225.79166666666669,
+      "4": 162.57537774725273,
+      "5": 170.69172113289764
+    },
+    "market1_p0_with_printed_period2": 264.92436974789916,
+    "market4_period1_prices": [
+      1000.0,
+      1500.0,
+      1000.0,
+      1000.0,
+      900.0,
+      500.0,
+      175.0,
+      200.0
+    ]
+  },
   "llm_metric_files": 51,
   "notes": [
     "Human transactions are transcribed from Appendix B of Caltech Social Science Working Paper 331.",
