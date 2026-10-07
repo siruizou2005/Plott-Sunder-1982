@@ -53,14 +53,13 @@ Programs:
 | Table D6: familiar states | `tab:app-human-familiar` | `results/tables/appendix_human_familiar.tex` | Stage 2 (`human_appendix_d`) | `results/human/established.csv`; opening window in `results/analysis/human_opening_window.csv` |
 | Table E1: institutional comparison | `tab:app-institution` | typed in the manuscript | none | simulation rules in each session's `meta.json` |
 | Table E2: LLM sessions | `tab:app-run-list` | `results/tables/appendix_run_inventory.tex` | Stage 2 (`build_run_inventory`) | `results/analysis/llm_run_inventory.csv` |
-| Table E3: competitive-price intervals in A and B | `tab:app-competitive-intervals` | `results/tables/appendix_competitive_intervals.tex` | Stage 2 (`selection_tables`) | `results/analysis/competitive_intervals_AB.csv` |
-| Table E4: design comparison by session | `tab:app-symmetric-sessions` | `results/tables/appendix_symmetric_sessions.tex` | Stage 2 | `results/analysis/symmetric_session_gaps.csv` |
-| Table E5: paired changes across the disclosure steps | `tab:ladder` | `results/tables/ladder_effects.tex` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_paired_effects.csv` |
+| Table E3: design comparison by session | `tab:app-symmetric-sessions` | `results/tables/appendix_symmetric_sessions.tex` | Stage 2 | `results/analysis/symmetric_session_gaps.csv` |
+| Table E4: paired changes across the disclosure steps | `tab:ladder` | `results/tables/ladder_effects.tex` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_paired_effects.csv` |
 | Figure E1: disclosure responses by market and session | `fig:marketheterogeneity` | `results/figures/disclosure_market_heterogeneity.pdf` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_session_effects.csv` |
-| Table E6: beliefs, allocations, and profits at seed 42 | `tab:mechanisms` | `results/tables/ladder_mechanisms.tex` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_mechanisms_seed42.csv` |
-| Table E7: disclosure effects by session pair | `tab:app-ladder-sessions` | `results/tables/appendix_ladder_sessions.tex` | Stage 2 | `results/analysis/ladder_session_effects.csv` |
-| Table E8: seed-42 common support | `tab:app-common-support` | `results/tables/appendix_common_support.tex` | Stage 2 | `results/analysis/ladder_common_support_seed42.csv` |
-| Table E9: market 4 with more turns | `tab:app-rounds` | `results/tables/appendix_rounds.tex` | Stage 2 | `results/analysis/extended_rounds_market4.csv` |
+| Table E5: beliefs, allocations, and profits at seed 42 | `tab:mechanisms` | `results/tables/ladder_mechanisms.tex` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_mechanisms_seed42.csv` |
+| Table E6: disclosure effects by session pair | `tab:app-ladder-sessions` | `results/tables/appendix_ladder_sessions.tex` | Stage 2 | `results/analysis/ladder_session_effects.csv` |
+| Table E7: seed-42 common support | `tab:app-common-support` | `results/tables/appendix_common_support.tex` | Stage 2 | `results/analysis/ladder_common_support_seed42.csv` |
+| Table E8: market 4 with more turns | `tab:app-rounds` | `results/tables/appendix_rounds.tex` | Stage 2 | `results/analysis/extended_rounds_market4.csv` |
 | Table F1: map from evidence to programs | `tab:app-output-map` | typed in the manuscript | none | this file |
 
 The rendered treatment prompts quoted in Appendix E.1 are in `data/llm/prompts/`.
@@ -86,7 +85,7 @@ The rendered treatment prompts quoted in Appendix E.1 are in `data/llm/prompts/`
 | Section 6.2 | Human market 4 upward D from 0.29 to 0.89 | `results/analysis/human_results_by_market.csv` |
 | Section 6.3 | Gap 1.18 (market 4) and −0.01 (A and B); A and B 0.41 and 0.40, closing 0.49 and 0.76; session-weighted gap −0.02 | `results/analysis/symmetric_comparison.csv`; `analysis_summary.json` (`symmetric_sell_minus_buy`) |
 | Section 6.4 | Step 0 to 3: upward 0.31 to 0.82 (4/4), downward 0.47 to 0.73 (3/4); 0 to 1 downward −0.31 (A) and +0.32 (B) | `results/analysis/ladder_paired_effects.csv`, `ladder_session_effects.csv` |
-| Section 6.4, Appendix E.5 | True-state belief 0.58 to 0.82 (downward, 1b to 2) and 0.86 to 0.91 (upward, 2 to 3); efficiency and profit ratios | `results/analysis/ladder_mechanisms_seed42.csv` |
+| Section 6.4, Appendix E.4 | True-state belief 0.58 to 0.82 (downward, 1b to 2) and 0.86 to 0.91 (upward, 2 to 3); efficiency and profit ratios | `results/analysis/ladder_mechanisms_seed42.csv` |
 | Appendix C | Variants, trade-level p-values, opening and closing versions | `results/analysis/noinfo_variants.csv`, `noinfo_trade_level.csv` |
 | Appendix D.4 | Opening gap 0.79 in D and 0.29 in A | `results/analysis/human_closeness.csv` |
 | Appendix D.5 | From the no-information price, upward D⁰₁ 0.33–0.71 and D⁰_T 0.83–0.99 | `results/analysis/human_noinfo_distance.csv` |

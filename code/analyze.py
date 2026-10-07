@@ -1134,7 +1134,7 @@ def human_appendix_d(p0: dict) -> None:
 
 
 def selection_tables() -> None:
-    """Paper Table 1 (the 61-period ledger) and the A/B competitive-interval table."""
+    """Paper Table 3, the 61-period ledger."""
     period = pd.read_csv(HUMAN / "period_table.csv")
     rows = []
     for market, g in period.groupby("market"):
@@ -1159,44 +1159,6 @@ def selection_tables() -> None:
               " & ".join(["Total"] + [str(int(ledger[c].sum())) for c in cols]) + r" \\",
               r"\bottomrule", r"\end{tabular}"]
     (TABLES / "selection_ledger.tex").write_text("\n".join(lines) + "\n")
-
-    # Competitive-price intervals in A/B: [second-highest, highest] type valuation in
-    # the realized state; the RE point benchmark is the upper endpoint.
-    specs = market_specs()
-    interval_rows = []
-    for market in (7, 8):
-        spec = specs[market]
-        vbar = max(sum(p * d for p, d in zip(spec["prior"], vals))
-                   for vals in spec["div"].values())
-        for i, state in enumerate(spec["states"]):
-            v1, v2 = sorted((vals[i] for vals in spec["div"].values()), reverse=True)[:2]
-            width = (v1 - v2) / abs(v1 - vbar)
-            buying = v1 > vbar
-            interval_rows.append(dict(
-                market=market, state=state, side="upward" if buying else "downward",
-                vbar=vbar, v2=v2, re=v1, price_low=v2, price_high=v1,
-                D_low=1 - width if buying else 1.0, D_high=1.0 if buying else 1 + width))
-    intervals = pd.DataFrame(interval_rows)
-    to_csv(intervals, ANALYSIS / "competitive_intervals_AB.csv")
-    lines = [r"\begin{table}[!htbp]", r"\centering",
-             r"\caption{Informed values and competitive-price intervals in markets A and B}",
-             r"\label{tab:app-competitive-intervals}", r"\footnotesize",
-             r"\fittable{\begin{tabular}{lllrrrrl}", r"\toprule",
-             r"Market & State & Period type & $\mu$ & $v_{(2)}$ & $P_{\RE}=v_{(1)}$ & $\mathcal P^{CE}$ & $\mathcal D^{CE}$ \\",
-             r"\midrule"]
-    for _, r in intervals.iterrows():
-        lines.append(
-            f"{market_label(r.market)} & {r.state} & {r.side.title()} & {r.vbar:.0f} & {r.v2:.0f} & "
-            f"{r.re:.0f} & $[{r.price_low:.0f},{r.price_high:.0f}]$ & "
-            f"$[{r.D_low:.1f},{r.D_high:.1f}]$" + r" \\")
-    lines += [r"\bottomrule", r"\end{tabular}}",
-              r"\caption*{\footnotesize Notes: Valuations and price intervals are in francs per "
-              r"certificate. $v_{(2)}$ is the second-highest type value in the realized state; $P_{\RE}$ is "
-              r"the highest and the upper price endpoint. $\mathcal D^{CE}$ maps the price interval "
-              r"through $D=(p-\mu)/(P_{\RE}-\mu)$. Source: dividend schedules in Table "
-              r"\ref{tab:app-dividends}; author's calculations.}",
-              r"\end{table}"]
-    (TABLES / "appendix_competitive_intervals.tex").write_text("\n".join(lines) + "\n")
 
 
 def main() -> None:
