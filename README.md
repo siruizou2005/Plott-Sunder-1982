@@ -74,7 +74,7 @@ Plott and Sunder (1982) publish period-average prices and price plots, but not i
 
 Every period is checked against the published paper's own arithmetic: the mean of the transcribed prices must reproduce the average price printed under the corresponding panel. The check passes, within one franc, in 60 of the 61 periods. The exception is market 1, period 2, where the 14 listed trades (rechecked against the page image) average 263.93 francs against a printed 269. That period is a no-information period; it enters only market 1's no-information price in Section 4 of the paper, which changes by about one franc if the printed 269 is used instead. `results/human/validation.csv` and `results/human/rounding_check.csv` report the check period by period.
 
-The appendix also records buyer and seller identifiers. They were transcribed but are not released, because the published paper offers nothing to check them against.
+The appendix also records buyer and seller identifiers. They were not transcribed.
 
 Market parameters (dividend schedules, priors, realized states, and information schedules) are the published values of Plott and Sunder (1982, Tables 1–2 and Figures 2–6). They are coded in `code/human/ps1982_params.py` and `code/analyze.py`.
 
