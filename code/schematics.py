@@ -5,7 +5,6 @@ These exhibits use the published market parameters only, not transaction data:
   results/tables/market_summary.tex      Section 2.1, the five markets
   results/tables/market4_dividends.tex   Section 2.2, market 4 dividends and prior values
   results/tables/market4_levels.tex      Section 2.2, market 4 price levels by state
-  results/figures/market4_demand.pdf     Section 3.1, supply and demand in market 4
   results/figures/position_scale.pdf     Section 5.1, the price-position scale D
 
 Called by code/analyze.py (stage 2).
@@ -28,7 +27,7 @@ from printsize import RC, width  # noqa: E402
 ANALYSIS = ROOT / "results" / "analysis"
 TABLES = ROOT / "results" / "tables"
 FIGURES = ROOT / "results" / "figures"
-UP_COLOR, DOWN_COLOR, PI_COLOR, RE_COLOR = "#4C72B0", "#C44E52", "#333333", "#C44E52"
+UP_COLOR, DOWN_COLOR = "#4C72B0", "#C44E52"
 
 
 def _span(periods: list[int]) -> str:
@@ -96,77 +95,8 @@ def market4_tables() -> None:
     (TABLES / "market4_levels.tex").write_text("\n".join(lines) + "\n")
 
 
-def _valuations(state: str, learned: bool) -> list[tuple[float, str]]:
-    """Each two-trader group's value in market 4 under RE (learned) or PI (not)."""
-    par = P.MARKETS[4]
-    groups = []
-    for t in par.types:
-        groups.append((float(par.dividends[t][state]), f"{t}, informed"))
-        value = par.dividends[t][state] if learned else par.prior_ev[t]
-        groups.append((float(value), f"{t}, uninformed"))
-    return sorted(groups)
-
-
-def _supply_demand(ax, state: str, learned: bool, color: str, ls: str, xmax: float) -> float:
-    """Draw one step supply curve and the horizontal top of demand; return the price."""
-    par = P.MARKETS[4]
-    units = P.INITIAL_CERTS * (par.n_investors // (2 * len(par.types)))  # per two-trader group
-    vals = _valuations(state, learned)
-    xs, ys, q = [0.0], [vals[0][0]], 0.0
-    for v, _ in vals:
-        xs += [q, q + units]
-        ys += [v, v]
-        q += units
-    xs.append(q)
-    ys.append(440)
-    ax.plot(xs, ys, color=color, ls=ls, lw=1.4)
-    price = vals[-1][0]
-    ax.plot([0, xmax], [price, price], color=color, ls=ls, lw=2.2)
-    ax.scatter([q], [price], color=color, s=34, zorder=5)
-    return price
-
-
-def market4_demand_figure() -> None:
-    """Figure 1, printed at the full text width."""
-    mu = P.VBAR[4]
-    xmax = 30
-    notes = {
-        "Y": (1.0, 432, "PI: uninformed type I bid\ntheir prior value, 210\n"
-                        "RE: after learning, type III\nvalues it most, at 175"),
-        "X": (1.0, 362, "PI and RE: informed\ntype I value it most,\nat 375"),
-    }
-    with plt.rc_context(RC):
-        fig, axes = plt.subplots(1, 2, figsize=(width(1.0), 3.35), sharey=True, layout="constrained")
-        for ax, state, title in ((axes[0], "Y", "State $Y$: a downward period"),
-                                 (axes[1], "X", "State $X$: an upward period")):
-            re_ = P.re_price(4, state)
-            ax.axhline(mu, color="black", lw=.8, ls=":")
-            _supply_demand(ax, state, False, PI_COLOR, "-", xmax)
-            _supply_demand(ax, state, True, RE_COLOR, "--", xmax)
-            # Labels sit left of the vertical supply line at 24 certificates.
-            ax.text(23.4, mu + 4, r"$\mu=$" + f"{mu:.0f}", ha="right", va="bottom", fontsize=8)
-            ax.text(23.4, re_ + 4, r"$P_{\mathrm{RE}}=$" + f"{re_:.0f}", ha="right", va="bottom",
-                    fontsize=8, color=RE_COLOR)
-            x, y, text = notes[state]
-            ax.text(x, y, text, fontsize=8, va="top", ha="left", linespacing=1.15)
-            ax.text(23.6, 66, "total supply,\n24 certificates", fontsize=8, color="#666666",
-                    ha="right", va="bottom")
-            ax.set_title(title, loc="left")
-            ax.set_xlim(0, xmax)
-            ax.set_ylim(60, 440)
-            ax.set_xlabel("Certificates")
-            ax.spines[["top", "right"]].set_visible(False)
-        axes[0].set_ylabel("Francs per certificate")
-        handles = [plt.Line2D([], [], color=PI_COLOR, lw=1.6, ls="-"),
-                   plt.Line2D([], [], color=RE_COLOR, lw=1.6, ls="--")]
-        fig.legend(handles, ["Uninformed keep their prior values (PI)", "Uninformed learn the state (RE)"],
-                   loc="outside lower center", ncol=2, frameon=False)
-        fig.savefig(FIGURES / "market4_demand.pdf", metadata={"CreationDate": None})
-        plt.close(fig)
-
-
 def position_scale_figure() -> None:
-    """Figure 4, printed at 0.9 of the text width."""
+    """Figure 3, printed at 0.9 of the text width."""
     mu = P.VBAR[4]
     with plt.rc_context(RC):
         fig, axes = plt.subplots(2, 1, figsize=(width(0.9), 2.7), layout="constrained")
@@ -204,5 +134,4 @@ def position_scale_figure() -> None:
 def run() -> None:
     market_summary()
     market4_tables()
-    market4_demand_figure()
     position_scale_figure()

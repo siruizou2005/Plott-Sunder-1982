@@ -46,9 +46,9 @@ The code was run with Python 3.13 and the package versions pinned in `requiremen
 │       ├── prompts/                        rendered system prompts for the disclosure steps
 │       └── raw_log_manifest.csv            size and SHA-256 of the 51 raw JSONL logs (not shipped)
 ├── code/
-│   ├── human/                              stage 1: human period data, period classification, Figure 2
+│   ├── human/                              stage 1: human period data, period classification, Figure 1
 │   ├── analyze.py                          stage 2: every other table and figure
-│   ├── schematics.py                       stage 2: design exhibits (Tables 1-2, Figures 1 and 4)
+│   ├── schematics.py                       stage 2: design exhibits (Tables 1-2, Figure 3)
 │   ├── noinfo_benchmark.py                 stage 2: no-information benchmark (Section 4, Appendix C)
 │   └── extract_llm_transactions.py         optional: raw JSONL logs -> llm_transactions.csv
 ├── results/                                generated outputs, committed for inspection

@@ -171,16 +171,11 @@ def robustness_table(ins: pd.DataFrame, A: pd.DataFrame) -> pd.DataFrame:
                          fe_diff=-ols.params["buy"], p_fe_ols=ols.pvalues["buy"],
                          p_fe_cluster=clu.pvalues["buy"]))
 
-    # The sample rows.  Two of them exist to be read against the figure-digitized
-    # analysis rather than on their own terms: the flagged set is now a single period
-    # (market 1's period 2) instead of four, and no period's transaction count is
-    # uncertain any more, so dropping the 23 periods the DIGITIZER could not resolve
-    # measures what that sensitivity row was actually measuring.
+    # The sample rows.  The flagged set is now a single period (market 1's period 2),
+    # which lies outside markets 3-5, so that row reproduces the main sample.
     samples = {
         "Markets 3-5, all 27 periods": ins,
         "Flagged period dropped": ins[~ins["flagged"].astype(bool)],
-        "23 periods merged-run in the digitized record dropped":
-            ins[~ins["count_uncertain"].astype(bool)],
         "All five markets": insider(A, markets=(1, 2, 3, 4, 5)),
     }
     for lab, sub in samples.items():

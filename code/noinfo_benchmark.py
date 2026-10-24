@@ -264,7 +264,7 @@ def _longtable(filename: str, spec: str, caption: str, label: str, header: str,
 def figure(pp: pd.DataFrame) -> None:
     """Five panels: no-information and downward period means against mu and P_RE.
 
-    Printed at the full text width (Figure 3)."""
+    Printed at the full text width (Figure 2)."""
     span = 100.0
     with plt.rc_context(RC):
         fig, axes = plt.subplots(2, 3, figsize=(width(1.0), 4.4), layout="constrained")

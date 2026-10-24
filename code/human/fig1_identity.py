@@ -25,7 +25,7 @@ from ps1982_params import MARKETS
 
 # Same colors as the paper's other figures: downward periods red, upward periods blue.
 BUY, SELL = "#4C72B0", "#C44E52"
-# Printed at 0.62 of the 430pt text block (Figure 2), so fonts are printed sizes.
+# Printed at 0.62 of the 430pt text block (Figure 1), so fonts are printed sizes.
 WIDTH_IN = 0.62 * 430.0 / 72.27
 
 T = pd.read_csv(ROOT / "identity.csv")

@@ -281,7 +281,7 @@ def human_analysis() -> dict:
     h["u"] = np.where(h["n_trades_in_period"] > 1,
                       (h["trade_index"] - 1) / (h["n_trades_in_period"] - 1), 0)
     h["gap"] = h["price"] - h["re_price"]
-    # Printed at 0.94 of the text width (Figure 5).
+    # Printed at 0.94 of the text width (Figure 4).
     with plt.rc_context(RC):
         fig, axes = plt.subplots(1, 2, figsize=(width(0.94), 2.75), sharey=True, layout="constrained")
         for ax, side in zip(axes, ("seller", "buyer")):
@@ -398,7 +398,7 @@ def symmetric_analysis(discovery: pd.DataFrame) -> tuple[pd.DataFrame, dict]:
                  "Symmetric markets A and B", "")
     )
     tx = tx[tx["sample"].ne("")].copy()
-    # Printed at 0.78 of the text width (Figure 6).
+    # Printed at 0.78 of the text width (Figure 5).
     with plt.rc_context(RC):
         fig, axes = plt.subplots(1, 2, figsize=(width(0.78), 2.65), sharex=True, sharey=True,
                                  layout="constrained")
@@ -533,7 +533,7 @@ def ladder_analysis(discovery: pd.DataFrame, mechanisms: pd.DataFrame) -> tuple[
     mech = mech.sort_values(["rung_order", "side"]).drop(columns="rung_order")
     to_csv(mech, ANALYSIS / "ladder_mechanisms_seed42.csv")
 
-    # Printed at 0.88 of the text width (Figure 7).
+    # Printed at 0.88 of the text width (Figure 6).
     with plt.rc_context(RC):
         fig, axes = plt.subplots(1, 2, figsize=(width(0.88), 2.75), sharey=True, layout="constrained")
         for ax, side in zip(axes, ("buyer", "seller")):

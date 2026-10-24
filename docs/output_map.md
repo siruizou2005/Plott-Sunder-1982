@@ -15,20 +15,19 @@ Programs:
 |---|---|---|---|---|
 | Table 1: the five original markets | `tab:markets` | `results/tables/market_summary.tex` | Stage 2 (`schematics.market_summary`) | `results/analysis/market_summary.csv` |
 | Table 2: market 4 dividends, prior values, and price levels | `tab:market4` | `results/tables/market4_dividends.tex`, `market4_levels.tex` | Stage 2 (`schematics.market4_tables`) | parameters in `code/human/ps1982_params.py` |
-| Figure 1: supply and demand in market 4 | `fig:demand` | `results/figures/market4_demand.pdf` | Stage 2 (`schematics.market4_demand_figure`) | parameters in `code/human/ps1982_params.py` |
 | Table 3: the 61 periods by information condition and period type | `tab:ledger` | `results/tables/selection_ledger.tex` | Stage 2 (`selection_tables`) | `results/analysis/selection_ledger.csv`; classification in `results/human/identity.csv` |
-| Figure 2: RE and PI differ only in downward periods | `fig:selection` | `results/figures/selection_identity.png` | Stage 1 (`fig1_identity.py`) | `results/human/identity.csv` |
+| Figure 1: RE and PI differ only in downward periods | `fig:selection` | `results/figures/selection_identity.png` | Stage 1 (`fig1_identity.py`) | `results/human/identity.csv` |
 | Table 4: differences between upward and downward periods, markets 3–5 | `tab:design` | `results/tables/design_asymmetries.tex` | Stage 2 (`design_table`) | `results/analysis/design_asymmetries.csv` |
 | Table 5: no-information and downward-period prices | `tab:noinfo` | `results/tables/noinfo_downward.tex` | Stage 2 (`noinfo_benchmark`) | `results/analysis/noinfo_downward.csv` |
-| Figure 3: no-information and downward-period prices by market | `fig:noinfo` | `results/figures/noinfo_downward.pdf` | Stage 2 (`noinfo_benchmark`) | `results/analysis/noinfo_downward_periods.csv` |
-| Figure 4: the price position D in market 4 | `fig:scale` | `results/figures/position_scale.pdf` | Stage 2 (`schematics.position_scale_figure`) | parameters only |
+| Figure 2: no-information and downward-period prices by market | `fig:noinfo` | `results/figures/noinfo_downward.pdf` | Stage 2 (`noinfo_benchmark`) | `results/analysis/noinfo_downward_periods.csv` |
+| Figure 3: the price position D in market 4 | `fig:scale` | `results/figures/position_scale.pdf` | Stage 2 (`schematics.position_scale_figure`) | parameters only |
 | Table 6: price positions at the opening, over the period, and at the close | `tab:human` | `results/tables/human_adjustment.tex` | Stage 2 (`human_analysis`) | `results/analysis/human_summary.csv`, `human_tests.csv`, `human_distribution.csv` |
-| Figure 5: transaction prices within downward and upward periods | `fig:humanpaths` | `results/figures/human_paths.pdf` | Stage 2 (`human_analysis`) | `results/human/trades.csv` |
+| Figure 4: transaction prices within downward and upward periods | `fig:humanpaths` | `results/figures/human_paths.pdf` | Stage 2 (`human_analysis`) | `results/human/trades.csv` |
 | Table 7: price positions in LLM markets | `tab:symmetric` | `results/tables/symmetric_comparison.tex` | Stage 2 (`symmetric_analysis`) | `results/analysis/symmetric_comparison.csv`, `llm_price_discovery_periods.csv` |
 | Table 8: differences between upward and downward periods, markets 3–5, A, and B | `tab:design-ab` | `results/tables/design_symmetric.tex` | Stage 2 (`design_table`) | `results/analysis/design_asymmetries.csv` |
-| Figure 6: price positions within periods in LLM markets | `fig:symmetric` | `results/figures/symmetric_markets.pdf` | Stage 2 (`symmetric_analysis`) | `data/llm/llm_transactions.csv` |
+| Figure 5: price positions within periods in LLM markets | `fig:symmetric` | `results/figures/symmetric_markets.pdf` | Stage 2 (`symmetric_analysis`) | `data/llm/llm_transactions.csv` |
 | Table 9: steps of disclosure | `tab:steps` | typed in the manuscript | none | treatment text in `data/llm/prompts/` |
-| Figure 7: price positions across the disclosure steps at seed 42 | `fig:ladder` | `results/figures/disclosure_ladder.pdf` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_price_discovery_periods.csv` |
+| Figure 6: price positions across the disclosure steps at seed 42 | `fig:ladder` | `results/figures/disclosure_ladder.pdf` | Stage 2 (`ladder_analysis`) | `results/analysis/ladder_price_discovery_periods.csv` |
 
 ## Appendices
 
