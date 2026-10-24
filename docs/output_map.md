@@ -59,7 +59,6 @@ Programs:
 | Table E6: disclosure effects by session pair | `tab:app-ladder-sessions` | `results/tables/appendix_ladder_sessions.tex` | Stage 2 | `results/analysis/ladder_session_effects.csv` |
 | Table E7: seed-42 common support | `tab:app-common-support` | `results/tables/appendix_common_support.tex` | Stage 2 | `results/analysis/ladder_common_support_seed42.csv` |
 | Table E8: market 4 with more turns | `tab:app-rounds` | `results/tables/appendix_rounds.tex` | Stage 2 | `results/analysis/extended_rounds_market4.csv` |
-| Table F1: map from evidence to programs | `tab:app-output-map` | typed in the manuscript | none | this file |
 
 The rendered treatment prompts quoted in Appendix E.1 are in `data/llm/prompts/`.
 
